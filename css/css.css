@@ -281,7 +281,7 @@ background: rgba(255, 255, 255, 0.4);
 background: rgba(255, 255, 255, 0);
 }
 .wdeng.list{
-width: 65%;
+width: 60%;
 display: inline-block;
 text-align: left;
 }
@@ -290,7 +290,7 @@ width: 20%;
 display: inline-block;
  }
  .updowndiv.list{
-width: 10%;
+width: 15%;
 display: inline-block;
 text-align: right;
  }
