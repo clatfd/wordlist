@@ -72,6 +72,6 @@
 	array_push($result,$out3."%");
 	array_push($result,$out4."%");
 	array_push($result,$out5."%");
-	array_push($result,number_format($total,0));
+	array_push($result,number_format($total,0,".",""));
 	echo json_encode($result);
 ?>

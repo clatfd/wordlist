@@ -330,7 +330,8 @@
 		</td>
 	</tr>	
 	<tr class="nali">	
-		<th colspan="6">GRE <span id="allgronumgre"></span></th>
+		<th colspan="5">GRE <span id="allgronumgre"></span></th>
+		<th id="grenotcpnum"></th>
 	</tr>
 	<tr class="nali">
 		<td>
@@ -531,7 +532,10 @@ $.ajax({url: "briefsta.php?list="+list+"&idlo="+idlo+"&idup="+idup,
 				stadata[4]=(100-parseFloat(stadata[0].slice(0,-1))-parseFloat(stadata[1].slice(0,-1))-parseFloat(stadata[2].slice(0,-1))-parseFloat(stadata[3].slice(0,-1))).toFixed(1)+"%";
 				for(pbi=0;pbi<5;pbi++){
 					$("#"+list+"progress").find(".progress-bar").eq(pbi).attr("aria-valuenow",stadata[pbi].slice(0,-1));
-					$("#"+list+"progress").find(".progress-bar").eq(pbi).html(stadata[pbi]);
+					if(parseFloat(stadata[pbi])>6)	
+						$("#"+list+"progress").find(".progress-bar").eq(pbi).html(stadata[pbi]+" "+(parseFloat(stadata[pbi])*parseInt(stadata[5])/100).toFixed(0));
+					else
+						$("#"+list+"progress").find(".progress-bar").eq(pbi).html(stadata[pbi]);
 					$("#"+list+"progress").find(".progress-bar").eq(pbi).css("width",stadata[pbi]);
 				}
 				$("#allgronum"+list).html(stadata[5]);
