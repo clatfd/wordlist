@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="cssmh.css">
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js.js"></script>
+<script type="text/javascript" src="js_addfunction.js"></script>
+<!--<script type="text/javascript" src="impwdlist.js"></script>-->
+<script type="text/javascript" src="wdlistall.js"></script>
+
+</head>
+
+
+
+<body>
+<script>
+refreshtimes=-1;
+	
+
+</script>
+<!-- 980*1413-->
+<div id="total"> 
+<form name="form1" id="form1" method="GET">
+<span id="banner">
+List:&nbsp;&nbsp;&nbsp;
+  <select id="formlist" name="list">
+  <option  >imp</option>
+  <option  >i_mfl</option>
+  <option  >i_ivt</option>
+  <option  >test</option>
+  <option  >wordlist</option>
+  <option >gre</option>
+  <option >toefl</option>
+  <option >wordlisttoeflall</option>
+
+</select>
+  Group:
+<select id="formgro" name="gro">
+  <option >0</option>
+  <option >1</option>
+  <option >2</option>
+  <option >3</option>
+  <option >4</option>
+  <option >5</option>
+</select>
+<br/>
+ Idfrom:
+
+<input id="formidlo" name="textfield" type="text" value="1" size="8" />
+
+to:
+<input id="formidup" name="textfield" type="text" value="50" size="8" />
+
+</span>
+</form>
+    
+<div class="examdiv">
+	 <table width="980" border="0" cellspacing="0" cellpadding="0" id="wdtb">  
+		<tr id="examwordshow">
+			<td height="700"  colspan="3" align="center" valign="middle" id="examwd"><span></span>&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<td height="140"  colspan="3" align="center" valign="middle" ><span id="examtdrec"></span><a id="examdict" href="" target="_blank"><img src="images/favicon.ico" /></a>&nbsp;<span id="examrecunrimg"></span></td>
+		</tr>
+		<tr id="exambt">
+			<td width="33%" height="30" align="center" valign="middle"><span onclick="refreshexamwd()"><img id="examdownbutton" src="images/unrec.JPG"  border="0" onclick=""/></span></td>
+			<td width="34%" height="30" align="center" valign="middle"><span id="spansubone" onclick="totalnumsubone()"><img id="skipbutton" src="images/skip.JPG" border="0" onclick="refreshexamwd()"/></span></td>
+			<td width="33%" height="30" align="center" valign="middle" ><span onclick="refreshexamwd()"><img id="examupbutton" src="images/rec.JPG" border="0" onclick="" /></span></td>
+		</tr>
+	 </table>  
+</div>
+
+
+
+<div id="examswitchbar">	
+
+
+  <span class="menu">
+ 
+  	total number:<span id="totnum"></span><span id="totnumlength"></span><span id="totnumimp"></span> <span id="dateinput" ></span>
+&nbsp;&nbsp;  </span> 
+	
+	
+	<button id="undo" style="opacity: 0.01;" onclick="undo('test','exam')">  undo  </button>
+	  
+	<a href="Listoutputw.html"><button id="backtolist">Back_to_list(B)</button></a>
+	&nbsp;&nbsp;
+
+	<button onclick="changewdlist('exam')">Changelist</button>
+	<br/> 
+	<button id="lastword" onclick="subrefreshtimes()">  Last_word  </button>
+	  
+	<button id="skiptimesbutton" onclick="refreshexamwd('skip')">Skip</button>
+	<input id="skiptimes" type="text" value="" size="5"/>
+<br/>
+<span id="listadjust">
+ <a href="javascript:$('#formgro').attr('value',$('#formgro').attr('value')-1)">last_group </a>
+	 &nbsp;&nbsp;
+	 <a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))+1)">next_group </a>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<br/>
+	<a href="javascript:$('#formidlo').attr('value',$('#formidlo').attr('value')-50);$('#formidup').attr('value',$('#formidup').attr('value')-50)">last_list </a>
+  	&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="javascript:$('#formidlo').attr('value',parseInt($('#formidlo').attr('value'))+50);$('#formidup').attr('value',parseInt($('#formidup').attr('value'))+50)">next_list </a> 
+&nbsp;&nbsp;
+</span>
+</div>
+
+</div>
+<script>
+    clist=localStorage.getItem("clist");
+    cgro=localStorage.getItem("cgro");
+    cidlo=localStorage.getItem("cidlo");
+    cidup=localStorage.getItem("cidup");
+    $("#formlist").attr("value",clist);
+    $("#formgro").attr("value",cgro);
+    $("#formidlo").attr("value",cidlo);
+    $("#formidup").attr("value",cidup);
+	//var setwdlist=setTimeout("changewdlist('exam')",500)
+	changewdlist('exam');
+	$("#skiptimes").click(function(){$("#skiptimes").attr("value","10");$("#skiptimesbutton").attr("disabled",false);});
+	$("div.examdiv").click(function(){$("#skiptimes").attr("value","")});
+	
+getmodifydate();
+</script>
+</body>
+</html>
+
+
+

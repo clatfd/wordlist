@@ -1,0 +1,50 @@
+/* CSS Document */
+body {
+	
+	
+}
+div.examdiv{
+	position:absolute;
+	
+	background-color:#CCFFFF;
+
+}
+tr.nali{
+height:50px;
+font-size:18px;
+}
+.menu{
+font-size:25px;
+font-weight:900;
+}
+#undo{
+//height:30;
+//width:50;
+}
+#banner{
+font-size:24px;
+background:#FFFF99;
+color:#0000FF;
+}
+
+#examswitchbar{
+
+}
+#impselect{
+height:300px;
+height:200px;
+position:absolute;
+left:50%;
+margin-left:-150px;
+background-color:#CCFFFF;
+text-align:center;
+vertical-align:text-bottom;
+}
+.adddiv{
+border:thick;
+border-bottom-color:#000000;
+border-style:ridge;
+position:absolute;
+background-color:#FFFFCC;
+text-align:center;
+}

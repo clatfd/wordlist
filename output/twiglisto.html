@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{list}}_{{gro}}_{{idlo}}~{{idup}}</title>
+<link rel="stylesheet" type="text/css" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
+<script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="../js/toastr.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/js_addfunction.js"></script>
+<script type="text/javascript" src="../js/js.js"></script>
+<script type="text/javascript" src="../js/mixitup/jquery.mixitup.min.js"></script>
+<script type="text/javascript" src="../output/wdlistall.js"></script>
+<script type="text/javascript" src="../output/twiglist.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="control-bar row">
+	<div class="cl-xs-12 col-lg-8">
+		<label>Filter:</label>
+		<button class="filter controlbtn" data-filter="all">All</button>
+		<button class="filter controlbtn" data-filter=".category-common">Category common</button>
+		<button class="filter controlbtn" data-filter=".category-imp">Category imp</button>
+		<button class="filter controlbtn" data-filter=".category-mfl">Category mfl</button>
+		<button class="filter controlbtn" data-filter=".category-inv">Category inv</button>
+	</div>
+	<div class="cl-xs-12 col-lg-4">
+		<label>Sort:</label>
+		<button class="sort controlbtn" data-sort="myorder:asc">Asc</button>
+		<button class="sort controlbtn" data-sort="myorder:desc">Desc</button>
+		<button class="sort controlbtn" data-sort="random">Random</button>
+		<button id="showmodebtn" class="btn" onclick="changetolist()"><i class="glyphicon glyphicon-th-list"></i></button>
+		<span id="ToggleConfig" class="btn toggle-config config-open"><i class="glyphicon glyphicon-cog"></i></span>
+	</div>
+	<div class="cl-xs-12 col-lg-8">
+		<form name="form1" id="form1" method="GET">
+			<span class="banner">
+				List:{{list}}
+				<select id="formlist" name="list">
+					  <option  >imp</option>
+					  <option  >i_mfl</option>
+					  <option  >i_ivt</option>
+					  <option  >test</option>
+					  <option  >wordlist</option>
+					  <option selected="selected">gre</option>
+					  <option >toefl</option>
+					  <option >wordlisttoeflall</option>
+				</select>
+				&nbsp;&nbsp; 
+				Group:{{gro}}
+				<select id="formgro" name="gro">
+				  <option >0</option>
+				  <option selected="selected">1</option>
+				  <option >2</option>
+				  <option >3</option>
+				  <option >4</option>
+				  <option >5</option>
+				</select>
+				&nbsp;&nbsp; 
+				 Idfrom:
+
+				<input id="formidlo" name="textfield" type="text" value="1" size="8" style="width:75px"/>
+
+				to:
+				<input id="formidup" name="textfield" type="text" value="50" size="8" style="width:75px"/>
+			</span>
+		</form>
+	</div>
+	<div class="cl-xs-10 col-lg-3 banner">
+		<span id="reviewmodespan"></span>
+		<span id="chitoengmodespan"></span>
+	</div>
+	<div class="cl-xs-2 col-lg-1 banner">
+		<i class="visible-xs visible-sm glyphicon glyphicon-phone"></i>
+		<i class="visible-md fa fa-android"></i>
+		<i class="visible-lg fa fa-windows"></i>
+	</div>
+</div>
+
+<div id="Container" class="sandbox">
+  	<div class="row itemprint">
+  	
+	</div>
+</div>
+<span class="menu">
+  	total number:<span id="totnum"></span>/<span id="totnumlength"></span><span id="totnumimp"></span> <span id="dateinput" ></span>
+	&nbsp;&nbsp;  
+  </span>
+<div class="row control-btn">
+	<div class="col-xs-12 col-lg-7">
+		<button id="rev" class="btn btn-success" onclick="revall()">Review_mode(R)</button>
+		&nbsp;&nbsp;&nbsp;    
+		<button id="showall" class="btn btn-success" onclick="showall()">Show_all(S)</button>
+		&nbsp;&nbsp;&nbsp;    
+		<button id="buttonchitoeng" class="btn btn-success" onclick="funchitoeng()">Chi_to_eng(C)</button>
+		&nbsp;&nbsp;&nbsp;    
+		<a href="Examoutputh.html"><button id="gotoexam" class="btn btn-warning">Go_to_exam(G)</button></a>
+		&nbsp;&nbsp;&nbsp;  
+		
+	</div>
+	<div class="col-xs-12 col-lg-5">
+		<button id="buttonlastrevword" class="btn btn-primary" onclick="funlastreviewwords()">Last_word(L)</button>
+		&nbsp;&nbsp;&nbsp;  
+		<button id="buttonlooknextword" class="btn btn-primary" onclick="looknextword()">Next_word(N)</button>
+		&nbsp;&nbsp;&nbsp;  
+		<button id="showstatis" class="btn btn-primary" onclick="showstatis()">showstatis(T)</button>
+		&nbsp;&nbsp;&nbsp;  
+		<button onclick="getcurrentlistinfo()" id="buttonchangelist" class="btn btn-lg btn-warning">Changelist</button>
+
+	</div>
+</div>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-danger progress-bar-striped{% if gro == 1 %} active{% endif %}" id="gro1probar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    0%
+  </div>
+  <div class="progress-bar progress-bar-warning progress-bar-striped{% if gro == 2 %} active{% endif %}" id="gro1probar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    0%
+  </div>
+  <div class="progress-bar progress-bar-info progress-bar-striped{% if gro == 3 %} active{% endif %}" id="gro1probar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    0%
+  </div>
+  <div class="progress-bar progress-bar-primary progress-bar-striped{% if gro == 4 %} active{% endif %}" id="gro1probar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    0%
+  </div>
+  <div class="progress-bar progress-bar-success progress-bar-striped{% if gro == 5 %} active{% endif %}" id="gro1probar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    0%
+  </div>
+</div>
+
+<span id="listadjust">
+	<p align="center">
+	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))-1)"><button id="buttonlastgroup" class="btn btn-lg btn-primary">Last_Gro</button> </a>
+	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))+1)"><button id="buttonnextgroup" class="btn btn-lg btn-primary">Next_Gro</button> </a>
+	<a href="javascript:$('#formidlo').attr('value',$('#formidlo').attr('value')-50);$('#formidup').attr('value',$('#formidup').attr('value')-50)"><button id="buttonlastlist" class="btn btn-lg btn-success">Last_Lst</button></a>
+	<a href="javascript:$('#formidlo').attr('value',parseInt($('#formidlo').attr('value'))+50);$('#formidup').attr('value',parseInt($('#formidup').attr('value'))+50)"><button id="buttonnextlist" class="btn btn-lg btn-success">Next_Lst</button></a>
+	</p>
+</span>
+
+<script type="text/javascript">
+var clist,cgro,cidlo,cidup;
+var dataprint="";
+	getcurrentlistinfo();
+
+
+function renewstatic(){
+$.ajax({url: "briefsta.php?list={{list}}&idlo={{idlo}}&idup={{idup}}",
+			success: function (r){
+				stadata=JSON.parse(r);
+				stadata[4]=(100-parseFloat(stadata[0].slice(0,-1))-parseFloat(stadata[1].slice(0,-1))-parseFloat(stadata[2].slice(0,-1))-parseFloat(stadata[3].slice(0,-1))).toFixed(1)+"%";
+				for(pbi=0;pbi<5;pbi++){
+					$(".progress-bar").eq(pbi).attr("aria-valuenow",stadata[pbi].slice(0,-1));
+					$(".progress-bar").eq(pbi).html(stadata[pbi]);
+					$(".progress-bar").eq(pbi).css("width",stadata[pbi]);
+				}
+				$("#allgronum").html(stadata[5]);
+			}
+		});
+}
+$(function(){
+	$('#Container').mixItUp();
+	//renewstatic();
+	refreshstatis();
+	$(".progress").click(function(){renewstatic()});
+});
+
+</script>
+</body>
+</html>

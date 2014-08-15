@@ -1,0 +1,70 @@
+/* CSS Document */
+body {
+	//position:absolute;
+   	//margin-left: -625px; 
+	//left:50%;
+	
+}
+#total{
+height:1413px;
+width:980px;
+
+}
+div.examdiv{
+	
+	background-color:#CCFFFF;
+	font-size:60px;
+}
+#examwordshow{
+font-size:80px;
+}
+tr.nali{
+height:50px;
+font-size:18px;
+}
+.menu{
+font-size:25px;
+font-weight:900;
+}
+#undo{
+height:30;
+width:50;
+}
+#banner{
+font-size:40px;
+background:#FFFF99;
+color:#0000FF;
+}
+
+#undo,#backtolist,#buttonchangelist,#lastword,#skiptimesbutton,#skiptimes,#lastword,#buttonnextgroup,#buttonlastgroup,#buttonlastlist,#buttonnextlist{
+font-size:50px;
+}
+#impselect{
+height:300px;
+height:200px;
+position:absolute;
+left:50%;
+margin-left:-150px;
+background-color:#CCFFFF;
+text-align:center;
+vertical-align:text-bottom;
+}
+.adddiv{
+border:thick;
+border-bottom-color:#000000;
+border-style:ridge;
+position:absolute;
+background-color:#FFFFCC;
+text-align:center;
+}
+input,select,button{
+height:100px;
+font-size:50px;
+}
+select{
+width:300px;
+}
+
+#listadjust{
+font-size:50px;
+}
