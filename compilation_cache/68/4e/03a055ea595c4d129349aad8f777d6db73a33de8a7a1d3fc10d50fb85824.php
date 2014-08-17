@@ -39,7 +39,7 @@ class __TwigTemplate_684e03a055ea595c4d129349aad8f777d6db73a33de8a7a1d3fc10d50fb
 <!-- <link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css\" rel=\"stylesheet\"> -->
 
 
-<script type=\"text/javascript\" src=\"js/jquery-1.8.2.js\"></script>
+<script type=\"text/javascript\" src=\"js/jquery-1.11.1.min.js\"></script>
 <script type=\"text/javascript\" src=\"js/toastr.min.js\"></script>
 <script type=\"text/javascript\" src=\"js/bootstrap.min.js\"></script>
 <script type=\"text/javascript\" src=\"js/js_addfunction.js\"></script>
@@ -131,9 +131,9 @@ function whichButton(event)
 \t</div>
 \t<div class=\"cl-xs-12 col-lg-4\">
 \t\t<label>Sort:</label>
+\t\t<button class=\"sort controlbtn\" data-sort=\"random\">Random</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:asc\">Asc</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:desc\">Desc</button>
-\t\t<button class=\"sort controlbtn\" data-sort=\"random\">Random</button>
 \t\t<button id=\"showmodebtn\" class=\"btn\" onclick=\"changetolist()\"><i class=\"glyphicon glyphicon-th-list\"></i></button>
 \t\t<span id=\"ToggleConfig\" class=\"btn toggle-config config-open\"><i class=\"glyphicon glyphicon-cog\"></i></span>
 \t</div>
@@ -504,10 +504,10 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
             echo "')\"></span>
 \t\t\t\t\t\t&nbsp;&nbsp;
-\t\t\t\t\t\t<span class=\"glyphicon glyphicon-remove arrowp\" onclick=\"javasxript:\$('div[data-myorder=";
+\t\t\t\t\t\t<span class=\"glyphicon glyphicon-remove arrowp\" onclick=\"removeword(";
             // line 199
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo "]').remove();\"></span>
+            echo ")\"></span>
 \t\t\t\t\t\t&nbsp;&nbsp;
 \t\t\t\t\t\t<span class=\"glyphicon glyphicon-chevron-down arrowp\" onclick=\"postd(";
             // line 201

@@ -12,7 +12,7 @@
 <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
 
-<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/toastr.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/js_addfunction.js"></script>
@@ -104,9 +104,9 @@ function whichButton(event)
 	</div>
 	<div class="cl-xs-12 col-lg-4">
 		<label>Sort:</label>
+		<button class="sort controlbtn" data-sort="random">Random</button>
 		<button class="sort controlbtn" data-sort="myorder:asc">Asc</button>
 		<button class="sort controlbtn" data-sort="myorder:desc">Desc</button>
-		<button class="sort controlbtn" data-sort="random">Random</button>
 		<button id="showmodebtn" class="btn" onclick="changetolist()"><i class="glyphicon glyphicon-th-list"></i></button>
 		<span id="ToggleConfig" class="btn toggle-config config-open"><i class="glyphicon glyphicon-cog"></i></span>
 	</div>
@@ -196,7 +196,7 @@ function whichButton(event)
 					<div id="bt{{item.id}}" height="20" class="updowndiv">
 						<span class="glyphicon glyphicon-chevron-up arrowp" onclick="postu({{item.id}},'{{list}}','{{item.eng}}','{{item.chi}}','{{item.gro}}')"></span>
 						&nbsp;&nbsp;
-						<span class="glyphicon glyphicon-remove arrowp" onclick="javasxript:$('div[data-myorder={{item.id}}]').remove();"></span>
+						<span class="glyphicon glyphicon-remove arrowp" onclick="removeword({{item.id}})"></span>
 						&nbsp;&nbsp;
 						<span class="glyphicon glyphicon-chevron-down arrowp" onclick="postd({{item.id}},'{{list}}','{{item.eng}}','{{item.chi}}','{{item.gro}}')"></span>
 					</div>

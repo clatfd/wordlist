@@ -88,6 +88,12 @@ function postd(rid,list,eng,chi,gro)
 	$("#totnum").html(tnum-1);
 	lwpid--;
 }
+function removeword(rid){
+	storelastdiv=$("[data-myorder="+rid+"]");
+	$(".mix[data-myorder="+rid+"]").animate({width:"0px",height:"0px"},500,"linear",function(){$("[data-myorder="+rid+"]").remove()});
+	$("#undo").fadeTo("slow",1);
+	$("#undo").attr("disabled",false); 
+}
 
 function undo(list,location)
 {
