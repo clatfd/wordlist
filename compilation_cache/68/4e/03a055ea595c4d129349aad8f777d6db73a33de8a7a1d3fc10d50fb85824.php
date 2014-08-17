@@ -144,7 +144,7 @@ function whichButton(event)
         // line 116
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "
-\t\t\t\t<select id=\"formlist\" name=\"list\">
+\t\t\t\t<select id=\"formlist\" name=\"list\" style=\"width: 119px;\">
 \t\t\t\t\t<option  ";
         // line 118
         if (((isset($context["list"]) ? $context["list"] : null) == "imp")) {
@@ -562,24 +562,24 @@ function whichButton(event)
         echo twig_escape_filter($this->env, (isset($context["ipaddress"]) ? $context["ipaddress"] : null), "html", null, true);
         echo "
 </p>
-<div class=\"row control-btn\">
+<div class=\"row control-foot\">
 \t<div class=\"col-xs-12 col-lg-7\">
 \t\t<button id=\"undo\" class=\"btn btn-danger\" style=\"opacity: 0.3;\" onclick=\"undo('";
         // line 222
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "','default')\" disabled=\"disabled\">  Undo(U)  </button>
-\t\t&nbsp;&nbsp;&nbsp;  
+\t\t&nbsp;&nbsp;  
 \t\t<button id=\"rev\" class=\"btn btn-success\" onclick=\"revall()\">Review_mode(R)</button>
-\t\t&nbsp;&nbsp;&nbsp;    
+\t\t&nbsp;&nbsp;    
 \t\t<button id=\"showall\" class=\"btn btn-success\" onclick=\"showall(";
         // line 226
         echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
         echo ",";
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
         echo ")\">Show_all(S)</button>
-\t\t&nbsp;&nbsp;&nbsp;    
+\t\t&nbsp;&nbsp;    
 \t\t<button id=\"buttonchitoeng\" class=\"btn btn-success\" onclick=\"funchitoeng()\">Chi_to_eng(C)</button>
-\t\t&nbsp;&nbsp;&nbsp;    
+\t\t&nbsp;&nbsp;    
 \t\t<a href=\"exam.php?list=";
         // line 230
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
@@ -590,7 +590,7 @@ function whichButton(event)
         echo "&amp;idup=";
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
         echo "\"><button id=\"gotoexam\" class=\"btn btn-warning\">Go_to_exam(G)</button></a>
-\t\t&nbsp;&nbsp;&nbsp;  
+\t\t&nbsp;&nbsp;  
 \t\t<a href=\"outputtocard.php?list=";
         // line 232
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
@@ -608,11 +608,11 @@ function whichButton(event)
         // line 236
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "')\">Manual_Console(M)</button>
-\t\t&nbsp;&nbsp;&nbsp;  
+\t\t&nbsp;&nbsp;  
 \t\t<button id=\"buttonlastrevword\" class=\"btn btn-primary\" onclick=\"funlastreviewwords()\">Last_word(L)</button>
-\t\t&nbsp;&nbsp;&nbsp;  
+\t\t&nbsp;&nbsp;  
 \t\t<button id=\"buttonlooknextword\" class=\"btn btn-primary\" onclick=\"looknextword()\">Next_word(N)</button>
-\t\t&nbsp;&nbsp;&nbsp;  
+\t\t&nbsp;&nbsp;  
 \t\t<button id=\"showstatis\" class=\"btn btn-primary\" onclick=\"showstatis()\">showstatis(T)</button>
 \t</div>
 </div>
@@ -660,7 +660,7 @@ function whichButton(event)
   </div>
 </div>
 
-<div class=\"row-fluid\">
+<div class=\"row control-foot\">
 \t<div class=\"col-md-2 col-xs-3\">
 \t\t <a class=\"menu\" href=\"twig.php?list=";
         // line 266
