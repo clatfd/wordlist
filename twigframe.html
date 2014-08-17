@@ -221,25 +221,25 @@ function whichButton(event)
 	<div class="col-xs-12 col-lg-7">
 		<button id="undo" class="btn btn-danger" style="opacity: 0.3;" onclick="undo('{{list}}','default')" disabled="disabled">  Undo(U)  </button>
 		&nbsp;&nbsp;  
-		<button id="rev" class="btn btn-success" onclick="revall()">Review_mode(R)</button>
+		<button id="rev" class="btn btn-success" onclick="revall()">Review(R)</button>
 		&nbsp;&nbsp;    
 		<button id="showall" class="btn btn-success" onclick="showall({{idlo}},{{idup}})">Show_all(S)</button>
 		&nbsp;&nbsp;    
-		<button id="buttonchitoeng" class="btn btn-success" onclick="funchitoeng()">Chi_to_eng(C)</button>
+		<button id="buttonchitoeng" class="btn btn-success" onclick="funchitoeng()">Chi->eng(C)</button>
 		&nbsp;&nbsp;    
-		<a href="exam.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="gotoexam" class="btn btn-warning">Go_to_exam(G)</button></a>
+		<a href="exam.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="gotoexam" class="btn btn-warning">Go->exam(G)</button></a>
 		&nbsp;&nbsp;  
 		<a href="outputtocard.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="printcard" class="btn btn-primary">Print_cards(P)</button></a>
 		
 	</div>
 	<div class="col-xs-12 col-lg-5">
-		<button id="manconsole" class="btn btn-warning" onclick="manconsole('{{list}}')">Manual_Console(M)</button>
+		<button id="manconsole" class="btn btn-warning" onclick="manconsole('{{list}}')">Man_Console(M)</button>
 		&nbsp;&nbsp;  
-		<button id="buttonlastrevword" class="btn btn-primary" onclick="funlastreviewwords()">Last_word(L)</button>
+		<button id="buttonlastrevword" class="btn btn-primary" onclick="funlastreviewwords()">Last_wd(L)</button>
 		&nbsp;&nbsp;  
-		<button id="buttonlooknextword" class="btn btn-primary" onclick="looknextword()">Next_word(N)</button>
+		<button id="buttonlooknextword" class="btn btn-primary" onclick="looknextword()">Next_wd(N)</button>
 		&nbsp;&nbsp;  
-		<button id="showstatis" class="btn btn-primary" onclick="showstatis()">showstatis(T)</button>
+		<button id="showstatis" class="btn btn-primary" onclick="showstatis()">showsts(T)</button>
 	</div>
 </div>
 

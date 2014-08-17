@@ -1,1 +1,0 @@
-wdlist=[[4,'swan song','swɔn sɔŋ','n. 最后作品，天鹅临死时的叫声'],[5,'on balance','ɔn ˈbæləns','全面考虑之后，总的说来ssss'],[7,'get across','ɡet əˈkrɔs','横过（马路、河等）；（使）被理解；（使）被接受'],[8,'decidedly','dɪˈsaɪdɪdlɪ','adv.明确地；坚决地；果断地；毫无疑问地'],[20,'dj','j','jd'],[16,'converge','kənˈvə:dʒ','vi.（线条、运动的物体等）会于一点；聚集；人或车辆汇集vt.使聚集'],[18,'bundle up','ˈbʌndl ʌpd','捆（包等）；（使）穿得暖暖的；捆扎 t6t6yd'],]

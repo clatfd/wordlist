@@ -12,10 +12,9 @@ var wdid;
 var delenum;
 var storelastdiv;
 
-if(localStorage.getItem("rev")==null)
-	localStorage.setItem("rev",0);
-if(localStorage.getItem("sho")==null)
-	localStorage.setItem("sho",0);
+if(window.localStorage)
+	if(localStorage.getItem("rev")==null)
+		localStorage.setItem("rev",0);
 
 function lookwd(rid,chi,eng,pid)
 {

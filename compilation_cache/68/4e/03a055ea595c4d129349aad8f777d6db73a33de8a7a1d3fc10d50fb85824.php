@@ -569,7 +569,7 @@ function whichButton(event)
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "','default')\" disabled=\"disabled\">  Undo(U)  </button>
 \t\t&nbsp;&nbsp;  
-\t\t<button id=\"rev\" class=\"btn btn-success\" onclick=\"revall()\">Review_mode(R)</button>
+\t\t<button id=\"rev\" class=\"btn btn-success\" onclick=\"revall()\">Review(R)</button>
 \t\t&nbsp;&nbsp;    
 \t\t<button id=\"showall\" class=\"btn btn-success\" onclick=\"showall(";
         // line 226
@@ -578,7 +578,7 @@ function whichButton(event)
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
         echo ")\">Show_all(S)</button>
 \t\t&nbsp;&nbsp;    
-\t\t<button id=\"buttonchitoeng\" class=\"btn btn-success\" onclick=\"funchitoeng()\">Chi_to_eng(C)</button>
+\t\t<button id=\"buttonchitoeng\" class=\"btn btn-success\" onclick=\"funchitoeng()\">Chi->eng(C)</button>
 \t\t&nbsp;&nbsp;    
 \t\t<a href=\"exam.php?list=";
         // line 230
@@ -589,7 +589,7 @@ function whichButton(event)
         echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
         echo "&amp;idup=";
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
-        echo "\"><button id=\"gotoexam\" class=\"btn btn-warning\">Go_to_exam(G)</button></a>
+        echo "\"><button id=\"gotoexam\" class=\"btn btn-warning\">Go->exam(G)</button></a>
 \t\t&nbsp;&nbsp;  
 \t\t<a href=\"outputtocard.php?list=";
         // line 232
@@ -607,13 +607,13 @@ function whichButton(event)
 \t\t<button id=\"manconsole\" class=\"btn btn-warning\" onclick=\"manconsole('";
         // line 236
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
-        echo "')\">Manual_Console(M)</button>
+        echo "')\">Man_Console(M)</button>
 \t\t&nbsp;&nbsp;  
-\t\t<button id=\"buttonlastrevword\" class=\"btn btn-primary\" onclick=\"funlastreviewwords()\">Last_word(L)</button>
+\t\t<button id=\"buttonlastrevword\" class=\"btn btn-primary\" onclick=\"funlastreviewwords()\">Last_wd(L)</button>
 \t\t&nbsp;&nbsp;  
-\t\t<button id=\"buttonlooknextword\" class=\"btn btn-primary\" onclick=\"looknextword()\">Next_word(N)</button>
+\t\t<button id=\"buttonlooknextword\" class=\"btn btn-primary\" onclick=\"looknextword()\">Next_wd(N)</button>
 \t\t&nbsp;&nbsp;  
-\t\t<button id=\"showstatis\" class=\"btn btn-primary\" onclick=\"showstatis()\">showstatis(T)</button>
+\t\t<button id=\"showstatis\" class=\"btn btn-primary\" onclick=\"showstatis()\">showsts(T)</button>
 \t</div>
 </div>
 
