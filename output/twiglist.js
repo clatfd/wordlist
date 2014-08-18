@@ -8,10 +8,10 @@ function getcurrentlistinfo(changerange){
 		localStorage.setItem("cidlo","1");
 		localStorage.setItem("cidup","25");
 		
-		$("#formlist").attr("value","gre");
-		$("#formgro").attr("value","1");
-		$("#formidlo").attr("value","1");
-		$("#formidup").attr("value","25");
+		$("#formlist").val("gre");
+		$("#formgro").val("1");
+		$("#formidlo").val("1");
+		$("#formidup").val("25");
 
 		clist=$("#formlist").attr("value");
 		cgro=$("#formgro").attr("value");
@@ -20,13 +20,13 @@ function getcurrentlistinfo(changerange){
 	}
 	else{
 		if(changerange){
-			clist=$("#formlist").attr("value");
-			cgro=$("#formgro").attr("value");
-			cidlo=$("#formidlo").attr("value");
-			cidup=$("#formidup").attr("value");
+			clist=$("#formlist").val();
+			cgro=$("#formgro").val();
+			cidlo=$("#formidlo").val();
+			cidup=$("#formidup").val();
 			if(cidlo<1){
 				cidlo=1;
-				$("#formidlo").attr("value",1);
+				$("#formidlo").val(1);
 			}
 			localStorage.setItem("clist",clist);
 			localStorage.setItem("cgro",cgro);
@@ -38,10 +38,10 @@ function getcurrentlistinfo(changerange){
 			cgro=localStorage.getItem("cgro",cgro);
 			cidlo=localStorage.getItem("cidlo",cidlo);
 			cidup=localStorage.getItem("cidup",cidup);
-			$("#formlist").attr("value",clist);
-			$("#formgro").attr("value",cgro);
-			$("#formidlo").attr("value",cidlo);
-			$("#formidup").attr("value",cidup);
+			$("#formlist").val(clist);
+			$("#formgro").val(cgro);
+			$("#formidlo").val(cidlo);
+			$("#formidup").val(cidup);
 
 		}
 	}
