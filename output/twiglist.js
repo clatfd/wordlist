@@ -63,7 +63,9 @@ function getcurrentlistinfo(changerange){
 					</div>\
 					<div id="bt{{item.id}}" height="20" class="updowndiv">\
 						<span class="glyphicon glyphicon-chevron-up" onclick="postu({{item.id}},\'{{list}}\',\'{{item.eng}}\',\'{{item.chi}}\',\'{{item.gro}}\')"></span>\
-						&nbsp;&nbsp;&nbsp;&nbsp;\
+						&nbsp;&nbsp;\
+						<span class="glyphicon glyphicon-remove arrowp" onclick="removeword('+iid+')"></span>\
+						&nbsp;&nbsp;\
 						<span class="glyphicon glyphicon-chevron-down" onclick="postd({{item.id}},\'{{list}}\',\'{{item.eng}}\',\'{{item.chi}}\',\'{{item.gro}}\')"></span>\
 					</div>\
 			 	</div>  \
