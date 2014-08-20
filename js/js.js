@@ -66,7 +66,6 @@ function postu(rid,list,eng,chi,gro)
 	updown=0;
 	lchangrowd=lid=rid;
 	lword=eng;
-	
 	tnum=$("#totnum").text();
 	$("#totnum").html(tnum-1);
 	upnum++;
@@ -83,7 +82,6 @@ function postd(rid,list,eng,chi,gro)
 	updown=1;
 	lchangrowd=lid=rid;
 	lword=eng;
-	
 	tnum=$("#totnum").text();
 	$("#totnum").html(tnum-1);
 	lwpid--;
@@ -93,6 +91,9 @@ function removeword(rid){
 	$(".mix[data-myorder="+rid+"]").animate({width:"0px",height:"0px"},500,"linear",function(){$("[data-myorder="+rid+"]").remove()});
 	$("#undo").fadeTo("slow",1);
 	$("#undo").attr("disabled",false); 
+	lword=eng;
+	tnum=$("#totnum").text();
+	$("#totnum").html(tnum-1);
 }
 
 function undo(list,location)
@@ -193,7 +194,7 @@ function funchitoeng()
 	lwpid=0;
 	if(chitoeng==0)
 	{
-		$("#chitoengmodespan").append("&nbsp;&nbsp;Chi=>Eng");
+		$("#chitoengmodespan").append("&nbsp;Chi");
 		chitoeng=1;
 		for(i=getPar('idlo');i<=getPar('idup');i++){
 			eng=$("#wd"+i);

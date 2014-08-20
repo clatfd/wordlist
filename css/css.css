@@ -115,6 +115,14 @@ display: inline;
 float: left;
 position: relative;
 }
+div.devicetype{
+    height: 50px;
+    padding-top: 15px;
+}
+div.rcstate{
+	height: 50px;
+	padding-top: 10px;
+}
 #examswitchbar{
 position:relative;
 top:500px;
@@ -238,7 +246,7 @@ content: '';
 position: absolute;
 border: 20px solid transparent;
 border-right-color: white;
-top: -18px;
+top: -19px;
 left: -3px;
 -webkit-transform: rotate(45deg);
 -moz-transform: rotate(45deg);
@@ -249,8 +257,8 @@ transform: rotate(45deg);
 border-right-color: #a6e6a7;
 }
 .sandbox.list .mix::after {
-top: -20px;
-left: -20px;
+top: -19px;
+left: -19px;
 }
 .sandbox .mix {
 -webkit-transform-style: preserve-3d;
@@ -262,7 +270,7 @@ text-align: center;
 /*margin-left: 24px;*/
 display: none;
 font-size: 1.8em;
-padding-right: .5em;
+padding-right: 0.5em;
 line-height: 1.8em;
 font-weight: 400;
 color: rgba(255, 255, 255, 0.9);
@@ -300,21 +308,21 @@ width: 20%;
 display: inline-block;
  }
  .updowndiv.list{
-width: 15%;
+width: 17%;
 display: inline-block;
 text-align: right;
  }
- #showmodebtn{
-font-size: 30px;
+ button.banneraddbutton{
+font-size: 29px;
 background-color: white;
-padding: 5px;
- }
+padding: 6px 5px;
+}
  .listeng{
- 	width: 25%;
+ 	width: 28%;
  	display: inline-block;
  }
  .listchi{
- 	width: 73%;
+ 	width: 70%;
  	display: inline-block;
  }
  p.listchi,p.listeng{

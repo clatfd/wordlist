@@ -23,64 +23,57 @@
 <body>
 
 
-<div class="control-bar row">
-	<div class="cl-xs-12 col-lg-8">
+<div class="control-bar row banner">
+	<div class="cl-xs-6 col-sm-6">
 		<label>Filter:</label>
 		<button class="filter controlbtn" data-filter="all">All</button>
-		<button class="filter controlbtn" data-filter=".category-common">Category common</button>
-		<button class="filter controlbtn" data-filter=".category-imp">Category imp</button>
-		<button class="filter controlbtn" data-filter=".category-mfl">Category mfl</button>
-		<button class="filter controlbtn" data-filter=".category-inv">Category inv</button>
+		<button class="filter controlbtn" data-filter=".category-common">Com</button>
+		<button class="filter controlbtn" data-filter=".category-imp">Imp</button>
+		<button class="filter controlbtn" data-filter=".category-mfl">Mfl</button>
+		<button class="filter controlbtn" data-filter=".category-inv">Inv</button>
 	</div>
-	<div class="cl-xs-12 col-lg-4">
+	<div class="cl-xs-6 col-sm-6">
 		<label>Sort:</label>
 		<button class="sort controlbtn" data-sort="random">Random</button>
 		<button class="sort controlbtn" data-sort="myorder:asc">Asc</button>
 		<button class="sort controlbtn" data-sort="myorder:desc">Desc</button>
-		<button id="showmodebtn" class="btn" onclick="changetolist()"><i class="glyphicon glyphicon-th-list"></i></button>
-		<span id="ToggleConfig" class="btn toggle-config config-open"><i class="glyphicon glyphicon-cog"></i></span>
+		<button class="btn banneraddbutton" onclick="changetolist()" style="padding: 0px 5px;"><i class="glyphicon glyphicon-th-list" style="margin-top: 3px;"></i></button>
+		<button id="ToggleConfig" class="btn toggle-config config-open banneraddbutton"  style="padding: 0px 5px;"><i class="glyphicon glyphicon-cog" style="margin-top: 3px;"></i></button>
 	</div>
-	<div class="cl-xs-12 col-lg-8">
-		<form name="form1" id="form1" method="GET">
-			<span class="banner">
-				List:
-				<select id="formlist" name="list">
-					  <option value="imp">imp</option>
-					  <option value="i_mfl">i_mfl</option>
-					  <option value="i_ivt">i_ivt</option>
-					  <option value="test">test</option>
-					  <option value="wordlist">wordlist</option>
-					  <option value="gre">gre</option>
-					  <option value="toefl">toefl</option>
-					  <option value="wordlisttoeflall">wordlisttoeflall</option>
-				</select>
-				&nbsp;&nbsp; 
-				Group:
-				<select id="formgro" name="gro">
-				  <option value="0">0</option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				</select>
-				&nbsp;&nbsp; 
-				 Idfrom:
-
-				<input id="formidlo" name="textfield" type="text" value="" size="8" style="width:75px"/>
-
-				to:
-				<input id="formidup" name="textfield" type="text" value="" size="8" style="width:75px"/>
-				&nbsp;&nbsp;
-				<button onclick="getcurrentlistinfo(true)" id="buttonchangelist" class="btn btn-lg btn-primary btn-portal">Changelist</button>
-			</span>
-		</form>
+	<div class="cl-xs-12 col-sm-9">
+		<span class="banner">
+			<label>List:</label>
+			<select id="formlist" name="list" style="width: 100px;">
+				  <option value="imp">imp</option>
+				  <option value="i_mfl">i_mfl</option>
+				  <option value="i_ivt">i_ivt</option>
+				  <option value="test">test</option>
+				  <option value="wordlist">wordlist</option>
+				  <option value="gre">gre</option>
+				  <option value="toefl">toefl</option>
+				  <option value="wordlisttoeflall">wordlisttoeflall</option>
+			</select>
+			Group:
+			<select id="formgro" name="gro">
+			  <option value="0">0</option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			</select>
+			 Idfrom:
+			<input id="formidlo" name="textfield" type="text" value="" size="8" style="width:50px"/>
+			to:
+			<input id="formidup" name="textfield" type="text" value="" size="8" style="width:50px"/>
+			<button onclick="getcurrentlistinfo(true)" id="buttonchangelist" class="btn btn-lg btn-primary btn-portal">Change</button>
+		</span>
 	</div>
-	<div class="cl-xs-10 col-lg-3 banner">
+	<div class="cl-xs-10 col-sm-2 banner rcstate">
 		<span id="reviewmodespan"></span>
 		<span id="chitoengmodespan"></span>
 	</div>
-	<div class="cl-xs-2 col-lg-1 banner">
+	<div class="cl-xs-2 col-sm-1 banner devicetype">
 		<i class="visible-xs visible-sm glyphicon glyphicon-phone"></i>
 		<i class="visible-md fa fa-android"></i>
 		<i class="visible-lg fa fa-windows"></i>
@@ -97,26 +90,23 @@
 	&nbsp;&nbsp;  
   </span>
 <div class="row control-foot">
-	<div class="col-xs-12 col-lg-6">
 		<button id="undo" class="btn btn-lg btn-danger" style="opacity: 0.3;" onclick="undo('portal','default')" disabled="disabled">  Undo(U)  </button>
-		&nbsp;&nbsp;  
-		<button id="rev" class="btn btn-lg btn-success btn-portal" onclick="revall()">Review(R)</button>
-		&nbsp;&nbsp; 
-		<button id="showall" class="btn btn-lg btn-success btn-portal" onclick="showall()">Show_all(S)</button>
-		&nbsp;&nbsp;
-		<button id="buttonchitoeng" class="btn btn-lg btn-success btn-portal" onclick="funchitoeng()">Chi->eng(C)</button>
-		&nbsp;&nbsp;
+		&nbsp;
+		<button id="rev" class="btn btn-lg btn-success btn-portal" onclick="revall()">Revi(R)</button>
+		&nbsp;
+		<button id="showall" class="btn btn-lg btn-success btn-portal" onclick="showall()">Show(S)</button>
+		&nbsp;
+		<button id="buttonchitoeng" class="btn btn-lg btn-success btn-portal" onclick="funchitoeng()">Chin(C)</button>
+		&nbsp;
 		
 		
-	</div>
-	<div class="col-xs-12 col-lg-6">
-		<a href="Examoutputh.html"><button id="gotoexam" class="btn btn-lg btn-warning btn-portal">Go_exam(G)</button></a>
-		&nbsp;&nbsp;
-		<button id="buttonlastrevword" class="btn btn-lg btn-primary btn-portal" onclick="funlastreviewwords()">Last_word(L)</button>
-		&nbsp;&nbsp;
-		<button id="buttonlooknextword" class="btn btn-lg btn-primary btn-portal" onclick="looknextword()">Next_word(N)</button>
-		&nbsp;&nbsp;
-		<button id="showstatis" class="btn btn-lg btn-primary btn-portal" onclick="showstatis()">showstatis(T)</button>
+		<a href="Examoutputh.html"><button id="gotoexam" class="btn btn-lg btn-warning btn-portal">Goex(G)</button></a>
+		&nbsp;
+		<button id="buttonlastrevword" class="btn btn-lg btn-primary btn-portal" onclick="funlastreviewwords()">Last(L)</button>
+		&nbsp;
+		<button id="buttonlooknextword" class="btn btn-lg btn-primary btn-portal" onclick="looknextword()">Next(N)</button>
+		&nbsp;
+		<button id="showstatis" class="btn btn-lg btn-primary btn-portal" onclick="showstatis()">staT(T)</button>
 		
 
 	</div>
@@ -142,10 +132,10 @@
 
 <span id="listadjust" class="control-foot">
 	<p align="center">
-	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))-1)"><button id="buttonlastgroup" class="btn btn-lg btn-primary btn-portal">Last_Gro</button> </a>
-	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))+1)"><button id="buttonnextgroup" class="btn btn-lg btn-primary btn-portal">Next_Gro</button> </a>
-	<a href="javascript:$('#formidlo').attr('value',$('#formidlo').attr('value')-25);$('#formidup').attr('value',$('#formidup').attr('value')-25)"><button id="buttonlastlist" class="btn btn-lg btn-success btn-portal">Last_Lst</button></a>
-	<a href="javascript:$('#formidlo').attr('value',parseInt($('#formidlo').attr('value'))+25);$('#formidup').attr('value',parseInt($('#formidup').attr('value'))+25)"><button id="buttonnextlist" class="btn btn-lg btn-success btn-portal">Next_Lst</button></a>
+	<a href="javascript:$('#formgro').val(parseInt($('#formgro').val())-1);$('#buttonchangelist').click()"><button id="buttonlastgroup" class="btn btn-lg btn-primary btn-portal">Last_Gro</button> </a>
+	<a href="javascript:$('#formgro').val(parseInt($('#formgro').val())+1);$('#buttonchangelist').click()"><button id="buttonnextgroup" class="btn btn-lg btn-primary btn-portal">Next_Gro</button> </a>
+	<a href="javascript:$('#formidlo').val(parseInt($('#formidlo').val())-24);$('#formidup').val(parseInt($('#formidup').val())-24);$('#buttonchangelist').click()"><button id="buttonlastlist" class="btn btn-lg btn-success btn-portal">Last_Lst</button></a>
+	<a href="javascript:$('#formidlo').val(parseInt($('#formidlo').val())+24);$('#formidup').val(parseInt($('#formidup').val())+24);$('#buttonchangelist').click()"><button id="buttonnextlist" class="btn btn-lg btn-success btn-portal">Next_Lst</button></a>
 	</p>
 </span>
 
@@ -155,6 +145,8 @@ var dataprint="";
 	getcurrentlistinfo(false);
 
 $(function(){
+	if(localStorage.getItem("rev")=="1")
+		$("#reviewmodespan").append("Rev");
 	$('#Container').mixItUp();
 	refreshstatis();
 	$(".progress").click(function(){refreshstatis()});

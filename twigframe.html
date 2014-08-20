@@ -94,26 +94,26 @@ function whichButton(event)
 </script>
 
 <div class="control-bar row">
-	<div class="cl-xs-12 col-lg-8">
+	<div class="cl-xs-8 col-md-5">
 		<label>Filter:</label>
 		<button class="filter controlbtn" data-filter="all">All</button>
-		<button class="filter controlbtn" data-filter=".category-common">Category common</button>
-		<button class="filter controlbtn" data-filter=".category-imp">Category imp</button>
-		<button class="filter controlbtn" data-filter=".category-mfl">Category mfl</button>
-		<button class="filter controlbtn" data-filter=".category-inv">Category inv</button>
+		<button class="filter controlbtn" data-filter=".category-common">Com</button>
+		<button class="filter controlbtn" data-filter=".category-imp">Imp</button>
+		<button class="filter controlbtn" data-filter=".category-mfl">Mfl</button>
+		<button class="filter controlbtn" data-filter=".category-inv">Inv</button>
 	</div>
-	<div class="cl-xs-12 col-lg-4">
+	<div class="cl-xs-4 col-md-5">
 		<label>Sort:</label>
 		<button class="sort controlbtn" data-sort="random">Random</button>
 		<button class="sort controlbtn" data-sort="myorder:asc">Asc</button>
 		<button class="sort controlbtn" data-sort="myorder:desc">Desc</button>
-		<button id="showmodebtn" class="btn" onclick="changetolist()"><i class="glyphicon glyphicon-th-list"></i></button>
-		<span id="ToggleConfig" class="btn toggle-config config-open"><i class="glyphicon glyphicon-cog"></i></span>
+		<button class="btn banneraddbutton" onclick="changetolist()" style="padding: 0px 5px;"><i class="glyphicon glyphicon-th-list" style="margin-top: 3px;"></i></button>
+		<button id="ToggleConfig" class="btn toggle-config config-open banneraddbutton"  style="padding: 0px 5px;"><i class="glyphicon glyphicon-cog" style="margin-top: 3px;"></i></button>
 	</div>
-	<div class="cl-xs-12 col-lg-8">
+	<div class="cl-xs-12 col-md-8">
 		<form name="form1" id="form1" method="GET">
-			<span class="banner">
-				List:{{list}}
+			<span class="banner" style="width=100px">
+				List:
 				<select id="formlist" name="list" style="width: 119px;">
 					<option  {% if list == 'imp' %} selected="selected" {% endif %} >imp</option>
 					<option  {% if list =='i_mfl'%} selected="selected" {% endif %} >i_mfl</option>
@@ -132,8 +132,8 @@ function whichButton(event)
 					<option {% if list =='toefl'%} selected="selected" {% endif %} >toefl</option>
 					<option {% if list =='ielts'%} selected="selected" {% endif %} >ielts</option>
 				</select>
-				&nbsp;&nbsp; 
-				Group:{{gro}}
+				&nbsp;
+				Group:
 				<select id="formgro" name="gro">
 					<option {% if gro == 0 %} selected="selected" {% endif %}>0</option>
 					<option {% if gro == 1 %} selected="selected" {% endif %}>1</option>
@@ -142,8 +142,8 @@ function whichButton(event)
 					<option {% if gro == 4 %} selected="selected" {% endif %}>4</option>
 					<option {% if gro == 5 %} selected="selected" {% endif %}>5</option>
 				</select>
-				&nbsp;&nbsp; 
-				Idfrom:{{idlo}}
+				&nbsp;
+				Idfrom:
 				<select name="idlo">
 					{% if idlo-400 >= 0 %}<option>{{idup-400}}</option>{% endif %}
 					{% if idlo-300 >= 0 %}<option>{{idup-300}}</option>{% endif %}
@@ -156,7 +156,7 @@ function whichButton(event)
 					<option>{{idlo+400}} </option>
 				</select>
 				&nbsp;
-				to:{{idup}}
+				to:
 				<select name="idup">
 					{% if idup-400 >= 0 %}<option>{{idup-400}}</option>{% endif %}
 					{% if idup-300 >= 0 %}<option>{{idup-300}}</option>{% endif %}
@@ -172,11 +172,11 @@ function whichButton(event)
 			</span>
 		</form>
 	</div>
-	<div class="cl-xs-10 col-lg-3 banner">
+	<div class="cl-xs-10 col-md-3 banner">
 		<span id="reviewmodespan"></span>
 		<span id="chitoengmodespan"></span>
 	</div>
-	<div class="cl-xs-2 col-lg-1 banner">
+	<div class="cl-xs-2 col-md-1 banner" style="padding-top: 8px;">
 		<i class="visible-xs visible-sm glyphicon glyphicon-phone"></i>
 		<i class="visible-md fa fa-android"></i>
 		<i class="visible-lg fa fa-windows"></i>
@@ -283,7 +283,7 @@ function whichButton(event)
 
 <script type="text/javascript">
 if(localStorage.getItem("rev")=="1")
-	$("#reviewmodespan").append("&nbsp;&nbsp;Review ");
+	$("#reviewmodespan").append("Review ");
 //movable div
 var $j=function(id){return document.getElementById(id);};
 var getMouseP=function (e){

@@ -121,29 +121,26 @@ function whichButton(event)
 </script>
 
 <div class=\"control-bar row\">
-\t<div class=\"cl-xs-12 col-lg-8\">
+\t<div class=\"cl-xs-8 col-md-5\">
 \t\t<label>Filter:</label>
 \t\t<button class=\"filter controlbtn\" data-filter=\"all\">All</button>
-\t\t<button class=\"filter controlbtn\" data-filter=\".category-common\">Category common</button>
-\t\t<button class=\"filter controlbtn\" data-filter=\".category-imp\">Category imp</button>
-\t\t<button class=\"filter controlbtn\" data-filter=\".category-mfl\">Category mfl</button>
-\t\t<button class=\"filter controlbtn\" data-filter=\".category-inv\">Category inv</button>
+\t\t<button class=\"filter controlbtn\" data-filter=\".category-common\">Com</button>
+\t\t<button class=\"filter controlbtn\" data-filter=\".category-imp\">Imp</button>
+\t\t<button class=\"filter controlbtn\" data-filter=\".category-mfl\">Mfl</button>
+\t\t<button class=\"filter controlbtn\" data-filter=\".category-inv\">Inv</button>
 \t</div>
-\t<div class=\"cl-xs-12 col-lg-4\">
+\t<div class=\"cl-xs-4 col-md-5\">
 \t\t<label>Sort:</label>
 \t\t<button class=\"sort controlbtn\" data-sort=\"random\">Random</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:asc\">Asc</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:desc\">Desc</button>
-\t\t<button id=\"showmodebtn\" class=\"btn\" onclick=\"changetolist()\"><i class=\"glyphicon glyphicon-th-list\"></i></button>
-\t\t<span id=\"ToggleConfig\" class=\"btn toggle-config config-open\"><i class=\"glyphicon glyphicon-cog\"></i></span>
+\t\t<button class=\"btn banneraddbutton\" onclick=\"changetolist()\" style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-th-list\" style=\"margin-top: 3px;\"></i></button>
+\t\t<button id=\"ToggleConfig\" class=\"btn toggle-config config-open banneraddbutton\"  style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-cog\" style=\"margin-top: 3px;\"></i></button>
 \t</div>
-\t<div class=\"cl-xs-12 col-lg-8\">
+\t<div class=\"cl-xs-12 col-md-8\">
 \t\t<form name=\"form1\" id=\"form1\" method=\"GET\">
-\t\t\t<span class=\"banner\">
-\t\t\t\tList:";
-        // line 116
-        echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
-        echo "
+\t\t\t<span class=\"banner\" style=\"width=100px\">
+\t\t\t\tList:
 \t\t\t\t<select id=\"formlist\" name=\"list\" style=\"width: 119px;\">
 \t\t\t\t\t<option  ";
         // line 118
@@ -242,11 +239,8 @@ function whichButton(event)
         }
         echo " >ielts</option>
 \t\t\t\t</select>
-\t\t\t\t&nbsp;&nbsp; 
-\t\t\t\tGroup:";
-        // line 136
-        echo twig_escape_filter($this->env, (isset($context["gro"]) ? $context["gro"] : null), "html", null, true);
-        echo "
+\t\t\t\t&nbsp;
+\t\t\t\tGroup:
 \t\t\t\t<select id=\"formgro\" name=\"gro\">
 \t\t\t\t\t<option ";
         // line 138
@@ -285,11 +279,8 @@ function whichButton(event)
         }
         echo ">5</option>
 \t\t\t\t</select>
-\t\t\t\t&nbsp;&nbsp; 
-\t\t\t\tIdfrom:";
-        // line 146
-        echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
-        echo "
+\t\t\t\t&nbsp;
+\t\t\t\tIdfrom:
 \t\t\t\t<select name=\"idlo\">
 \t\t\t\t\t";
         // line 148
@@ -341,10 +332,7 @@ function whichButton(event)
         echo " </option>
 \t\t\t\t</select>
 \t\t\t\t&nbsp;
-\t\t\t\tto:";
-        // line 159
-        echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
-        echo "
+\t\t\t\tto:
 \t\t\t\t<select name=\"idup\">
 \t\t\t\t\t";
         // line 161
@@ -399,11 +387,11 @@ function whichButton(event)
 \t\t\t</span>
 \t\t</form>
 \t</div>
-\t<div class=\"cl-xs-10 col-lg-3 banner\">
+\t<div class=\"cl-xs-10 col-md-3 banner\">
 \t\t<span id=\"reviewmodespan\"></span>
 \t\t<span id=\"chitoengmodespan\"></span>
 \t</div>
-\t<div class=\"cl-xs-2 col-lg-1 banner\">
+\t<div class=\"cl-xs-2 col-md-1 banner\" style=\"padding-top: 8px;\">
 \t\t<i class=\"visible-xs visible-sm glyphicon glyphicon-phone\"></i>
 \t\t<i class=\"visible-md fa fa-android\"></i>
 \t\t<i class=\"visible-lg fa fa-windows\"></i>
@@ -718,7 +706,7 @@ function whichButton(event)
 
 <script type=\"text/javascript\">
 if(localStorage.getItem(\"rev\")==\"1\")
-\t\$(\"#reviewmodespan\").append(\"&nbsp;&nbsp;Review \");
+\t\$(\"#reviewmodespan\").append(\"Review \");
 //movable div
 var \$j=function(id){return document.getElementById(id);};
 var getMouseP=function (e){
@@ -796,6 +784,6 @@ function renewstatic(){
 
     public function getDebugInfo()
     {
-        return array (  757 => 320,  703 => 275,  691 => 272,  679 => 269,  667 => 266,  655 => 259,  647 => 256,  639 => 253,  631 => 250,  623 => 247,  609 => 236,  596 => 232,  585 => 230,  576 => 226,  569 => 222,  562 => 218,  558 => 217,  553 => 215,  548 => 212,  542 => 211,  538 => 209,  535 => 208,  531 => 206,  529 => 205,  514 => 201,  509 => 199,  496 => 197,  492 => 196,  463 => 194,  444 => 192,  440 => 191,  422 => 190,  418 => 189,  395 => 169,  391 => 168,  387 => 167,  383 => 166,  378 => 165,  371 => 164,  364 => 163,  357 => 162,  351 => 161,  346 => 159,  340 => 156,  336 => 155,  332 => 154,  328 => 153,  323 => 152,  316 => 151,  309 => 150,  302 => 149,  296 => 148,  291 => 146,  283 => 143,  277 => 142,  271 => 141,  265 => 140,  259 => 139,  253 => 138,  248 => 136,  240 => 133,  234 => 132,  228 => 131,  222 => 130,  216 => 129,  210 => 128,  204 => 127,  198 => 126,  192 => 125,  186 => 124,  180 => 123,  174 => 122,  168 => 121,  162 => 120,  156 => 119,  150 => 118,  145 => 116,  26 => 6,  19 => 1,);
+        return array (  745 => 320,  691 => 275,  679 => 272,  667 => 269,  655 => 266,  643 => 259,  635 => 256,  627 => 253,  619 => 250,  611 => 247,  597 => 236,  584 => 232,  573 => 230,  564 => 226,  557 => 222,  550 => 218,  546 => 217,  541 => 215,  536 => 212,  530 => 211,  526 => 209,  523 => 208,  519 => 206,  517 => 205,  502 => 201,  497 => 199,  484 => 197,  480 => 196,  451 => 194,  432 => 192,  428 => 191,  410 => 190,  406 => 189,  383 => 169,  379 => 168,  375 => 167,  371 => 166,  366 => 165,  359 => 164,  352 => 163,  345 => 162,  339 => 161,  331 => 156,  327 => 155,  323 => 154,  319 => 153,  314 => 152,  307 => 151,  300 => 150,  293 => 149,  287 => 148,  277 => 143,  271 => 142,  265 => 141,  259 => 140,  253 => 139,  247 => 138,  237 => 133,  231 => 132,  225 => 131,  219 => 130,  213 => 129,  207 => 128,  201 => 127,  195 => 126,  189 => 125,  183 => 124,  177 => 123,  171 => 122,  165 => 121,  159 => 120,  153 => 119,  147 => 118,  26 => 6,  19 => 1,);
     }
 }

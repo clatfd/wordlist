@@ -175,7 +175,7 @@ function funchitoeng()
 	lwpid=-1;
 	if(chitoeng==0)
 	{
-		$("#chitoengmodespan").append("&nbsp;&nbsp;Chi=>Eng Mode");
+		$("#chitoengmodespan").append("&nbsp;Chi");
 		chitoeng=1;
 		for(i=getPar('idlo');i<=getPar('idup');i++){
 			eng=$("#wd"+i);
