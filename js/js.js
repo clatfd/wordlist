@@ -66,7 +66,7 @@ function postu(rid,list,eng,chi,gro)
 	updown=0;
 	lchangrowd=lid=rid;
 	lword=eng;
-	tnum=$("#totnum").text();
+	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
 	upnum++;
 	if(upnum%10==0){
@@ -82,7 +82,7 @@ function postd(rid,list,eng,chi,gro)
 	updown=1;
 	lchangrowd=lid=rid;
 	lword=eng;
-	tnum=$("#totnum").text();
+	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
 	lwpid--;
 }
@@ -91,8 +91,7 @@ function removeword(rid){
 	$(".mix[data-myorder="+rid+"]").animate({width:"0px",height:"0px"},500,"linear",function(){$("[data-myorder="+rid+"]").remove()});
 	$("#undo").fadeTo("slow",1);
 	$("#undo").attr("disabled",false); 
-	lword=eng;
-	tnum=$("#totnum").text();
+	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
 }
 
@@ -306,19 +305,27 @@ function addtoimp(tmp,rid,list,eng,chi,gro,rec)
 
 }
 
-function saveasfile(name)
-{ 
-	document.execCommand('Saveas',true, name);
-	//alert("导出成功！");
-}
-
 function looksound(eng)
 {
 	sdsrc="../sound/"+eng+".mp3";
 	//alert(sdsrc)
 	asplay(sdsrc);
 }
-
+function mdclearfix(){
+	var sc=setTimeout('mdclearfixdelay()',1000);
+}
+function mdclearfixdelay(){
+	$("div.clearfix").remove();
+	for(mixnum=0;mixnum<$("div.mix").length;mixnum++){
+		if(mixnum%4==3){
+			$("div.mix").eq(mixnum).after('<div class="clearfix visible-lg"></div>');
+		}
+		if(mixnum%3==2){
+			$("div.mix").eq(mixnum).after('<div class="clearfix visible-md"></div>');
+		}
+	}
+	
+}
 function manconsole(list)
 {
 	if($("#manconsolediv").length>0){

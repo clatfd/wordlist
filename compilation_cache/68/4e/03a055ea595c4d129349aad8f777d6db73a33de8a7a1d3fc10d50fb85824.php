@@ -129,7 +129,7 @@ function whichButton(event)
 \t\t<button class=\"filter controlbtn\" data-filter=\".category-mfl\">Mfl</button>
 \t\t<button class=\"filter controlbtn\" data-filter=\".category-inv\">Inv</button>
 \t</div>
-\t<div class=\"cl-xs-4 col-md-5\">
+\t<div class=\"cl-xs-4 col-md-5\" onclick=\"mdclearfix()\">
 \t\t<label>Sort:</label>
 \t\t<button class=\"sort controlbtn\" data-sort=\"random\">Random</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:asc\">Asc</button>
