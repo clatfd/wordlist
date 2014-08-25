@@ -237,6 +237,7 @@ function changetolist(){
 	if($(".list").size()==0){
 		$(".divgrid").addClass("list");
 		$(".divgrid").children().addClass("list");
+		$(".wdeng").children().addClass("list");
 		$(".sandbox").addClass("list");
 		$("#showmodebtn").children().removeClass("glyphicon-th-list").addClass("glyphicon-th-large");
 	}
