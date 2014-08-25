@@ -317,15 +317,15 @@ font-size: 29px;
 background-color: white;
 padding: 6px 5px;
 }
- .listeng{
+ .engspan.list{
  	width: 28%;
  	display: inline-block;
  }
- .listchi{
+.chispan.list{
  	width: 70%;
  	display: inline-block;
  }
- p.listchi,p.listeng{
+.chispan.list,.engspan.list{
  	margin-bottom: 	0px;
  }
  .progress{

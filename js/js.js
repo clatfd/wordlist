@@ -28,8 +28,8 @@ function lookwd(rid,chi,eng,pid)
 		$("#wd"+rid).append("<p class=\"engspan\">"+eng+"</p>");
 	}
 	else{
-		$("#wd"+rid).html("<p class=\"listeng\">"+eng+"</p>");
-		$("#wd"+rid).append("<p class=\"listchi\">"+chi+"</p>");
+		$("#wd"+rid).html("<p class=\"engspan list\">"+eng+"</p>");
+		$("#wd"+rid).append("<p class=\"chispan list\">"+chi+"</p>");
 	}
 	$("#wd"+rid).css({"text-decoration":"none",'font-weight' : 'bolder'});
 	if(localStorage.getItem("rev")==0)
@@ -244,6 +244,7 @@ function changetolist(){
 	else{
 		$("#showmodebtn").children().removeClass("glyphicon-th-large").addClass("glyphicon-th-list");
 		$(".divgrid").removeClass("list");
+		$(".wdeng").children().removeClass("list");
 		$(".sandbox").removeClass("list");
 		$(".divgrid").children().removeClass("list");
 	}
