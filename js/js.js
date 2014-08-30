@@ -119,7 +119,7 @@ function undo(list,location)
 
 function funlastreviewwords(){
 	if(lrevword){
-		eng=$("#impunr"+lrevword).attr("onclick").split("','")[1];//eng
+		eng=$("#implabel"+lrevword).attr("onclick").split("','")[1];//eng
 		var eng, chi,rec;
 		$.ajax({url: "getinfo.php?list="+getPar("list")+"&eng="+eng,
 			   	success: function (r){
@@ -222,6 +222,33 @@ function funchitoengexam(){
 	changewdlist('exam');
 }
 
+function findsound(word){
+	$.ajax({
+		url: "curldict.php?word="+word, 
+		success: function (data){
+			sounddata=JSON.parse(data).americasound;
+			if(sounddata!='no_such_word')
+				playsound(word,"http://audio.dict.cn/"+sounddata);
+			else
+				toastr.warning('<p><strong>No Such Word!</strong></p>');
+		}
+	});
+
+}
+function playsound(word,mp3) {
+    var isNSupportFlash = !!document.createElement("audio").canPlayType && document.createElement("audio").canPlayType("audio/mpeg") && navigator.userAgent.indexOf("Maxthon") < 0;
+    if (isNSupportFlash) {
+        var sound = new Audio(mp3);
+        sound.src = mp3;
+        sound.play();
+		toastr.success('<p><strong>'+word+'</strong></p>');
+    }
+    else {
+        //clearTimeout(timer);
+        // timer = setTimeout(function () { player_v1_callback(mp3); return false; }, 100);
+    }
+}
+
 function looknextword(){
 	
 	if(lwpid-upnum>=$("div.wdeng").length)
@@ -250,61 +277,52 @@ function changetolist(){
 	}
 }
 
-function addtoimpold(rid,list,eng,chi,gro,rec)
-{
-	$.ajax({url: "addtoimp.php?list="+list+"&gro="+gro+"&eng="+eng+"&chi="+chi+"&rec="+rec, success: function (){$("#impunr"+rid).attr("src","images/rec.png");$("#impunr"+rid).removeAttr("onclick");}});
+function impspancontrol(id){
+	if($("#impspan"+id).css("display")=='inline-block'){
+		$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
+	}
+	else if($("#impspan"+id).css("display")=='none'){
+		$("#impspan"+id).css("display","inline-block");
+		$("#impspan"+id).animate({width:"67px"},200,"linear");
+	}
 }
 
-function addtoimp(tmp,rid,list,eng,chi,gro,rec)
+function impadjust(id,implist)
 {
-	//ShowObjProperty(tmp);
-	
-	//alert(tmp.x+"+"+tmp.y)
-	//alert(tmp.id.substring(6))
-	if($(".adddiv").length==1)
-		$(".adddiv").remove();
-	$("body")
-		.append(
-			$("<div/>")
-			.addClass("adddiv")
-			.attr('id','adddiv'+rid)
-			.css("left",tmp.x+80+"px")
-			.css("top",tmp.y+55+"px")
-			.css("font",'white')
-			.append("into_important:<input id='impcheckboximp' type='checkbox' value='imp'>	<br/> into_meaningful:<input id='impcheckboxmfl' type='checkbox' value='i_mfl'> <br/>			 into_inveterate:<input id='impcheckboxivt' type='checkbox' value='i_ivt'> <br/> ")
-			.append(
-					$("<button />")
-					.text("确认添加")
-					.addClass("btn btn-primary")
-					.click(function()
-							{	
-								var tarr = document.getElementsByTagName("input");
-								for(var i=0;i<tarr.length;i++)
-								{
-									if(tarr[i].type == "checkbox" && tarr[i].checked)
-									{
-										$.ajax({url: "addtoimp.php?ins="+tarr[i].value+"&list="+list+"&gro="+gro+"&eng="+eng+"&chi="+chi+"&rec="+rec, success: function (){$("#impunr"+rid).attr("src","images/rec.png");$("#wdtb"+rid).parent().addClass("category-imp")}});
-										//$("#impunr"+rid).removeAttr("onclick");
-									}
-									if(tarr[i].type == "checkbox" && tarr[i].checked==0)
-									{
-										$.ajax({url: "dele.php?list="+tarr[i].value+"&eng="+eng,success: function (){}});
-																												   //alert(eng+"has been removed from"+tarr[i].value);}
-																												  
-									}
-								}
-								$("#adddiv"+rid).remove();
-							}
-						 )
-				   )
-				)
-	if(jQuery.inArray(eng,impwdlist[1])!=-1)
-		$("#impcheckboximp").attr("checked","");
-	if(jQuery.inArray(eng,impwdlist[2])!=-1)
-		$("#impcheckboxmfl").attr("checked","");
-	if(jQuery.inArray(eng,impwdlist[3])!=-1)
-		$("#impcheckboxivt").attr("checked","");	
-
+	data=JSON.parse($("#wddiv"+id).attr("data-source"));
+	if(implist!='imp'){
+		databaselistname='i_'+implist;
+	}
+	else
+		databaselistname=implist;
+	if($("#impspan"+id).find(".remove"+implist).length){	//remove existed
+		$.ajax({
+			url: "dele.php?list="+databaselistname+"&eng="+data.eng,
+			success: function (){
+				
+				$("#impspan"+id).find(".remove"+implist).removeClass("remove"+implist).addClass("add"+implist);
+				$("#wddiv"+id).parent().removeClass("category-"+implist);
+				if(!$("#impspan"+id).find(".removeimp").length&&!$("#impspan"+id).find(".removemnf").length&&!$("#impspan"+id).find(".removeivt").length){
+					$("#implabel"+id).removeClass("glyphicon-star").addClass("glyphicon-plus");
+					$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
+					$("#impspan"+id).find(".remove"+implist).addClass("category-common");
+				}
+				toastr.info(data.eng+"has been removed from "+implist);
+			}
+		});
+	}
+	else if($("#impspan"+id).find(".add"+implist).length){	//add new
+		$.ajax({
+			url: "addtoimp.php?ins="+databaselistname+"&list="+data.list+"&gro="+data.gro+"&eng="+data.eng+"&chi="+data.chi+"&rec="+data.rec,
+			success: function (){
+				$("#implabel"+id).removeClass("glyphicon-plus").addClass("glyphicon-star");
+				$("#impspan"+id).find(".add"+implist).removeClass("add"+implist).addClass("remove"+implist);
+				$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
+				$("#wddiv"+id).parent().removeClass("category-common").addClass("category-"+implist);
+				toastr.info(data.eng+"has been added into "+implist);
+			}
+		});
+	}
 }
 
 function looksound(eng)
@@ -339,7 +357,7 @@ function manconsole(list)
 	$("#manconsole").attr("onclick","clearmc('"+list+"')");
 	eng="";
 	if(lrevword)
-		eng=$("#impunr"+lrevword).attr("onclick").split("','")[1];
+		eng=$("#implabel"+lrevword).attr("onclick").split("','")[1];
 	$("body")
 		.append(
 			$("<div/>")
@@ -456,7 +474,7 @@ function onchangemcdivgetinfo()
 					   $("#mcid").attr("value",phpdata.id);
 				   }
 								   }
-				});
+	});
 }
 
 function onchangemcdivcheckinfo()

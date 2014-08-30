@@ -423,10 +423,12 @@ function whichButton(event)
             echo "\" data-myorder=";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ">
-\t\t\t\t<div id=\"wdtb";
+\t\t\t\t<div id=\"wddiv";
             // line 191
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo "\" class=\"divgrid\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" >  
+            echo "\" class=\"divgrid\" border=\"0\" data-source=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "jsondata"), "html", null, true);
+            echo "\">  
 \t\t\t\t\t<div class=\"wdeng\" id=\"wd";
             // line 192
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
@@ -453,27 +455,45 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "rec"), "html", null, true);
             echo "&nbsp;</span><a href=\"http://dict.cn/";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
-            echo "\" target=\"_blank\"><i class=\"glyphicon glyphicon-book\"></i></a>&nbsp;<img src=\"images/";
-            if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["impalllist"]) ? $context["impalllist"] : null))) {
-                echo "rec";
-            } else {
-                echo "unr";
-            }
-            echo ".png\" id=\"impunr";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo "\" onclick=\"addtoimp(this,";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo ",'";
-            echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
-            echo "','";
+            echo "\" target=\"_blank\"><i class=\"glyphicon glyphicon-book\"></i></a>&nbsp;<i class=\"glyphicon glyphicon-play\" onclick=\"findsound('";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
-            echo "','";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "chi"), "html", null, true);
-            echo "','";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
-            echo "','";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "rec"), "html", null, true);
-            echo "')\"/>
+            echo "')\"></i></a>&nbsp;<i class=\"glyphicon glyphicon-";
+            if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["impalllist"]) ? $context["impalllist"] : null))) {
+                echo "star";
+            } else {
+                echo "plus";
+            }
+            echo "\" id=\"implabel";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo "\" onclick=\"impspancontrol(";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo ")\"></i><span id=\"impspan";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo "\" class=\"impspan\" style=\"display:none\"><i class=\"";
+            if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["implist"]) ? $context["implist"] : null))) {
+                echo "remove";
+            } else {
+                echo "add";
+            }
+            echo "imp\" onclick=\"impadjust(";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo ",'imp')\">I</i><i class=\"";
+            if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["mfllist"]) ? $context["mfllist"] : null))) {
+                echo "remove";
+            } else {
+                echo "add";
+            }
+            echo "mfl\" onclick=\"impadjust(";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo ",'mfl')\">M</i><i class=\"";
+            if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["ivtlist"]) ? $context["ivtlist"] : null))) {
+                echo "remove";
+            } else {
+                echo "add";
+            }
+            echo "ivt\" onclick=\"impadjust(";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
+            echo ",'ivt')\">V</i></span>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div id=\"bt";
             // line 196
@@ -784,6 +804,6 @@ function renewstatic(){
 
     public function getDebugInfo()
     {
-        return array (  745 => 320,  691 => 275,  679 => 272,  667 => 269,  655 => 266,  643 => 259,  635 => 256,  627 => 253,  619 => 250,  611 => 247,  597 => 236,  584 => 232,  573 => 230,  564 => 226,  557 => 222,  550 => 218,  546 => 217,  541 => 215,  536 => 212,  530 => 211,  526 => 209,  523 => 208,  519 => 206,  517 => 205,  502 => 201,  497 => 199,  484 => 197,  480 => 196,  451 => 194,  432 => 192,  428 => 191,  410 => 190,  406 => 189,  383 => 169,  379 => 168,  375 => 167,  371 => 166,  366 => 165,  359 => 164,  352 => 163,  345 => 162,  339 => 161,  331 => 156,  327 => 155,  323 => 154,  319 => 153,  314 => 152,  307 => 151,  300 => 150,  293 => 149,  287 => 148,  277 => 143,  271 => 142,  265 => 141,  259 => 140,  253 => 139,  247 => 138,  237 => 133,  231 => 132,  225 => 131,  219 => 130,  213 => 129,  207 => 128,  201 => 127,  195 => 126,  189 => 125,  183 => 124,  177 => 123,  171 => 122,  165 => 121,  159 => 120,  153 => 119,  147 => 118,  26 => 6,  19 => 1,);
+        return array (  765 => 320,  711 => 275,  699 => 272,  687 => 269,  675 => 266,  663 => 259,  655 => 256,  647 => 253,  639 => 250,  631 => 247,  617 => 236,  604 => 232,  593 => 230,  584 => 226,  577 => 222,  570 => 218,  566 => 217,  561 => 215,  556 => 212,  550 => 211,  546 => 209,  543 => 208,  539 => 206,  537 => 205,  522 => 201,  517 => 199,  504 => 197,  500 => 196,  453 => 194,  434 => 192,  428 => 191,  410 => 190,  406 => 189,  383 => 169,  379 => 168,  375 => 167,  371 => 166,  366 => 165,  359 => 164,  352 => 163,  345 => 162,  339 => 161,  331 => 156,  327 => 155,  323 => 154,  319 => 153,  314 => 152,  307 => 151,  300 => 150,  293 => 149,  287 => 148,  277 => 143,  271 => 142,  265 => 141,  259 => 140,  253 => 139,  247 => 138,  237 => 133,  231 => 132,  225 => 131,  219 => 130,  213 => 129,  207 => 128,  201 => 127,  195 => 126,  189 => 125,  183 => 124,  177 => 123,  171 => 122,  165 => 121,  159 => 120,  153 => 119,  147 => 118,  26 => 6,  19 => 1,);
     }
 }

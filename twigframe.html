@@ -188,10 +188,10 @@ function whichButton(event)
   	<div class="row">
 		{% for item in wdlistarr %}
 			<div class="col-xs-6 col-md-4 col-lg-3 mix{% if item.eng in implist %} category-imp{% endif %}{% if item.eng in mfllist %} category-mfl{% endif %}{% if item.eng in ivtlist %} category-ivt{% endif %}{% if item.eng not in impalllist %} category-common{% endif %}" data-myorder={{item.id}}>
-				<div id="wdtb{{item.id}}" class="divgrid" border="0" cellspacing="0" cellpadding="0" >  
+				<div id="wddiv{{item.id}}" class="divgrid" border="0" data-source="{{item.jsondata}}">  
 					<div class="wdeng" id="wd{{item.id}}" align="center" valign="middle" onclick="lookwd({{item.id}},'{{item.chi}}','{{item.eng}}',{{item.curnum}})" ondblclick="looksound('{{item.eng}}')">{{item.id}}&nbsp;&nbsp;&nbsp;{{item.eng}}
 					</div>
-					<div class="recdiv" height="40" colspan="2" align="center" valign="middle"><span class="recspan">{{item.gro}}&nbsp;{{item.rec}}&nbsp;</span><a href="http://dict.cn/{{item.eng}}" target="_blank"><i class="glyphicon glyphicon-book"></i></a>&nbsp;<img src="images/{% if item.eng in impalllist %}rec{% else %}unr{% endif %}.png" id="impunr{{item.id}}" onclick="addtoimp(this,{{item.id}},'{{list}}','{{item.eng}}','{{item.chi}}','{{item.gro}}','{{item.rec}}')"/>
+					<div class="recdiv" height="40" colspan="2" align="center" valign="middle"><span class="recspan">{{item.gro}}&nbsp;{{item.rec}}&nbsp;</span><a href="http://dict.cn/{{item.eng}}" target="_blank"><i class="glyphicon glyphicon-book"></i></a>&nbsp;<i class="glyphicon glyphicon-play" onclick="findsound('{{item.eng}}')"></i></a>&nbsp;<i class="glyphicon glyphicon-{% if item.eng in impalllist %}star{% else %}plus{% endif %}" id="implabel{{item.id}}" onclick="impspancontrol({{item.id}})"></i><span id="impspan{{item.id}}" class="impspan" style="display:none"><i class="{% if item.eng in implist %}remove{% else %}add{% endif %}imp" onclick="impadjust({{item.id}},'imp')">I</i><i class="{% if item.eng in mfllist %}remove{% else %}add{% endif %}mfl" onclick="impadjust({{item.id}},'mfl')">M</i><i class="{% if item.eng in ivtlist %}remove{% else %}add{% endif %}ivt" onclick="impadjust({{item.id}},'ivt')">V</i></span>
 					</div>
 					<div id="bt{{item.id}}" height="20" class="updowndiv">
 						<span class="glyphicon glyphicon-chevron-up arrowp" onclick="postu({{item.id}},'{{list}}','{{item.eng}}','{{item.chi}}','{{item.gro}}')"></span>

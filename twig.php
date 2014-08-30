@@ -43,14 +43,17 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	$sql="Select * from ".$getlist."  where gro=".$getgro." and id>".($getidlo-1)." and id<".($getidup+1);	
 	$result=mysql_query($sql);
 	$wdlistarr = array(); 
-	while ($rowt=mysql_fetch_array($result))
+	while ($rowt=mysql_fetch_array($result,MYSQL_ASSOC))
 	{
 		array_push($wdlistarr, $rowt);
 	}
 	shuffle($wdlistarr);
 	for($i=0;$i<count($wdlistarr);$i++){
 		$wdlistarr[$i]['curnum']=$i;
+		$wdlistarr[$i]['list']=$getlist;
+		$wdlistarr[$i]['jsondata']=json_encode($wdlistarr[$i]);
 	}
+
 	//print_r($wdlistarr);
 include('getip.php');
 
@@ -67,6 +70,6 @@ echo $twig->render('twigframe.html', array(
 	'implist' => $implist,
 	'mfllist' => $mfllist,
 	'ivtlist' => $ivtlist,
-	'impalllist' => $impalllist
+	'impalllist' => $impalllist,
 ));
 ?>
