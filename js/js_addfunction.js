@@ -1,4 +1,4 @@
-function asplay(mp3){
+function asplay(word,mp3){
 	var isNSupportFlash = !! document.createElement("audio").canPlayType && document.createElement("audio").canPlayType("audio/mpeg") && navigator.userAgent.indexOf("Maxthon") < 0;
 	if(isNSupportFlash){
 		var sound =  new Audio(mp3);
@@ -10,12 +10,12 @@ function asplay(mp3){
 		
 		sound.addEventListener("loadedmetadata", function(_event) {
    			sound.play();
-			toastr.info("<strong>\""+mp3.slice(9,-4)+"\" <br/><a href='javascript:asplay(\""+mp3+"\")'>Play again!</a></strong>");
+			toastr.info("<strong>\""+word+"\" <br/><a href='javascript:asplay(\""+mp3+"\")'>Play again!</a></strong>");
 		});
 		
 	}else{
-			clearTimeout(timer);
-			timer = setTimeout(function(){player_v1_callback(mp3);return false;}, 100);	
+			// clearTimeout(timer);
+			// timer = setTimeout(function(){player_v1_callback(mp3);return false;}, 100);	
 	}
 }
 

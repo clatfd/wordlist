@@ -73,6 +73,7 @@ function postu(rid,list,eng,chi,gro)
 		toastr.success(upnum);
 	}
 }
+
 function postd(rid,list,eng,chi,gro)
 {
 	storelastdiv=$("[data-myorder="+rid+"]");
@@ -86,6 +87,7 @@ function postd(rid,list,eng,chi,gro)
 	$("#totnum").html(tnum-1);
 	lwpid--;
 }
+
 function removeword(rid){
 	storelastdiv=$("[data-myorder="+rid+"]");
 	$(".mix[data-myorder="+rid+"]").animate({width:"0px",height:"0px"},500,"linear",function(){$("[data-myorder="+rid+"]").remove()});
@@ -119,26 +121,11 @@ function undo(list,location)
 
 function funlastreviewwords(){
 	if(lrevword){
-		eng=$("#implabel"+lrevword).attr("onclick").split("','")[1];//eng
-		var eng, chi,rec;
-		$.ajax({url: "getinfo.php?list="+getPar("list")+"&eng="+eng,
-			   	success: function (r){
-				   phpdata=JSON.parse(r);
-				 //  for (x in phpdata){alert(phpdata[x])}
- 
-				   	if(phpdata.chi=="null"){
-				   		toastr.warning("no_such_word!!");
-				   		
-					}
-				   	else{
-						chi=phpdata.chi;
-						gro=phpdata.gro;
-					   	rec=phpdata.rec;
-					   	toastr.options.timeOut=10000;
-					   	toastr.success('<p><strong>'+eng+'</p><p>'+chi+'</p><p> '+rec+' </strong></p>');
-				   	}
-				}
-			});
+		eng=$("#wddiv"+lrevword).attr("eng");
+		chi=$("#wddiv"+lrevword).attr("chi");
+		rec=$("#wddiv"+lrevword).attr("rec");
+	   	toastr.options.timeOut=10000;
+	   	toastr.success('<p><strong>'+eng+'</p><p>'+chi+'</p><p>/'+rec+'/</strong></p>');
 	}
 	else{
 		toastr.warning('<p><strong>No word clicked!</strong></p>');
@@ -198,7 +185,7 @@ function funchitoeng()
 		for(i=getPar('idlo');i<=getPar('idup');i++){
 			eng=$("#wd"+i);
 			if(eng.length>0){
-				$("#wd"+i).html(eng.attr("onclick").split(",'")[1].slice(0,-1));//get chi
+				$("#wd"+i).html($("#wddiv"+i).attr("chi"));
 				$(".recspan").css("display","none");
 			}
 		}
@@ -210,7 +197,7 @@ function funchitoeng()
 		for(i=getPar('idlo');i<=getPar('idup');i++){
 			eng=$("#wd"+i);
 			if(eng.length>0){
-				$("#wd"+i).html(eng.attr("onclick").split("',")[1].slice(1));//get eng
+				$("#wd"+i).html($("#wddiv"+i).attr("eng"));
 				$(".recspan").css("display","inline-block");
 			}
 		}
@@ -222,38 +209,33 @@ function funchitoengexam(){
 	changewdlist('exam');
 }
 
+//dict.cn recources
 function findsound(word){
 	$.ajax({
 		url: "curldict.php?word="+word, 
 		success: function (data){
 			sounddata=JSON.parse(data).americasound;
 			if(sounddata!='no_such_word')
-				playsound(word,"http://audio.dict.cn/"+sounddata);
+				asplay(word,"http://audio.dict.cn/"+sounddata);
 			else
 				toastr.warning('<p><strong>No Such Word!</strong></p>');
 		}
 	});
 
 }
-function playsound(word,mp3) {
-    var isNSupportFlash = !!document.createElement("audio").canPlayType && document.createElement("audio").canPlayType("audio/mpeg") && navigator.userAgent.indexOf("Maxthon") < 0;
-    if (isNSupportFlash) {
-        var sound = new Audio(mp3);
-        sound.src = mp3;
-        sound.play();
-		toastr.success('<p><strong>'+word+'</strong></p>');
-    }
-    else {
-        //clearTimeout(timer);
-        // timer = setTimeout(function () { player_v1_callback(mp3); return false; }, 100);
-    }
-}
 
+function findclickposition(){
+	for(i=0;i<$("div.wdeng").length;i++){
+		if($(".divgrid").eq(i).attr("id").slice(5)==lrevword)
+			return i;
+	}
+	return -1;
+}
 function looknextword(){
-	
-	if(lwpid-upnum>=$("div.wdeng").length)
-		lwpid=upnum;
-	$("div.wdeng")[lwpid-upnum].click();
+	currentposition=findclickposition()+1;
+	if(currentposition>=$("div.wdeng").length)
+		currentposition=0;
+	$("div.wdeng").eq(currentposition).click();
 }
 function showstatis(){
 	currentnum=parseInt($("#totnum").text());
@@ -289,7 +271,6 @@ function impspancontrol(id){
 
 function impadjust(id,implist)
 {
-	data=JSON.parse($("#wddiv"+id).attr("data-source"));
 	if(implist!='imp'){
 		databaselistname='i_'+implist;
 	}
@@ -297,7 +278,7 @@ function impadjust(id,implist)
 		databaselistname=implist;
 	if($("#impspan"+id).find(".remove"+implist).length){	//remove existed
 		$.ajax({
-			url: "dele.php?list="+databaselistname+"&eng="+data.eng,
+			url: "dele.php?list="+databaselistname+"&eng="+$("#wddiv"+id).attr("eng"),
 			success: function (){
 				
 				$("#impspan"+id).find(".remove"+implist).removeClass("remove"+implist).addClass("add"+implist);
@@ -307,28 +288,28 @@ function impadjust(id,implist)
 					$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
 					$("#impspan"+id).find(".remove"+implist).addClass("category-common");
 				}
-				toastr.info(data.eng+"has been removed from "+implist);
+				toastr.info($("#wddiv"+id).attr("eng")+"has been removed from "+implist);
 			}
 		});
 	}
 	else if($("#impspan"+id).find(".add"+implist).length){	//add new
 		$.ajax({
-			url: "addtoimp.php?ins="+databaselistname+"&list="+data.list+"&gro="+data.gro+"&eng="+data.eng+"&chi="+data.chi+"&rec="+data.rec,
+			url: "addtoimp.php?ins="+databaselistname+"&list="+$("#formlist").val()+"&gro="+$("#wddiv"+id).attr("gro")+"&eng="+$("#wddiv"+id).attr("eng")+"&chi="+$("#wddiv"+id).attr("chi")+"&rec="+$("#wddiv"+id).attr("rec"),
 			success: function (){
 				$("#implabel"+id).removeClass("glyphicon-plus").addClass("glyphicon-star");
 				$("#impspan"+id).find(".add"+implist).removeClass("add"+implist).addClass("remove"+implist);
 				$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
 				$("#wddiv"+id).parent().removeClass("category-common").addClass("category-"+implist);
-				toastr.info(data.eng+"has been added into "+implist);
+				toastr.info($("#wddiv"+id).attr("eng")+"has been added into "+implist);
 			}
 		});
 	}
 }
 
+//local resources
 function looksound(eng)
 {
 	sdsrc="../sound/"+eng+".mp3";
-	//alert(sdsrc)
 	asplay(sdsrc);
 }
 function mdclearfix(){
@@ -356,8 +337,9 @@ function manconsole(list)
 	$("body").attr("onkeyup","");
 	$("#manconsole").attr("onclick","clearmc('"+list+"')");
 	eng="";
-	if(lrevword)
-		eng=$("#implabel"+lrevword).attr("onclick").split("','")[1];
+	if(lrevword){
+		eng=$("#wddiv"+lrevword).attr("eng");
+	}
 	$("body")
 		.append(
 			$("<div/>")
@@ -553,11 +535,11 @@ function refreshexamwd()
 	examrecbuttonposition=new Object();;
 	examrecbuttonposition.x=$("#recimg").position().left+25;
 	examrecbuttonposition.y=$("#recimg").position().top+35;
-//	alert(examrecbuttonposition.x)
+
 	$("#recimg").attr("onclick","addtoimp(examrecbuttonposition,"+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+",'"+rec+"')");
 	$("#examwd").attr("onclick",'$("#examwd").html("'+chi+'<br/>'+eng+'")');
 	$("#examwd").css({"color":"#0000ff","text-decoration":"none","background-color":"yellow",'font-weight' : 'bolder'});//lookwd("+wdlist[t][0]+",'"+wdlist[t][2]+"','"+wdlist[t][1]+"')
-	$("#examwd").attr("ondblclick",'looksound("'+eng+'")');
+	$("#examwd").attr("ondblclick",'findsound("'+eng+'")');	//looksound() for local sound
 	
 	$("#examupbutton").attr("onclick","postu("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
 	$("#examdownbutton").attr("onclick","postd("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
@@ -715,9 +697,7 @@ function refreshlistwd()
 		document.getElementById("wd"+(parseInt(t)+1)).onclick=function(){
 			eng=wdlist[(parseInt(this.id.substring(2))-1)][1];
 		chi=wdlist[(parseInt(this.id.substring(2))-1)][3];
-		//alert("lookwd("+this.id.substring(2)+",'"+chi+"','"+eng+"')");
-eval("lookwd("+this.id.substring(2)+",'"+chi+"','"+eng+"')");};
-		//$("#wd"+(parseInt(t)+1)).dblclick(function(){looksound(eng)});//eval("looksound('"+eng+"')")
+		eval("lookwd("+this.id.substring(2)+",'"+chi+"','"+eng+"')");};
 		
 
 	if(jQuery.inArray(eng,impwdlist[0])==-1)

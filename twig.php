@@ -51,7 +51,7 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	for($i=0;$i<count($wdlistarr);$i++){
 		$wdlistarr[$i]['curnum']=$i;
 		$wdlistarr[$i]['list']=$getlist;
-		$wdlistarr[$i]['jsondata']=json_encode($wdlistarr[$i]);
+		//$wdlistarr[$i]['jsondata']=json_encode($wdlistarr[$i]);
 	}
 
 	//print_r($wdlistarr);

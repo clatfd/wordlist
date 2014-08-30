@@ -428,6 +428,14 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo "\" class=\"divgrid\" border=\"0\" data-source=\"";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "jsondata"), "html", null, true);
+            echo "\" chi=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "chi"), "html", null, true);
+            echo "\" eng=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
+            echo "\" rec=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "rec"), "html", null, true);
+            echo "\" gro=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
             echo "\">  
 \t\t\t\t\t<div class=\"wdeng\" id=\"wd";
             // line 192
@@ -440,9 +448,7 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
             echo "',";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "curnum"), "html", null, true);
-            echo ")\" ondblclick=\"looksound('";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
-            echo "')\">";
+            echo ")\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo "&nbsp;&nbsp;&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
@@ -804,6 +810,6 @@ function renewstatic(){
 
     public function getDebugInfo()
     {
-        return array (  765 => 320,  711 => 275,  699 => 272,  687 => 269,  675 => 266,  663 => 259,  655 => 256,  647 => 253,  639 => 250,  631 => 247,  617 => 236,  604 => 232,  593 => 230,  584 => 226,  577 => 222,  570 => 218,  566 => 217,  561 => 215,  556 => 212,  550 => 211,  546 => 209,  543 => 208,  539 => 206,  537 => 205,  522 => 201,  517 => 199,  504 => 197,  500 => 196,  453 => 194,  434 => 192,  428 => 191,  410 => 190,  406 => 189,  383 => 169,  379 => 168,  375 => 167,  371 => 166,  366 => 165,  359 => 164,  352 => 163,  345 => 162,  339 => 161,  331 => 156,  327 => 155,  323 => 154,  319 => 153,  314 => 152,  307 => 151,  300 => 150,  293 => 149,  287 => 148,  277 => 143,  271 => 142,  265 => 141,  259 => 140,  253 => 139,  247 => 138,  237 => 133,  231 => 132,  225 => 131,  219 => 130,  213 => 129,  207 => 128,  201 => 127,  195 => 126,  189 => 125,  183 => 124,  177 => 123,  171 => 122,  165 => 121,  159 => 120,  153 => 119,  147 => 118,  26 => 6,  19 => 1,);
+        return array (  771 => 320,  717 => 275,  705 => 272,  693 => 269,  681 => 266,  669 => 259,  661 => 256,  653 => 253,  645 => 250,  637 => 247,  623 => 236,  610 => 232,  599 => 230,  590 => 226,  583 => 222,  576 => 218,  572 => 217,  567 => 215,  562 => 212,  556 => 211,  552 => 209,  549 => 208,  545 => 206,  543 => 205,  528 => 201,  523 => 199,  510 => 197,  506 => 196,  459 => 194,  442 => 192,  428 => 191,  410 => 190,  406 => 189,  383 => 169,  379 => 168,  375 => 167,  371 => 166,  366 => 165,  359 => 164,  352 => 163,  345 => 162,  339 => 161,  331 => 156,  327 => 155,  323 => 154,  319 => 153,  314 => 152,  307 => 151,  300 => 150,  293 => 149,  287 => 148,  277 => 143,  271 => 142,  265 => 141,  259 => 140,  253 => 139,  247 => 138,  237 => 133,  231 => 132,  225 => 131,  219 => 130,  213 => 129,  207 => 128,  201 => 127,  195 => 126,  189 => 125,  183 => 124,  177 => 123,  171 => 122,  165 => 121,  159 => 120,  153 => 119,  147 => 118,  26 => 6,  19 => 1,);
     }
 }
