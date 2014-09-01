@@ -10,7 +10,7 @@ function asplay(word,mp3){
 		
 		sound.addEventListener("loadedmetadata", function(_event) {
    			sound.play();
-			toastr.info("<strong>\""+word+"\" <br/><a href='javascript:asplay(\""+mp3+"\")'>Play again!</a></strong>");
+			toastr.info("<strong>\""+word+"\" <br/><a href='javascript:asplay(\""+word+"\",\""+mp3+"\")'>Play again!</a></strong>");
 		});
 		
 	}else{
