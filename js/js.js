@@ -300,7 +300,7 @@ function impadjust(id,implist)
 				$("#impspan"+id).find(".add"+implist).removeClass("add"+implist).addClass("remove"+implist);
 				$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
 				$("#wddiv"+id).parent().removeClass("category-common").addClass("category-"+implist);
-				toastr.info($("#wddiv"+id).attr("eng")+"has been added into "+implist);
+				toastr.info($("#wddiv"+id).attr("eng")+" has been added into "+implist);
 			}
 		});
 	}
