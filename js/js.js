@@ -288,7 +288,7 @@ function impadjust(id,implist)
 					$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
 					$("#impspan"+id).find(".remove"+implist).addClass("category-common");
 				}
-				toastr.info($("#wddiv"+id).attr("eng")+"has been removed from "+implist);
+				toastr.info($("#wddiv"+id).attr("eng")+" has been removed from "+implist);
 			}
 		});
 	}
