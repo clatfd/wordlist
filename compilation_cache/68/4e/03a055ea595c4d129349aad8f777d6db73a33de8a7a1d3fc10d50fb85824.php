@@ -134,8 +134,8 @@ function whichButton(event)
 \t\t<button class=\"sort controlbtn\" data-sort=\"random\">Random</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:asc\">Asc</button>
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:desc\">Desc</button>
-\t\t<button class=\"btn banneraddbutton\" onclick=\"changetolist()\" style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-th-list\" style=\"margin-top: 3px;\"></i></button>
-\t\t<button id=\"ToggleConfig\" class=\"btn toggle-config config-open banneraddbutton\"  style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-cog\" style=\"margin-top: 3px;\"></i></button>
+\t\t<button class=\"btn banneraddbutton\" onclick=\"changetolist()\"><i class=\"glyphicon glyphicon-th-list\"></i></button>
+\t\t<button id=\"ToggleConfig\" class=\"btn toggle-config config-open banneraddbutton\"  style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-cog\"></i></button>
 \t</div>
 \t<div class=\"cl-xs-12 col-md-8\">
 \t\t<form name=\"form1\" id=\"form1\" method=\"GET\">
