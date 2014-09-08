@@ -11,7 +11,7 @@ $fp=fopen("$filename", "w+"); //打开文件指针，创建文件
       die("文件:" .$filename. "不可写，请检查！");
 
 $tim=localtime();
-$dat=date("Y/m/d")." ".($tim[2]+8).":".$tim[1].":".$tim[0]; 
+$dat=date("Y/m/d")." ".$tim[2].":".$tim[1].":".$tim[0]; 
 
 $data="wdalllist={datecreated:'".$dat."',";  
 	  

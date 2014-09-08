@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_GET['list']."_".$_GET['gro']."_".$_GET['idlo']."~".$_GET['idup'] ?></title>
-<link rel="stylesheet" type="text/css" href="css.css">
-<script type="text/javascript" src="jquery-1.8.2.js"></script>
-<script type="text/javascript" src="js.js"></script>
-<script type="text/javascript" src="js_addfunction.js"></script>
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/js_addfunction.js"></script>
 
 </head>
 
@@ -129,7 +129,7 @@ function whichButton(event)
  </span> 
 	<button id="undo" style="opacity: 0.01;" onclick="undo('<?php echo $_GET['list'] ?>','exam')">  undo  </button>
 	&nbsp;&nbsp;
-	<a href="default.php?list=<?php echo $_GET['list'] ?>&amp;gro=<?php echo $_GET['gro'] ?>&amp;idlo=<?php echo $_GET['idlo'] ?>&amp;idup=<?php echo $_GET['idup'] ?>""><button id="backtolist">Back_to_list(B)</button></a>
+	<a href="twig.php?list=<?php echo $_GET['list'] ?>&amp;gro=<?php echo $_GET['gro'] ?>&amp;idlo=<?php echo $_GET['idlo'] ?>&amp;idup=<?php echo $_GET['idup'] ?>""><button id="backtolist">Back_to_list(B)</button></a>
 	&nbsp;&nbsp;
 <a href="examm.php?list=<?php echo $_GET['list'] ?>&amp;gro=<?php echo $_GET['gro'] ?>&amp;idlo=<?php echo $_GET['idlo'] ?>&amp;idup=<?php echo $_GET['idup'] ?>"><button id="xiaomiversion">Xiaomi version(X)</button></a>
 
