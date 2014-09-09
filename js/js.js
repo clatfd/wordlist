@@ -345,7 +345,7 @@ function manconsole(list)
 			.attr('id','manconsolediv')
 			//.css("left",tmp.x-175+"px")
 			.css("top",scrollY+300+"px")
-			.append("<div id='manconsoledivhead'><b>manual console</b></div><br/><select value='action' id='mcactionselect' onchange='manconsolechange()'><option>add</option><option>delete</option><option>update</option></select> list:<input id='mclist' name='mclist' type='text' value='' /> eng<input id='mceng' name='mceng' value='"+eng+"'type='text' onchange='onchangemcdivcheckinfo()'autofocus/><br/> <span id='deleremove'>id:<input id='mcid' name='mcid' type='text' /> rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/></span><br/><button id='mcsubmit' onclick='mcsubmit()'>mcsubmit</button> <button onclick='clearmc(\""+list+"\")'>cancel</button><br/> ")
+			.append("<div id='manconsoledivhead'><b>manual console</b></div><br/><select value='action' id='mcactionselect' onchange='manconsolechange()'><option>add</option><option>delete</option><option selected>update</option></select> list:<input id='mclist' name='mclist' type='text' value='' /> eng<input id='mceng' name='mceng' value='"+eng+"'type='text' onchange='onchangemcdivcheckinfo()'autofocus/><br/> <span id='deleremove'>id:<input id='mcid' name='mcid' type='text' /> rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/></span><br/><button id='mcsubmit' onclick='mcsubmit()'>mcsubmit</button> <button onclick='clearmc(\""+list+"\")'>cancel</button><br/> ")
 			
 				)
 	$("#mclist").attr('value',list);
@@ -364,7 +364,7 @@ function clearmc(list)
 function manconsolechange()
 {
 	//alert("change");
-	var selecttype=$("#mcactionselect").attr('value');
+	var selecttype=$("#mcactionselect").val();
 	if(selecttype=='delete')
 	{
 		$("#deleremove").html("");
@@ -386,29 +386,29 @@ function manconsolechange()
 function mcsubmit()
 {
 
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");
-	tid=$("#mcid").attr("value");
-	trec=$("#mcrec").attr("value");
-	tchi=$("#mcchi").attr("value");
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();
+	tid=$("#mcid").val();
+	trec=$("#mcrec").val();
+	tchi=$("#mcchi").val();
 	
 	tchi=urlfit(tchi);
 
 	lrevword=tid;
 	//tgro=getPar('gro');
-	tgro=$("#mcgro").attr("value");
+	tgro=$("#mcgro").val();
 	
 	$("#wd"+lrevword).find("p.engspan").html(teng);
 	$("#wd"+lrevword).find("p.chispan").html(tchi);
 
-	var selecttype=$("#mcactionselect").attr('value');
+	var selecttype=$("#mcactionselect").val();
 	if(selecttype=='delete')
 	{
 		//alert(teng);
 		$.ajax({url: "dele.php?list="+tlist+"&eng="+teng,success: function (){
-																				//alert(teng+" has been removed from "+tlist);
+																				toastr.info(teng+" has been removed from "+tlist);
 																				clearmc(tlist);
-																				funlastreviewwords();						
+																				//funlastreviewwords();						
 																			}
 		});
 	}
@@ -417,7 +417,12 @@ function mcsubmit()
 		$.ajax({url: "update.php?list="+tlist+"&eng="+teng+"&id="+tid+"&gro="+tgro+"&chi="+tchi+"&rec="+trec,success: function (){
 				//alert(teng+" has been updated");
 				clearmc(tlist);
-				funlastreviewwords();						
+				$("#wd"+tid).attr("onclick","lookwd("+tid+",'"+tchi+"','"+teng+"',"+tgro+")");	
+				$("#wddiv"+tid).attr("chi",tchi);
+				$("#wddiv"+tid).attr("rec",trec);
+				$("#wddiv"+tid).attr("gro",tgro);
+				$("#wddiv"+tid).find(".recspan").html(tgro+"&nbsp;"+trec+"&nbsp;");
+				funlastreviewwords();	
 			}
 		});
 		
@@ -436,9 +441,9 @@ function mcsubmit()
 
 function onchangemcdivgetinfo()
 {
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");
-	tid=$("#mcid").attr("value");
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();
+	tid=$("#mcid").val();
 	tgro=getPar('gro');
 	$.ajax({url: "getinfo.php?list="+tlist+"&eng="+teng,
 			   success: function (r){
@@ -460,8 +465,8 @@ function onchangemcdivgetinfo()
 
 function onchangemcdivcheckinfo()
 {
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");	
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();	
 	$.ajax({url: "getnextid.php?list="+tlist+"&eng="+teng,
 			   success: function (r){if(r=="R"){$("#mcactionselect").attr('value','update');manconsolechange();onchangemcdivgetinfo();}else{maxid=r;$("#mcid").attr("value",maxid);$("#mcid").attr("disabled",true);}
 			   //alert(r);
@@ -509,12 +514,12 @@ function refreshexamwd()
 	
 	rid=wdlist[t][0];
 	//list=getPar('list');
-	list=$("#formlist").attr("value");
+	list=$("#formlist").val();
 	eng=wdlist[t][1];
 	chi=wdlist[t][3];
 	rec=wdlist[t][2];
 	//gro=getPar('gro');
-	gro=$("#formgro").attr("value");
+	gro=$("#formgro").val();
 	if(chitoeng){
 		$("#examwd").html(chi);
 	}
@@ -617,10 +622,10 @@ function changewdlist(type)
 	
 	
 	
-		clist=$("#formlist").attr("value");
-		cgro=$("#formgro").attr("value");
-		cidlo=$("#formidlo").attr("value");
-		cidup=$("#formidup").attr("value");
+		clist=$("#formlist").val();
+		cgro=$("#formgro").val();
+		cidlo=$("#formidlo").val();
+		cidup=$("#formidup").val();
 		
 		localStorage.setItem("clist",clist);
 		localStorage.setItem("cgro",cgro);
@@ -677,11 +682,11 @@ function refreshlistwd()
 			inputdata=inputdata+"</tr><tr>";
 		}
 		rid=wdlist[t][0];
-		list=$("#formlist").attr("value");
+		list=$("#formlist").val();
 		eng=wdlist[t][1];
 		chi=wdlist[t][3];
 		rec=wdlist[t][2];
-		gro=$("#formgro").attr("value");
+		gro=$("#formgro").val();
 		
 		inputdata=inputdata+"<td> <table width=\"250\" cellspacing=\"0\" cellpadding=\"0\" id=\"listtb"+(parseInt(t)+1)+"\"><tr><td height=\"70\"  align=\"center\" valign=\"middle\" id=\"wd"+(parseInt(t)+1)+"\">"+rid+" "+eng+" </td></tr><tr><td height=\"40\" align=\"center\" valign=\"middle\" id=\"recp"+(parseInt(t)+1)+"\">&nbsp;"+rec+"<a href=\"http://dict.cn/"+eng+"\" target=\"_blank\"><img src=\"images/favicon.ico\" /></a>&nbsp;<span id=\"listrecunrimg"+(parseInt(t)+1)+"\"></span></td></tr></table></td>";
 	}
