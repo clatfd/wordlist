@@ -348,6 +348,7 @@ function manconsole(list)
 			.append("<div id='manconsoledivhead'><b>manual console</b></div><br/><select value='action' id='mcactionselect' onchange='manconsolechange()'><option>add</option><option>delete</option><option>update</option></select> list:<input id='mclist' name='mclist' type='text' value='' /> eng<input id='mceng' name='mceng' value='"+eng+"'type='text' onchange='onchangemcdivcheckinfo()'autofocus/><br/> <span id='deleremove'>id:<input id='mcid' name='mcid' type='text' /> rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/></span><br/><button id='mcsubmit' onclick='mcsubmit()'>mcsubmit</button> <button onclick='clearmc(\""+list+"\")'>cancel</button><br/> ")
 			
 				)
+	$("#mceng")[0].focus();//not $("#mceng").focus(); in which case trigger onfocus function
 	$("#mclist").attr('value',list);
 	if(lrevword)
 		onchangemcdivcheckinfo();
@@ -372,12 +373,14 @@ function manconsolechange()
 	if(selecttype=='update')
 	{
 		$("#deleremove").css("display","inline-block");
+		$("#mceng")[0].focus();
 		$("#mceng").attr("onchange","onchangemcdivgetinfo()");
 		$("#mcid").attr("disabled",true);
 	}
 	if(selecttype=='add')
 	{
 		$("#deleremove").css("display","inline-block");
+		$("#mceng")[0].focus();
 		$("#mceng").attr("onchange","onchangemcdivcheckinfo()");
 		
 	}
@@ -417,12 +420,15 @@ function mcsubmit()
 		$.ajax({url: "update.php?list="+tlist+"&eng="+teng+"&id="+tid+"&gro="+tgro+"&chi="+tchi+"&rec="+trec,success: function (){
 				//alert(teng+" has been updated");
 				clearmc(tlist);
-				$("#wd"+tid).attr("onclick","lookwd("+tid+",'"+tchi+"','"+teng+"',"+tgro+")");	
-				$("#wddiv"+tid).attr("chi",tchi);
-				$("#wddiv"+tid).attr("rec",trec);
-				$("#wddiv"+tid).attr("gro",tgro);
-				$("#wddiv"+tid).find(".recspan").html(tgro+"&nbsp;"+trec+"&nbsp;");
-				funlastreviewwords();	
+				if($("#wd"+tid).length){
+					$("#wd"+tid).attr("onclick","lookwd("+tid+",'"+tchi+"','"+teng+"',"+tgro+")");	
+					$("#wddiv"+tid).attr("chi",tchi);
+					$("#wddiv"+tid).attr("rec",trec);
+					$("#wddiv"+tid).attr("gro",tgro);
+					$("#wddiv"+tid).find(".recspan").html(tgro+"&nbsp;"+trec+"&nbsp;");
+					funlastreviewwords();	
+				}
+				lrevword=0;
 			}
 		});
 		
@@ -432,7 +438,7 @@ function mcsubmit()
 	$.ajax({url: "addnew.php?list="+tlist+"&eng="+teng+"&id="+tid+"&gro="+tgro+"&chi="+tchi+"&rec="+trec,success: function (){
 				toastr.success(teng+" has been added");
 				clearmc(tlist);
-				lrevword='';
+				lrevword=0;
 			}
 		});
 		
