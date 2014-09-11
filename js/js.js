@@ -215,7 +215,7 @@ function findsound(word){
 		success: function (data){
 			sounddata=JSON.parse(data);
 			if(sounddata.result==1&&sounddata.americasound!='no_such_sound')
-				asplay(word,"http://audio.dict.cn/"+sounddata);
+				asplay(word,"http://audio.dict.cn/"+sounddata.americasound);
 			else
 				toastr.warning('<p><strong>No Such Word!</strong></p>');
 		}
@@ -501,13 +501,13 @@ function onchangemcdivcheckinfo()
 				if(recdata.americarec!='no_such_rec')
 					$("#mcrec").val(recdata.americarec);
 				else{
-					$("#mcrec").val();
+					$("#mcrec").val('');
 					toastr.info(recdata.americarec);
 				}
 				if(recdata.chi!='no_such_chi')
 					$("#mcchi").val(recdata.chi);
 				else{
-					$("#mcchi").val();
+					$("#mcchi").val('');
 					toastr.info(recdata.chi);
 				}
 				
@@ -515,9 +515,9 @@ function onchangemcdivcheckinfo()
 			}
 			else{
 				toastr.info('No_such_word');
-				$("#mcrec").val();
-				$("#mcgro").val();
-				$("#mcchi").val();
+				$("#mcrec").val('');
+				$("#mcgro").val('');
+				$("#mcchi").val('');
 			}
 
 		}
