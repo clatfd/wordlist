@@ -213,8 +213,8 @@ function findsound(word){
 	$.ajax({
 		url: "curldict.php?word="+word, 
 		success: function (data){
-			sounddata=JSON.parse(data).americasound;
-			if(sounddata!='no_such_word')
+			sounddata=JSON.parse(data);
+			if(sounddata.result==1&&sounddata.americasound!='no_such_sound')
 				asplay(word,"http://audio.dict.cn/"+sounddata);
 			else
 				toastr.warning('<p><strong>No Such Word!</strong></p>');
@@ -345,7 +345,7 @@ function manconsole(list)
 			.attr('id','manconsolediv')
 			//.css("left",tmp.x-175+"px")
 			.css("top",scrollY+300+"px")
-			.append("<div id='manconsoledivhead'><b>manual console</b></div><br/><select value='action' id='mcactionselect' onchange='manconsolechange()'><option>add</option><option>delete</option><option selected>update</option></select> list:<input id='mclist' name='mclist' type='text' value='' /> eng<input id='mceng' name='mceng' value='"+eng+"'type='text' onchange='onchangemcdivcheckinfo()'autofocus/><br/> <span id='deleremove'>id:<input id='mcid' name='mcid' type='text' /> rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/></span><br/><button id='mcsubmit' onclick='mcsubmit()'>mcsubmit</button> <button onclick='clearmc(\""+list+"\")'>cancel</button><br/> ")
+			.append("<div id='manconsoledivhead'><b>manual console</b></div><br/><select value='action' id='mcactionselect' onchange='manconsolechange()'><option>add</option><option>delete</option><option>update</option></select> list:<input id='mclist' name='mclist' type='text' value='' /> eng<input id='mceng' name='mceng' value='"+eng+"'type='text' onchange='onchangemcdivcheckinfo()'autofocus/><br/> <span id='deleremove'>id:<input id='mcid' name='mcid' type='text' /> rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/></span><br/><button id='mcsubmit' onclick='mcsubmit()'>mcsubmit</button> <button onclick='clearmc(\""+list+"\")'>cancel</button><br/> ")
 			
 				)
 	$("#mclist").attr('value',list);
@@ -367,17 +367,17 @@ function manconsolechange()
 	var selecttype=$("#mcactionselect").val();
 	if(selecttype=='delete')
 	{
-		$("#deleremove").html("");
+		$("#deleremove").css("display","none");
 	}
 	if(selecttype=='update')
 	{
-		$("#deleremove").html("id:<input id='mcid' name='mcid' type='text' />  rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/>");
+		$("#deleremove").css("display","inline-block");
 		$("#mceng").attr("onchange","onchangemcdivgetinfo()");
 		$("#mcid").attr("disabled",true);
 	}
 	if(selecttype=='add')
 	{
-		$("#deleremove").html("id:<input id='mcid' name='mcid' type='text' />  rec:<input id='mcrec' name='mcrec' type='text' /> gro:<input id='mcgro' name='mcgro' type='text' /> <br/>chi:<input id='mcchi' name='mcchi' type='text' size='100'/>");
+		$("#deleremove").css("display","inline-block");
 		$("#mceng").attr("onchange","onchangemcdivcheckinfo()");
 		
 	}
@@ -430,9 +430,9 @@ function mcsubmit()
 	if(selecttype=='add')
 	{
 	$.ajax({url: "addnew.php?list="+tlist+"&eng="+teng+"&id="+tid+"&gro="+tgro+"&chi="+tchi+"&rec="+trec,success: function (){
-				//alert(teng+" has been added");
+				toastr.success(teng+" has been added");
 				clearmc(tlist);
-				funlastreviewwords();						
+				lrevword='';
 			}
 		});
 		
@@ -450,16 +450,20 @@ function onchangemcdivgetinfo()
 				   phpdata=JSON.parse(r);
 				 //  for (x in phpdata){alert(phpdata[x])}
  
-				   if(phpdata.chi=="null")
-				   {alert("no_such_word!!");}
-				   else
-				   {
-					   $("#mcchi").attr("value",phpdata.chi);
-					   $("#mcgro").attr("value",phpdata.gro);
-					   $("#mcrec").attr("value",phpdata.rec);
-					   $("#mcid").attr("value",phpdata.id);
-				   }
-								   }
+				   	if(phpdata.chi=="null"){
+				   		$("#mcactionselect").val('add');
+				   		$("#mcactionselect").change();
+				   		manconsolechange();
+				   		$("#mceng").change();
+				   	}
+				   	else
+				   	{
+					   $("#mcchi").val(phpdata.chi);
+					   $("#mcgro").val(phpdata.gro);
+					   $("#mcrec").val(phpdata.rec);
+					   $("#mcid").val(phpdata.id);
+				   	}
+				}
 	});
 }
 
@@ -467,11 +471,51 @@ function onchangemcdivcheckinfo()
 {
 	tlist=$("#mclist").val();
 	teng=$("#mceng").val();	
-	$.ajax({url: "getnextid.php?list="+tlist+"&eng="+teng,
-			   success: function (r){if(r=="R"){$("#mcactionselect").attr('value','update');manconsolechange();onchangemcdivgetinfo();}else{maxid=r;$("#mcid").attr("value",maxid);$("#mcid").attr("disabled",true);}
+	$.ajax({
+		url: "getnextid.php?list="+tlist+"&eng="+teng,
+		success: function (r){
+					if(r=="R"){
+						$("#mcactionselect").val('update');
+						manconsolechange();
+						onchangemcdivgetinfo();
+					}
+					else{
+						maxid=r;
+						$("#mcid").val(maxid);
+						$("#mcid").attr("disabled",true);
+					}
 			   //alert(r);
 			   }
 		   });
+	$.ajax({
+		url: "curldict.php?word="+teng, 
+		success: function (data){
+			recdata=JSON.parse(data);
+			if(recdata.result==1){
+				if(recdata.americarec!='no_such_rec')
+					$("#mcrec").val(recdata.americarec);
+				else{
+					$("#mcrec").val();
+					toastr.info(recdata.americarec);
+				}
+				if(recdata.chi!='no_such_chi')
+					$("#mcchi").val(recdata.chi);
+				else{
+					$("#mcchi").val();
+					toastr.info(recdata.chi);
+				}
+				
+				$("#mcgro").val(getPar('gro'));
+			}
+			else{
+				toastr.info('No_such_word');
+				$("#mcrec").val();
+				$("#mcgro").val();
+				$("#mcchi").val();
+			}
+
+		}
+	});
 
 	
 }
@@ -490,14 +534,14 @@ function subrefreshtimes()
 function refreshexamwd()
 {
 	$(".adddiv").remove();
-	times=parseInt($("#skiptimes").attr("value"));
+	times=parseInt($("#skiptimes").val());
 	
 	if(times)
 	{
 		if(Number($("#totnum").text())-times<0)
 		{
 			$("#skiptimesbutton").attr("disabled",true);
-			$("#skiptimes").attr("value","");
+			$("#skiptimes").val("");
 			return;
 		}
 		refreshtimes=refreshtimes+times-1;
@@ -557,7 +601,7 @@ function refreshexamwd()
 	{
 		//$("#totnum").text(Number($("#totnum").text())-1);
 		$("#skiptimesbutton").attr("disabled",true);
-		$("#skiptimes").attr("value","");
+		$("#skiptimes").val("");
 		$("#examwd").text("end!");
 		$("#examtdrec").text("");
 		$("#examdict").removeAttr("href");
