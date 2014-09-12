@@ -78,6 +78,7 @@ function getcurrentlistinfo(changerange){
 		}
 		$(".itemprint").html(dataprint);
 		$("#totnum").html(cwdlist.length);
+		$("#totnumlength").html(wdalllist[clist][(parseInt(cgro)-1)].length);
 		$("button[data-sort='random']").click();
 }
 function refreshstatis(){

@@ -192,7 +192,9 @@ vertical-align:text-bottom;
 border:2px solid #a1a1a1;
 border-radius:5px;
 }
-
+#manconsolediv>input,#manconsolediv>span>input{
+	margin: 2px;
+}
 /*controlbar*/
 div.control-bar{
 background: #f2f2f2;
