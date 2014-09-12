@@ -5,7 +5,7 @@ function asplay(word,mp3){
 		sound.src = mp3;
 		
 		sound.addEventListener("error", function(_event) {
-   			toastr.warning("<strong>Can not find \""+mp3.slice(9,-4)+"\"in audio library!</strong>");
+   			toastr.warning("<strong>Can not find \""+mp3.slice(0,-4)+"\"in audio library!</strong>");
 		});
 		
 		sound.addEventListener("loadedmetadata", function(_event) {

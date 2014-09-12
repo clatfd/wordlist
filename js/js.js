@@ -264,7 +264,7 @@ function impspancontrol(id){
 	}
 	else if($("#impspan"+id).css("display")=='none'){
 		$("#impspan"+id).css("display","inline-block");
-		$("#impspan"+id).animate({width:"67px"},200,"linear");
+		$("#impspan"+id).animate({width:"67px",height:"29px"},200,"linear");
 	}
 }
 
