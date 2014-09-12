@@ -1,5 +1,7 @@
 function getcurrentlistinfo(changerange){
-	
+	if($(".list").size()){
+		changetolist();
+	}
 	if(localStorage.getItem("cidup")==null)		//init fail at ie and phone
 	{
 		alert("firstuse");
@@ -51,7 +53,8 @@ function getcurrentlistinfo(changerange){
 // generatewdlist
 	dataprint="";
   	curnum=0;
-		 for (worditem in cwdlist){
+  	if(cwdlist.length){
+		for (worditem in cwdlist){
 		 	iid=cwdlist[worditem][0];
 		 	ieng=cwdlist[worditem][1];
 		 	irec=cwdlist[worditem][2];
@@ -80,6 +83,9 @@ function getcurrentlistinfo(changerange){
 		$("#totnum").html(cwdlist.length);
 		$("#totnumlength").html(wdalllist[clist][(parseInt(cgro)-1)].length);
 		$("button[data-sort='random']").click();
+	}
+	else
+		toastr.error("No Word In Range");
 }
 function refreshstatis(){
 	$("#dateinput").append("Created date："+wdalllist.datecreated);
