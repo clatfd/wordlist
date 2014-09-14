@@ -5,6 +5,7 @@ lid=0;		//last id
 lword="";	//last change group word eng
 lrevword=0;//last review word id
 lwpid=-1;//last word id in page. use in function looknextword()
+undopid=-1;//last remove word in page
 lchangrowd=-1;//last change group word
 upnum=0;//recited num in this range
 chitoeng=0;
@@ -73,6 +74,7 @@ function postu(rid,list,eng,chi,gro)
 		toastr.success(upnum);
 	}
 	lwpid--;
+	undopid=lwpid;
 }
 
 function postd(rid,list,eng,chi,gro)
@@ -87,6 +89,7 @@ function postd(rid,list,eng,chi,gro)
 	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
 	lwpid--;
+	undopid=lwpid;
 }
 
 function removeword(rid){
@@ -97,6 +100,7 @@ function removeword(rid){
 	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
 	lwpid--;
+	undopid=lwpid;
 }
 
 function undo(list,location)
@@ -108,7 +112,7 @@ function undo(list,location)
 	//$("#undo").fadeTo("slow",0.01).css("display","none");
 	$("#undo").attr("disabled",true);
 	$("#undo").fadeTo("slow",0.3); 
-	lwpid>1?$("div.mix").eq(lwpid-2).after(storelastdiv):$("div.mix").eq(lwpid-1).before(storelastdiv);
+	$("div.mix").eq(undopid+1).before(storelastdiv);
 	storelastdiv.removeAttr("style");
 	storelastdiv.css("display","inline-block");
 	lid=0;
