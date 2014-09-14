@@ -4,7 +4,7 @@ updown=2;	//0:up 1:down
 lid=0;		//last id
 lword="";	//last change group word eng
 lrevword=0;//last review word id
-lwpid=1;//last word id in page. use in function looknextword()
+lwpid=-1;//last word id in page. use in function looknextword()
 lchangrowd=-1;//last change group word
 upnum=0;//recited num in this range
 chitoeng=0;
@@ -19,7 +19,7 @@ if(window.localStorage)
 function lookwd(rid,chi,eng,pid)
 {
 	lrevword=rid;
-	lwpid=pid+1;
+	lwpid=findclickposition();
 	delenum=parseInt($("#totnum").text())-1;
 	if($("#wdid"+delenum).length>0)		//exist
 		wdid=$("#wdid"+delenum).text();
@@ -72,6 +72,7 @@ function postu(rid,list,eng,chi,gro)
 	if(upnum%10==0){
 		toastr.success(upnum);
 	}
+	lwpid--;
 }
 
 function postd(rid,list,eng,chi,gro)
@@ -85,6 +86,7 @@ function postd(rid,list,eng,chi,gro)
 	lword=eng;
 	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
+	lwpid--;
 }
 
 function removeword(rid){
@@ -94,6 +96,7 @@ function removeword(rid){
 	$("#undo").attr("disabled",false); 
 	tnum=parseInt($("#totnum").text());
 	$("#totnum").html(tnum-1);
+	lwpid--;
 }
 
 function undo(list,location)
@@ -116,6 +119,7 @@ function undo(list,location)
 		$("#totnum").html(tnum+1);
 		tnum+=1;
 	}
+	lwpid++;
 }
 
 function funlastreviewwords(){
@@ -231,7 +235,7 @@ function findclickposition(){
 	return -1;
 }
 function looknextword(){
-	currentposition=findclickposition()+1;
+	currentposition=lwpid+1;//findclickposition()+1;
 	if(currentposition>=$("div.wdeng").length)
 		currentposition=0;
 	$("div.wdeng").eq(currentposition).click();
