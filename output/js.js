@@ -342,17 +342,17 @@ function manconsolechange()
 function mcsubmit()
 {
 
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");
-	tid=$("#mcid").attr("value");
-	trec=$("#mcrec").attr("value");
-	tchi=$("#mcchi").attr("value");
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();
+	tid=$("#mcid").val();
+	trec=$("#mcrec").val();
+	tchi=$("#mcchi").val();
 	
 	tchi=urlfit(tchi);
 
 	lrevword=tid;
 	//tgro=getPar('gro');
-	tgro=$("#mcgro").attr("value");
+	tgro=$("#mcgro").val();
 	
 	var selecttype=$("#mcactionselect").attr('value');
 	if(selecttype=='delete')
@@ -389,9 +389,9 @@ function mcsubmit()
 
 function onchangemcdivgetinfo()
 {
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");
-	tid=$("#mcid").attr("value");
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();
+	tid=$("#mcid").val();
 	tgro=getPar('gro');
 	$.ajax({url: "getinfo.php?list="+tlist+"&eng="+teng,
 			   success: function (r){
@@ -402,10 +402,10 @@ function onchangemcdivgetinfo()
 				   {alert("no_such_word!!");}
 				   else
 				   {
-					   $("#mcchi").attr("value",phpdata.chi);
-					   $("#mcgro").attr("value",phpdata.gro);
-					   $("#mcrec").attr("value",phpdata.rec);
-					   $("#mcid").attr("value",phpdata.id);
+					   $("#mcchi").val(phpdata.chi);
+					   $("#mcgro").val(phpdata.gro);
+					   $("#mcrec").val(phpdata.rec);
+					   $("#mcid").val(phpdata.id);
 				   }
 								   }
 				});
@@ -413,10 +413,10 @@ function onchangemcdivgetinfo()
 
 function onchangemcdivcheckinfo()
 {
-	tlist=$("#mclist").attr("value");
-	teng=$("#mceng").attr("value");	
+	tlist=$("#mclist").val();
+	teng=$("#mceng").val();	
 	$.ajax({url: "getnextid.php?list="+tlist+"&eng="+teng,
-			   success: function (r){if(r=="R"){$("#mcactionselect").attr('value','update');manconsolechange();onchangemcdivgetinfo();}else{maxid=r;$("#mcid").attr("value",maxid);$("#mcid").attr("disabled",true);}
+			   success: function (r){if(r=="R"){$("#mcactionselect").attr('value','update');manconsolechange();onchangemcdivgetinfo();}else{maxid=r;$("#mcid").val(maxid);$("#mcid").attr("disabled",true);}
 			   //alert(r);
 			   }
 		   });
@@ -438,14 +438,14 @@ function subrefreshtimes()
 function refreshexamwd()
 {
 	$(".adddiv").remove();
-	times=parseInt($("#skiptimes").attr("value"));
+	times=parseInt($("#skiptimes").val());
 	
 	if(times)
 	{
 		if(Number($("#totnum").text())-times<0)
 		{
 			$("#skiptimesbutton").attr("disabled",true);
-			$("#skiptimes").attr("value","");
+			$("#skiptimes").val("");
 			return;
 		}
 		refreshtimes=refreshtimes+times-1;
@@ -462,12 +462,12 @@ function refreshexamwd()
 	
 	rid=wdlist[t][0];
 	//list=getPar('list');
-	list=$("#formlist").attr("value");
+	list=$("#formlist").val();
 	eng=wdlist[t][1];
 	chi=wdlist[t][3];
 	rec=wdlist[t][2];
 	//gro=getPar('gro');
-	gro=$("#formgro").attr("value");
+	gro=$("#formgro").val();
 	if(chitoeng){
 		$("#examwd").html(chi);
 	}
@@ -505,7 +505,7 @@ function refreshexamwd()
 	{
 		//$("#totnum").text(Number($("#totnum").text())-1);
 		$("#skiptimesbutton").attr("disabled",true);
-		$("#skiptimes").attr("value","");
+		$("#skiptimes").val("");
 		$("#examwd").text("end!");
 		$("#examtdrec").text("");
 		$("#examdict").removeAttr("href");
@@ -553,12 +553,12 @@ function initialforwdlist()
 function changewdlist(type)
 {
 	
-	if(localStorage.getItem("cidup")==null)
+	if(localStorage.getItem("cidup")==null||localStorage.getItem("cidup")=="")
 	{
 		localStorage.setItem("clist","imp");
 		localStorage.setItem("cgro","1");
-		localStorage.setItem("cidlo","0");
-		localStorage.setItem("cidup","100");
+		localStorage.setItem("cidlo","1");
+		localStorage.setItem("cidup","24");
 		
 	/*
 		localStorage.setItem("clist","imp");
@@ -570,10 +570,10 @@ function changewdlist(type)
 	
 	
 	
-		clist=$("#formlist").attr("value");
-		cgro=$("#formgro").attr("value");
-		cidlo=$("#formidlo").attr("value");
-		cidup=$("#formidup").attr("value");
+		clist=$("#formlist").val();
+		cgro=$("#formgro").val();
+		cidlo=$("#formidlo").val();
+		cidup=$("#formidup").val();
 		
 		localStorage.setItem("clist",clist);
 		localStorage.setItem("cgro",cgro);
@@ -630,11 +630,11 @@ function refreshlistwd()
 			inputdata=inputdata+"</tr><tr>";
 		}
 		rid=wdlist[t][0];
-		list=$("#formlist").attr("value");
+		list=$("#formlist").val();
 		eng=wdlist[t][1];
 		chi=wdlist[t][3];
 		rec=wdlist[t][2];
-		gro=$("#formgro").attr("value");
+		gro=$("#formgro").val();
 		
 		inputdata=inputdata+"<td> <table width=\"250\" cellspacing=\"0\" cellpadding=\"0\" id=\"listtb"+(parseInt(t)+1)+"\"><tr><td height=\"70\"  align=\"center\" valign=\"middle\" id=\"wd"+(parseInt(t)+1)+"\">"+rid+" "+eng+" </td></tr><tr><td height=\"40\" align=\"center\" valign=\"middle\" id=\"recp"+(parseInt(t)+1)+"\">&nbsp;"+rec+"<a href=\"http://dict.cn/"+eng+"\" target=\"_blank\"><img src=\"images/favicon.ico\" /></a>&nbsp;<span id=\"listrecunrimg"+(parseInt(t)+1)+"\"></span></td></tr></table></td>";
 	}

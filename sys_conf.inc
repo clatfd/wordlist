@@ -1,6 +1,6 @@
 <?php
 	$DBHOST="localhost";
 	$DBUSER="root";
-	$DBPWD="";
+	$DBPWD="123456";
 	$DBNAME="word";
 ?>

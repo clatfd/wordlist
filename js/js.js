@@ -19,9 +19,6 @@ if(window.localStorage)
 
 function lookwd(rid,chi,eng,pid)
 {
-	lrevword=rid;
-	lwpid=findclickposition();
-	delenum=parseInt($("#totnum").text())-1;
 	if($("#wdid"+delenum).length>0)		//exist
 		wdid=$("#wdid"+delenum).text();
 	if($(".list").size()==0){
@@ -47,6 +44,9 @@ function lookwd(rid,chi,eng,pid)
 	if(chitoeng==1){
 		$("#wd"+rid).next().find("span").css("display","inline-block");
 	}
+	delenum=parseInt($("#totnum").text())-1;
+	lrevword=rid;
+	lwpid=findclickposition();
 }
 
 function dela(rid,retdata)

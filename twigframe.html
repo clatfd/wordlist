@@ -126,6 +126,7 @@ function whichButton(event)
 					<option {% if list =='wordlisttoefl3'%} selected="selected" {% endif %} >wordlisttoefl3</option>
 					<option {% if list =='wordlisttoefl4'%} selected="selected" {% endif %} >wordlisttoefl4</option>
 					<option {% if list =='gre'%} selected="selected" {% endif %} >gre</option>
+					<option {% if list =='gre3000'%} selected="selected" {% endif %} >gre3000</option>
 					<option {% if list =='six_1'%} selected="selected" {% endif %} >six_1</option>
 					<option {% if list =='six'%} selected="selected" {% endif %} >six</option>
 					<option {% if list =='four'%} selected="selected" {% endif %} >four</option>
@@ -168,6 +169,9 @@ function whichButton(event)
 					<option>{{idup+300}} </option>
 					<option>{{idup+400}} </option>
 				</select>
+				&nbsp;
+				Rand:
+				<input id="randselectnum" name="rd" value="0" />
 				<input id="formsubmit" type="submit" value="检索" />
 			</span>
 		</form>

@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -44,7 +43,7 @@ List:&nbsp;&nbsp;&nbsp;
   Group:
 <select id="formgro" name="gro">
   <option >0</option>
-  <option >1</option>
+  <option selected="selected">1</option>
   <option >2</option>
   <option >3</option>
   <option >4</option>
@@ -56,7 +55,7 @@ List:&nbsp;&nbsp;&nbsp;
 <input id="formidlo" name="textfield" type="text" value="1" size="8" />
 
 to:
-<input id="formidup" name="textfield" type="text" value="50" size="8" />
+<input id="formidup" name="textfield" type="text" value="24" size="8" />
 
 </span>
 </form>
@@ -105,10 +104,10 @@ to:
 
 <span id="listadjust">
 	<p align="center">
-	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))-1)"><button id="buttonlastgroup" class="btn btn-lg btn-primary">Last_Gro</button> </a>
-	<a href="javascript:$('#formgro').attr('value',parseInt($('#formgro').attr('value'))+1)"><button id="buttonnextgroup" class="btn btn-lg btn-primary">Next_Gro</button> </a>
-	<a href="javascript:$('#formidlo').attr('value',$('#formidlo').attr('value')-25);$('#formidup').attr('value',$('#formidup').attr('value')-25)"><button id="buttonlastlist" class="btn btn-lg btn-success">Last_Lst</button></a>
-	<a href="javascript:$('#formidlo').attr('value',parseInt($('#formidlo').attr('value'))+25);$('#formidup').attr('value',parseInt($('#formidup').attr('value'))+25)"><button id="buttonnextlist" class="btn btn-lg btn-success">Next_Lst</button></a>
+	<a href="javascript:$('#formgro').val(parseInt($('#formgro').val())-1)"><button id="buttonlastgroup" class="btn btn-lg btn-primary">Last_Gro</button> </a>
+	<a href="javascript:$('#formgro').val(parseInt($('#formgro').val())+1)"><button id="buttonnextgroup" class="btn btn-lg btn-primary">Next_Gro</button> </a>
+	<a href="javascript:$('#formidlo').val(parseInt($('#formidlo').val())-25);$('#formidup').val(parseInt($('#formidup').val())-25)"><button id="buttonlastlist" class="btn btn-lg btn-success">Last_Lst</button></a>
+	<a href="javascript:$('#formidlo').val(parseInt($('#formidlo').val())+25);$('#formidup').val(parseInt($('#formidup').val())+25)"><button id="buttonnextlist" class="btn btn-lg btn-success">Next_Lst</button></a>
 	</p>
 </span>
 
@@ -116,18 +115,20 @@ to:
 
 </div>
 <script>
+if(localStorage.getItem("cidup")!=null&&localStorage.getItem("cidup")!=""){
     clist=localStorage.getItem("clist");
     cgro=localStorage.getItem("cgro");
     cidlo=localStorage.getItem("cidlo");
     cidup=localStorage.getItem("cidup");
-    $("#formlist").attr("value",clist);
-    $("#formgro").attr("value",cgro);
-    $("#formidlo").attr("value",cidlo);
-    $("#formidup").attr("value",cidup);
+    $("#formlist").val(clist);
+    $("#formgro").val(cgro);
+    $("#formidlo").val(cidlo);
+    $("#formidup").val(cidup);
+}
 	//var setwdlist=setTimeout("changewdlist('exam')",500)
 	changewdlist('exam');
-	$("#skiptimes").click(function(){$("#skiptimes").attr("value","10");$("#skiptimesbutton").attr("disabled",false);});
-	$("div.examdiv").click(function(){$("#skiptimes").attr("value","")});
+	$("#skiptimes").click(function(){$("#skiptimes").val("10");$("#skiptimesbutton").attr("disabled",false);});
+	$("div.examdiv").click(function(){$("#skiptimes").val("")});
 	
 getmodifydate();
 </script>

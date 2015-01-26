@@ -37,6 +37,11 @@ font-size:20px;
 height:30;
 width:50;
 }
+#randselectnum{
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
+}
 .banner{
 font-size:24px;
 color:#03899c;;
