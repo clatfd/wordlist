@@ -3,6 +3,7 @@ $getlist=isset($_GET['list'])?$_GET['list']:'test';
 $getgro=isset($_GET['gro'])?$_GET['gro']:'2';
 $getidlo=isset($_GET['idlo'])?$_GET['idlo']:'1';
 $getidup=isset($_GET['idup'])?$_GET['idup']:'100';
+$getrd=isset($_GET['rd'])?$_GET['rd']:'0';
 require_once 'vendor/autoload.php';
 require_once("sys_conf.inc");
 //$loader = new Twig_Loader_Filesystem('template');
@@ -69,6 +70,7 @@ echo $twig->render('twigframe.html', array(
 	'idlo' => $getidlo,
 	'idup' => $getidup,
 	'gro' => $getgro,
+	'rd' => $getrd,
 	'wdlistarr' =>  $wdlistarr,
 	'totalnum' => $i,
 	'Remote_address' => $_SERVER["REMOTE_ADDR"],

@@ -11,7 +11,7 @@ $posistart2=stripos($realip,":");
 $posiend2=stripos($realip,"(");
 if($posistart&&$posistart2&&$posiend&&$posiend2)
 {
-	$ipaddress = substr($realip,$posistart2+1,$posiend2-$posistart2-1);
+	$ipaddress = substr($realip,$posistart2+2,$posiend2-$posistart2-2);
 }
 else 
 {

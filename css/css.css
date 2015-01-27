@@ -357,3 +357,14 @@ padding:0px;
  .progress{
  	margin-top: 10px;
  }
+
+#qrcode{
+	position: fixed;
+	z-index: 99;
+	background-color: white;
+	padding: 15px;
+	left: 50%;
+	margin-left: -128px;
+	display: none;
+	bottom: 179px;
+}

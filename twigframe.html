@@ -18,6 +18,8 @@
 <script type="text/javascript" src="js/js_addfunction.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
 <script type="text/javascript" src="js/mixitup/jquery.mixitup.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.js"></script>
+<script type="text/javascript" src="js/qrcode.js"></script>
 
 </head>
 
@@ -217,10 +219,13 @@ function whichButton(event)
 </div>
 <p class="menu">
   total number:<span id="totnum">{{totalnum}}</span>/<span id="allgronum"></span>
-  &nbsp;&nbsp;
+  &nbsp;&nbsp;  
   Remote_address:{{Remote_address}};
-  Ip:{{ipaddress}}
+  Ip:<span id="ipaddr">{{ipaddress}}</span>
 </p>
+
+<div id="qrcode"></div>
+
 <div class="row control-foot">
 	<div class="col-xs-12 col-lg-7">
 		<button id="undo" class="btn btn-danger" style="opacity: 0.3;" onclick="undo('{{list}}','default')" disabled="disabled">  Undo(U)  </button>
@@ -340,6 +345,18 @@ $(function(){
 	$(".progress").click(function(){renewstatic()});
 });
 
+$("#ipaddr").hover(
+  function() {
+    $(qrcode).css("display","inline-block");
+  }
+);
+$(function(){
+	$('#qrcode').click(function() {
+	    $(qrcode).css("display","none");
+	  }
+	);
+	$('#qrcode').qrcode("http://{{ipaddress}}/H-wordlist/twig.php?list={{list}}&gro={{gro}}&idlo={{idlo}}&idup={{idup}}&rd={{rd}}");
+})
 </script>
 </body>
 </html>
