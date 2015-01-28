@@ -138,6 +138,9 @@ function whichButton(event)
 \t\t<button class=\"sort controlbtn\" data-sort=\"myorder:desc\">Desc</button>
 \t\t<button class=\"btn banneraddbutton\" onclick=\"changetolist()\"><i class=\"glyphicon glyphicon-th-list\"></i></button>
 \t\t<button id=\"ToggleConfig\" class=\"btn toggle-config config-open banneraddbutton\"  style=\"padding: 0px 5px;\"><i class=\"glyphicon glyphicon-cog\"></i></button>
+\t\t<button class=\"btn banneraddbutton\" onclick=\"retrievelist()\"><i class=\"glyphicon glyphicon-share-alt\"></i></button>
+
+\t\t
 \t</div>
 \t<div class=\"cl-xs-12 col-md-8\">
 \t\t<form name=\"form1\" id=\"form1\" method=\"GET\">
@@ -145,103 +148,103 @@ function whichButton(event)
 \t\t\t\tList:
 \t\t\t\t<select id=\"formlist\" name=\"list\" style=\"width: 119px;\">
 \t\t\t\t\t<option  ";
-        // line 120
+        // line 123
         if (((isset($context["list"]) ? $context["list"] : null) == "imp")) {
             echo " selected=\"selected\" ";
         }
         echo " >imp</option>
 \t\t\t\t\t<option  ";
-        // line 121
+        // line 124
         if (((isset($context["list"]) ? $context["list"] : null) == "i_mfl")) {
             echo " selected=\"selected\" ";
         }
         echo " >i_mfl</option>
 \t\t\t\t\t<option  ";
-        // line 122
+        // line 125
         if (((isset($context["list"]) ? $context["list"] : null) == "i_ivt")) {
             echo " selected=\"selected\" ";
         }
         echo " >i_ivt</option>
 \t\t\t\t\t<option  ";
-        // line 123
+        // line 126
         if (((isset($context["list"]) ? $context["list"] : null) == "test")) {
             echo " selected=\"selected\" ";
         }
         echo " >test</option>
 \t\t\t\t\t<option  ";
-        // line 124
+        // line 127
         if (((isset($context["list"]) ? $context["list"] : null) == "wordlist")) {
             echo " selected=\"selected\" ";
         }
         echo " >wordlist</option>
 \t\t\t\t\t<option ";
-        // line 125
+        // line 128
         if (((isset($context["list"]) ? $context["list"] : null) == "recent1")) {
             echo " selected=\"selected\" ";
         }
         echo " >recent1</option>
 \t\t\t\t\t<option ";
-        // line 126
+        // line 129
         if (((isset($context["list"]) ? $context["list"] : null) == "wordlisttoefl1")) {
             echo " selected=\"selected\" ";
         }
         echo " >wordlisttoefl1</option>
 \t\t\t\t\t<option ";
-        // line 127
+        // line 130
         if (((isset($context["list"]) ? $context["list"] : null) == "wordlisttoefl2")) {
             echo " selected=\"selected\" ";
         }
         echo " >wordlisttoefl2</option>
 \t\t\t\t\t<option ";
-        // line 128
+        // line 131
         if (((isset($context["list"]) ? $context["list"] : null) == "wordlisttoefl3")) {
             echo " selected=\"selected\" ";
         }
         echo " >wordlisttoefl3</option>
 \t\t\t\t\t<option ";
-        // line 129
+        // line 132
         if (((isset($context["list"]) ? $context["list"] : null) == "wordlisttoefl4")) {
             echo " selected=\"selected\" ";
         }
         echo " >wordlisttoefl4</option>
 \t\t\t\t\t<option ";
-        // line 130
+        // line 133
         if (((isset($context["list"]) ? $context["list"] : null) == "gre")) {
             echo " selected=\"selected\" ";
         }
         echo " >gre</option>
 \t\t\t\t\t<option ";
-        // line 131
+        // line 134
         if (((isset($context["list"]) ? $context["list"] : null) == "gre3000")) {
             echo " selected=\"selected\" ";
         }
         echo " >gre3000</option>
 \t\t\t\t\t<option ";
-        // line 132
+        // line 135
         if (((isset($context["list"]) ? $context["list"] : null) == "six_1")) {
             echo " selected=\"selected\" ";
         }
         echo " >six_1</option>
 \t\t\t\t\t<option ";
-        // line 133
+        // line 136
         if (((isset($context["list"]) ? $context["list"] : null) == "six")) {
             echo " selected=\"selected\" ";
         }
         echo " >six</option>
 \t\t\t\t\t<option ";
-        // line 134
+        // line 137
         if (((isset($context["list"]) ? $context["list"] : null) == "four")) {
             echo " selected=\"selected\" ";
         }
         echo " >four</option>
 \t\t\t\t\t<option ";
-        // line 135
+        // line 138
         if (((isset($context["list"]) ? $context["list"] : null) == "toefl")) {
             echo " selected=\"selected\" ";
         }
         echo " >toefl</option>
 \t\t\t\t\t<option ";
-        // line 136
+        // line 139
         if (((isset($context["list"]) ? $context["list"] : null) == "ielts")) {
             echo " selected=\"selected\" ";
         }
@@ -251,37 +254,37 @@ function whichButton(event)
 \t\t\t\tGroup:
 \t\t\t\t<select id=\"formgro\" name=\"gro\">
 \t\t\t\t\t<option ";
-        // line 141
+        // line 144
         if (((isset($context["gro"]) ? $context["gro"] : null) == 0)) {
             echo " selected=\"selected\" ";
         }
         echo ">0</option>
 \t\t\t\t\t<option ";
-        // line 142
+        // line 145
         if (((isset($context["gro"]) ? $context["gro"] : null) == 1)) {
             echo " selected=\"selected\" ";
         }
         echo ">1</option>
 \t\t\t\t\t<option ";
-        // line 143
+        // line 146
         if (((isset($context["gro"]) ? $context["gro"] : null) == 2)) {
             echo " selected=\"selected\" ";
         }
         echo ">2</option>
 \t\t\t\t\t<option ";
-        // line 144
+        // line 147
         if (((isset($context["gro"]) ? $context["gro"] : null) == 3)) {
             echo " selected=\"selected\" ";
         }
         echo ">3</option>
 \t\t\t\t\t<option ";
-        // line 145
+        // line 148
         if (((isset($context["gro"]) ? $context["gro"] : null) == 4)) {
             echo " selected=\"selected\" ";
         }
         echo ">4</option>
 \t\t\t\t\t<option ";
-        // line 146
+        // line 149
         if (((isset($context["gro"]) ? $context["gro"] : null) == 5)) {
             echo " selected=\"selected\" ";
         }
@@ -291,51 +294,51 @@ function whichButton(event)
 \t\t\t\tIdfrom:
 \t\t\t\t<select name=\"idlo\">
 \t\t\t\t\t";
-        // line 151
+        // line 154
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 400) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 400), "html", null, true);
             echo "</option>";
         }
-        // line 152
+        // line 155
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 300) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 300), "html", null, true);
             echo "</option>";
         }
-        // line 153
+        // line 156
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 200) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 200), "html", null, true);
             echo "</option>";
         }
-        // line 154
+        // line 157
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 100) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 100), "html", null, true);
             echo "</option>";
         }
-        // line 155
+        // line 158
         echo "\t\t\t\t\t<option selected=\"selected\">";
         echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
         echo "</option>
 \t\t\t\t\t<option>";
-        // line 156
+        // line 159
         echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) + 100), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 157
+        // line 160
         echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) + 200), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 158
+        // line 161
         echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) + 300), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 159
+        // line 162
         echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) + 400), "html", null, true);
         echo " </option>
 \t\t\t\t</select>
@@ -343,58 +346,58 @@ function whichButton(event)
 \t\t\t\tto:
 \t\t\t\t<select name=\"idup\">
 \t\t\t\t\t";
-        // line 164
+        // line 167
         if ((((isset($context["idup"]) ? $context["idup"] : null) - 400) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 400), "html", null, true);
             echo "</option>";
         }
-        // line 165
+        // line 168
         echo "\t\t\t\t\t";
         if ((((isset($context["idup"]) ? $context["idup"] : null) - 300) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 300), "html", null, true);
             echo "</option>";
         }
-        // line 166
+        // line 169
         echo "\t\t\t\t\t";
         if ((((isset($context["idup"]) ? $context["idup"] : null) - 200) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 200), "html", null, true);
             echo "</option>";
         }
-        // line 167
+        // line 170
         echo "\t\t\t\t\t";
         if ((((isset($context["idup"]) ? $context["idup"] : null) - 100) >= 0)) {
             echo "<option>";
             echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 100), "html", null, true);
             echo "</option>";
         }
-        // line 168
+        // line 171
         echo "\t\t\t\t\t<option selected=\"selected\">";
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
         echo "</option>
 \t\t\t\t\t<option>";
-        // line 169
+        // line 172
         echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) + 100), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 170
+        // line 173
         echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) + 200), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 171
+        // line 174
         echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) + 300), "html", null, true);
         echo " </option>
 \t\t\t\t\t<option>";
-        // line 172
+        // line 175
         echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) + 400), "html", null, true);
         echo " </option>
 \t\t\t\t</select>
 \t\t\t\t&nbsp;
 \t\t\t\tRand:
 \t\t\t\t<input id=\"randselectnum\" name=\"rd\" value=\"0\" />
-\t\t\t\t<input id=\"formsubmit\" type=\"submit\" value=\"检索\" />
+\t\t\t\t<input id=\"formsubmit\" type=\"submit\" value=\"Go\" />
 \t\t\t</span>
 \t\t</form>
 \t</div>
@@ -413,11 +416,11 @@ function whichButton(event)
 <div id=\"Container\" class=\"sandbox\">
   \t<div class=\"row\">
 \t\t";
-        // line 195
+        // line 198
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["wdlistarr"]) ? $context["wdlistarr"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 196
+            // line 199
             echo "\t\t\t<div class=\"col-xs-6 col-md-4 col-lg-3 mix";
             if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["implist"]) ? $context["implist"] : null))) {
                 echo " category-imp";
@@ -435,7 +438,7 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ">
 \t\t\t\t<div id=\"wddiv";
-            // line 197
+            // line 200
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo "\" class=\"divgrid\" border=\"0\" data-source=\"";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "jsondata"), "html", null, true);
@@ -449,7 +452,7 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
             echo "\">  
 \t\t\t\t\t<div class=\"wdeng\" id=\"wd";
-            // line 198
+            // line 201
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo "\" align=\"center\" valign=\"middle\" onclick=\"lookwd(";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
@@ -466,7 +469,7 @@ function whichButton(event)
             echo "
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"recdiv\" height=\"40\" colspan=\"2\" align=\"center\" valign=\"middle\"><span class=\"recspan\">";
-            // line 200
+            // line 203
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "rec"), "html", null, true);
@@ -513,11 +516,11 @@ function whichButton(event)
             echo ",'ivt')\">V</i></span>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div id=\"bt";
-            // line 202
+            // line 205
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo "\" height=\"20\" class=\"updowndiv\">
 \t\t\t\t\t\t<span class=\"glyphicon glyphicon-chevron-up arrowp\" onclick=\"postu(";
-            // line 203
+            // line 206
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ",'";
             echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
@@ -530,12 +533,12 @@ function whichButton(event)
             echo "')\"></span>
 \t\t\t\t\t\t&nbsp;&nbsp;
 \t\t\t\t\t\t<span class=\"glyphicon glyphicon-remove arrowp\" onclick=\"removeword(";
-            // line 205
+            // line 208
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ")\"></span>
 \t\t\t\t\t\t&nbsp;&nbsp;
 \t\t\t\t\t\t<span class=\"glyphicon glyphicon-chevron-down arrowp\" onclick=\"postd(";
-            // line 207
+            // line 210
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ",'";
             echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
@@ -550,40 +553,40 @@ function whichButton(event)
 \t\t\t \t</div>  
 \t\t\t</div>
 \t\t\t";
-            // line 211
+            // line 214
             if ((($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "curnum") % 4) == 3)) {
-                // line 212
+                // line 215
                 echo "\t\t\t<div class=\"clearfix visible-lg\"></div>
 \t\t\t";
             }
-            // line 214
+            // line 217
             echo "\t\t\t";
             if ((($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "curnum") % 3) == 2)) {
-                // line 215
+                // line 218
                 echo "\t\t\t<div class=\"clearfix visible-md\"></div>
 \t\t\t";
             }
-            // line 217
+            // line 220
             echo "\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 218
+        // line 221
         echo "\t</div>
 </div>
 <p class=\"menu\">
   total number:<span id=\"totnum\">";
-        // line 221
+        // line 224
         echo twig_escape_filter($this->env, (isset($context["totalnum"]) ? $context["totalnum"] : null), "html", null, true);
         echo "</span>/<span id=\"allgronum\"></span>
   &nbsp;&nbsp;  
   Remote_address:";
-        // line 223
+        // line 226
         echo twig_escape_filter($this->env, (isset($context["Remote_address"]) ? $context["Remote_address"] : null), "html", null, true);
         echo ";
   Ip:<span id=\"ipaddr\">";
-        // line 224
+        // line 227
         echo twig_escape_filter($this->env, (isset($context["ipaddress"]) ? $context["ipaddress"] : null), "html", null, true);
         echo "</span>
 </p>
@@ -593,14 +596,14 @@ function whichButton(event)
 <div class=\"row control-foot\">
 \t<div class=\"col-xs-12 col-lg-7\">
 \t\t<button id=\"undo\" class=\"btn btn-danger\" style=\"opacity: 0.3;\" onclick=\"undo('";
-        // line 231
+        // line 234
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "','default')\" disabled=\"disabled\">  Undo(U)  </button>
 \t\t&nbsp;&nbsp;  
 \t\t<button id=\"rev\" class=\"btn btn-success\" onclick=\"revall()\">Review(R)</button>
 \t\t&nbsp;&nbsp;    
 \t\t<button id=\"showall\" class=\"btn btn-success\" onclick=\"showall(";
-        // line 235
+        // line 238
         echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
         echo ",";
         echo twig_escape_filter($this->env, (isset($context["idup"]) ? $context["idup"] : null), "html", null, true);
@@ -609,7 +612,7 @@ function whichButton(event)
 \t\t<button id=\"buttonchitoeng\" class=\"btn btn-success\" onclick=\"funchitoeng()\">Chi->eng(C)</button>
 \t\t&nbsp;&nbsp;    
 \t\t<a href=\"exam.php?list=";
-        // line 239
+        // line 242
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&amp;gro=";
         echo twig_escape_filter($this->env, (isset($context["gro"]) ? $context["gro"] : null), "html", null, true);
@@ -620,7 +623,7 @@ function whichButton(event)
         echo "\"><button id=\"gotoexam\" class=\"btn btn-warning\">Go->exam(G)</button></a>
 \t\t&nbsp;&nbsp;  
 \t\t<a href=\"outputtocard.php?list=";
-        // line 241
+        // line 244
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&amp;gro=";
         echo twig_escape_filter($this->env, (isset($context["gro"]) ? $context["gro"] : null), "html", null, true);
@@ -633,7 +636,7 @@ function whichButton(event)
 \t</div>
 \t<div class=\"col-xs-12 col-lg-5\">
 \t\t<button id=\"manconsole\" class=\"btn btn-warning\" onclick=\"manconsole('";
-        // line 245
+        // line 248
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "')\">Man_Console(M)</button>
 \t\t&nbsp;&nbsp;  
@@ -647,7 +650,7 @@ function whichButton(event)
 
 <div class=\"progress\">
   <div class=\"progress-bar progress-bar-danger progress-bar-striped";
-        // line 256
+        // line 259
         if (((isset($context["gro"]) ? $context["gro"] : null) == 1)) {
             echo " active";
         }
@@ -655,7 +658,7 @@ function whichButton(event)
     0%
   </div>
   <div class=\"progress-bar progress-bar-warning progress-bar-striped";
-        // line 259
+        // line 262
         if (((isset($context["gro"]) ? $context["gro"] : null) == 2)) {
             echo " active";
         }
@@ -663,7 +666,7 @@ function whichButton(event)
     0%
   </div>
   <div class=\"progress-bar progress-bar-info progress-bar-striped";
-        // line 262
+        // line 265
         if (((isset($context["gro"]) ? $context["gro"] : null) == 3)) {
             echo " active";
         }
@@ -671,7 +674,7 @@ function whichButton(event)
     0%
   </div>
   <div class=\"progress-bar progress-bar-primary progress-bar-striped";
-        // line 265
+        // line 268
         if (((isset($context["gro"]) ? $context["gro"] : null) == 4)) {
             echo " active";
         }
@@ -679,7 +682,7 @@ function whichButton(event)
     0%
   </div>
   <div class=\"progress-bar progress-bar-success progress-bar-striped";
-        // line 268
+        // line 271
         if (((isset($context["gro"]) ? $context["gro"] : null) == 5)) {
             echo " active";
         }
@@ -691,7 +694,7 @@ function whichButton(event)
 <div class=\"row control-foot\">
 \t<div class=\"col-md-2 col-xs-3\">
 \t\t <a class=\"menu\" href=\"twig.php?list=";
-        // line 275
+        // line 278
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&gro=";
         echo twig_escape_filter($this->env, ((isset($context["gro"]) ? $context["gro"] : null) - 1), "html", null, true);
@@ -703,7 +706,7 @@ function whichButton(event)
 \t </div>
  \t<div class=\"col-md-2 col-xs-3\">
 \t\t<a class=\"menu\" href=\"twig.php?list=";
-        // line 278
+        // line 281
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&gro=";
         echo twig_escape_filter($this->env, ((isset($context["gro"]) ? $context["gro"] : null) + 1), "html", null, true);
@@ -715,7 +718,7 @@ function whichButton(event)
 \t</div>
 \t<div class=\"col-md-2 col-xs-3\">
 \t\t<a class=\"menu\" href=\"twig.php?list=";
-        // line 281
+        // line 284
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&amp;gro=";
         echo twig_escape_filter($this->env, (isset($context["gro"]) ? $context["gro"] : null), "html", null, true);
@@ -727,7 +730,7 @@ function whichButton(event)
   \t</div>
   \t<div class=\"col-md-2 col-xs-3\">
 \t\t<a class=\"menu\" href=\"twig.php?list=";
-        // line 284
+        // line 287
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&amp;gro=";
         echo twig_escape_filter($this->env, (isset($context["gro"]) ? $context["gro"] : null), "html", null, true);
@@ -781,7 +784,7 @@ move=function(o,t){
 // ]]>
 function renewstatic(){
 \$.ajax({url: \"briefsta.php?list=";
-        // line 329
+        // line 332
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
         echo "&idlo=";
         echo twig_escape_filter($this->env, (isset($context["idlo"]) ? $context["idlo"] : null), "html", null, true);
@@ -817,7 +820,7 @@ function renewstatic(){
 \t  }
 \t);
 \t\$('#qrcode').qrcode(\"http://";
-        // line 358
+        // line 361
         echo twig_escape_filter($this->env, (isset($context["ipaddress"]) ? $context["ipaddress"] : null), "html", null, true);
         echo "/H-wordlist/twig.php?list=";
         echo twig_escape_filter($this->env, (isset($context["list"]) ? $context["list"] : null), "html", null, true);
@@ -849,6 +852,6 @@ function renewstatic(){
 
     public function getDebugInfo()
     {
-        return array (  821 => 358,  785 => 329,  731 => 284,  719 => 281,  707 => 278,  695 => 275,  683 => 268,  675 => 265,  667 => 262,  659 => 259,  651 => 256,  637 => 245,  624 => 241,  613 => 239,  604 => 235,  597 => 231,  587 => 224,  583 => 223,  578 => 221,  573 => 218,  567 => 217,  563 => 215,  560 => 214,  556 => 212,  554 => 211,  539 => 207,  534 => 205,  521 => 203,  517 => 202,  470 => 200,  453 => 198,  439 => 197,  421 => 196,  417 => 195,  391 => 172,  387 => 171,  383 => 170,  379 => 169,  374 => 168,  367 => 167,  360 => 166,  353 => 165,  347 => 164,  339 => 159,  335 => 158,  331 => 157,  327 => 156,  322 => 155,  315 => 154,  308 => 153,  301 => 152,  295 => 151,  285 => 146,  279 => 145,  273 => 144,  267 => 143,  261 => 142,  255 => 141,  245 => 136,  239 => 135,  233 => 134,  227 => 133,  221 => 132,  215 => 131,  209 => 130,  203 => 129,  197 => 128,  191 => 127,  185 => 126,  179 => 125,  173 => 124,  167 => 123,  161 => 122,  155 => 121,  149 => 120,  26 => 6,  19 => 1,);
+        return array (  824 => 361,  788 => 332,  734 => 287,  722 => 284,  710 => 281,  698 => 278,  686 => 271,  678 => 268,  670 => 265,  662 => 262,  654 => 259,  640 => 248,  627 => 244,  616 => 242,  607 => 238,  600 => 234,  590 => 227,  586 => 226,  581 => 224,  576 => 221,  570 => 220,  566 => 218,  563 => 217,  559 => 215,  557 => 214,  542 => 210,  537 => 208,  524 => 206,  520 => 205,  473 => 203,  456 => 201,  442 => 200,  424 => 199,  420 => 198,  394 => 175,  390 => 174,  386 => 173,  382 => 172,  377 => 171,  370 => 170,  363 => 169,  356 => 168,  350 => 167,  342 => 162,  338 => 161,  334 => 160,  330 => 159,  325 => 158,  318 => 157,  311 => 156,  304 => 155,  298 => 154,  288 => 149,  282 => 148,  276 => 147,  270 => 146,  264 => 145,  258 => 144,  248 => 139,  242 => 138,  236 => 137,  230 => 136,  224 => 135,  218 => 134,  212 => 133,  206 => 132,  200 => 131,  194 => 130,  188 => 129,  182 => 128,  176 => 127,  170 => 126,  164 => 125,  158 => 124,  152 => 123,  26 => 6,  19 => 1,);
     }
 }

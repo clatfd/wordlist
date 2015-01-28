@@ -111,6 +111,9 @@ function whichButton(event)
 		<button class="sort controlbtn" data-sort="myorder:desc">Desc</button>
 		<button class="btn banneraddbutton" onclick="changetolist()"><i class="glyphicon glyphicon-th-list"></i></button>
 		<button id="ToggleConfig" class="btn toggle-config config-open banneraddbutton"  style="padding: 0px 5px;"><i class="glyphicon glyphicon-cog"></i></button>
+		<button class="btn banneraddbutton" onclick="retrievelist()"><i class="glyphicon glyphicon-share-alt"></i></button>
+
+		
 	</div>
 	<div class="cl-xs-12 col-md-8">
 		<form name="form1" id="form1" method="GET">
@@ -174,7 +177,7 @@ function whichButton(event)
 				&nbsp;
 				Rand:
 				<input id="randselectnum" name="rd" value="0" />
-				<input id="formsubmit" type="submit" value="检索" />
+				<input id="formsubmit" type="submit" value="Go" />
 			</span>
 		</form>
 	</div>

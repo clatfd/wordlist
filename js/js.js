@@ -266,6 +266,9 @@ function changetolist(){
 	}
 }
 
+function retrievelist(){
+	document.location=document.location.href+"&rt";
+}
 function impspancontrol(id){
 	if($("#impspan"+id).css("display")=='inline-block'){
 		$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
