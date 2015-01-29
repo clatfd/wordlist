@@ -1,11 +1,4 @@
 <?php
-if(isset($_GET['rt'])){
-	$getlist=$_COOKIE["list"];
-	$getgro=$_COOKIE["gro"];
-	$getidlo=$_COOKIE["idlo"];
-	$getidup=$_COOKIE["idup"];
-}
-else{
 	$getlist=isset($_GET['list'])?$_GET['list']:'test';
 	$getgro=isset($_GET['gro'])?$_GET['gro']:'2';
 	$getidlo=isset($_GET['idlo'])?$_GET['idlo']:'1';
@@ -14,7 +7,6 @@ else{
 	setcookie("gro", $getgro,time()+3600*24*365);
 	setcookie("idlo", $getidlo,time()+3600*24*365);
 	setcookie("idup", $getidup,time()+3600*24*365);
-}
 $getrd=isset($_GET['rd'])?$_GET['rd']:'0';
 require_once 'vendor/autoload.php';
 require_once("sys_conf.inc");

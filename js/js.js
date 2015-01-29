@@ -267,7 +267,10 @@ function changetolist(){
 }
 
 function retrievelist(){
-	document.location=document.location.href+"&rt";
+	var newhref="twig.php?list="+getCookie("list")+"&gro="+getCookie("gro")+"&idlo="+getCookie("idlo")+"&idup="+getCookie("idup")+"&rd=0";
+	document.location=newhref;
+
+	//var chhref=setTimeout(function(){history.pushState({},"",newhref)},1000);
 }
 function impspancontrol(id){
 	if($("#impspan"+id).css("display")=='inline-block'){
