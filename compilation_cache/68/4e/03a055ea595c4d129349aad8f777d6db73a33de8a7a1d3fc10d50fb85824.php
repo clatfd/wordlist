@@ -488,7 +488,7 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
             echo ")\"></i><span id=\"impspan";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo "\" class=\"impspan\" style=\"display:none\"><i class=\"";
+            echo "\" class=\"impspan\" style=\"display:none\"><div class=\"";
             if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["implist"]) ? $context["implist"] : null))) {
                 echo "remove";
             } else {
@@ -496,7 +496,7 @@ function whichButton(event)
             }
             echo "imp\" onclick=\"impadjust(";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo ",'imp')\">I</i><i class=\"";
+            echo ",'imp')\">I</div><div class=\"";
             if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["mfllist"]) ? $context["mfllist"] : null))) {
                 echo "remove";
             } else {
@@ -504,7 +504,7 @@ function whichButton(event)
             }
             echo "mfl\" onclick=\"impadjust(";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo ",'mfl')\">M</i><i class=\"";
+            echo ",'mfl')\">M</div><div class=\"";
             if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["ivtlist"]) ? $context["ivtlist"] : null))) {
                 echo "remove";
             } else {
@@ -512,7 +512,7 @@ function whichButton(event)
             }
             echo "ivt\" onclick=\"impadjust(";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "id"), "html", null, true);
-            echo ",'ivt')\">V</i></span>
+            echo ",'ivt')\">V</div></span>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div id=\"bt";
             // line 204

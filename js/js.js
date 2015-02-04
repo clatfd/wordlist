@@ -274,11 +274,11 @@ function retrievelist(){
 }
 function impspancontrol(id){
 	if($("#impspan"+id).css("display")=='inline-block'){
-		$("#impspan"+id).animate({width:"0px"},200,"linear",function(){$("#impspan"+id).css("display","none")});
+		$("#impspan"+id).animate({width:"0px"},100,"linear",function(){$("#impspan"+id).css("display","none")});
 	}
 	else if($("#impspan"+id).css("display")=='none'){
 		$("#impspan"+id).css("display","inline-block");
-		$("#impspan"+id).animate({width:"67px",height:"29px"},200,"linear");
+		$("#impspan"+id).animate({width:"75px",height:"22px"},100,"linear");
 	}
 }
 

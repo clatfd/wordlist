@@ -175,16 +175,23 @@ font-size: 18px;
 }
 .addimp, .addmfl, .addivt,.removeimp, .removemfl, .removeivt{
 font-style: normal;
-padding: 5px;
 cursor: pointer;
+width: 20px;
+height: 22px;
+display: inline-block;
+background-color: #03899c;
+margin-left: 2px;
+line-height: 22px;
+font-size: 20px;
 }
 .removeimp, .removemfl, .removeivt{
 background-color:#a6e6a7;
 }
 .impspan{
 width:0px;
-height:29px;
+height:22px;
 overflow: hidden;
+padding-top: 2px;
 }
 #manconsolediv{
 width:800px;
