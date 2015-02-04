@@ -16,7 +16,7 @@
 	$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	mysql_select_db($DBNAME);
 	mysql_query("SET NAMES 'utf8'");
-	$sql="Select * from ".$_GET['list']." where gro=1";	
+	$sql="Select id from ".$_GET['list']." where gro=1";	
 	$result=mysql_query($sql);
 	$i1=0;
 	$arr = array(); 
@@ -25,7 +25,7 @@
 	$i1++;
 	}
 	
-	$sql="Select * from ".$_GET['list']."  where gro=2";	
+	$sql="Select id from ".$_GET['list']."  where gro=2";	
 	$result=mysql_query($sql);
 	$i2=0;
 	$arr = array(); 
@@ -35,7 +35,7 @@
 	}
 	
 	
-	$sql="Select * from ".$_GET['list']."  where gro=3";	
+	$sql="Select id from ".$_GET['list']."  where gro=3";	
 	$result=mysql_query($sql);
 	$i3=0;
 	$arr = array(); 
@@ -44,7 +44,7 @@
 	$i3++;
 	}
 	
-	$sql="Select * from ".$_GET['list']."  where gro=4";	
+	$sql="Select id from ".$_GET['list']."  where gro=4";	
 	$result=mysql_query($sql);
 	$i4=0;
 	$arr = array(); 
@@ -53,7 +53,7 @@
 	$i4++;
 	}
 	
-	$sql="Select * from ".$_GET['list']."  where gro=5";	
+	$sql="Select id from ".$_GET['list']."  where gro=5";	
 	$result=mysql_query($sql);
 	$i5=0;
 	$arr = array(); 

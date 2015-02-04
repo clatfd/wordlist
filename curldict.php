@@ -26,19 +26,19 @@ if(isset($_GET['word'])){
 		$starttypepo=strpos($result,'美');
 		$restrim=substr($result,$starttypepo,300);
 		$startspo=strpos($restrim,'<bdo lang="EN-US">');
-		$restrim=substr($restrim,$startspo+18);
+		$restrim=substr($restrim,$startspo+19);
 		$endspo=strpos($restrim,'</bdo>');
-		$americarec=substr($restrim,0,$endspo);
+		$americarec=substr($restrim,0,$endspo-1);
 		$americarec=str_replace("'", "`", $americarec);
 		if(!$americarec){
 			$americarec='no_such_rec';
 		}
 		//get chi
-		$starttypepo=strpos($result,'基本释义');
+		$starttypepo=strpos($result,'basic clearfix');
 		$restrim=substr($result,$starttypepo,700);
 		$startspo=strpos($restrim,'<li');
 		$restrim=substr($restrim,$startspo+4);
-		$endspo=strpos($restrim,'style="padding-top: 25px;"');
+		$endspo=strpos($restrim,'<li style="padding-top: 25px;">');
 		$restrim=substr($restrim,0,$endspo);
 		$endspo=strpos($restrim,'</li');
 		$chi=substr($restrim,0,$endspo);
@@ -51,6 +51,7 @@ if(isset($_GET['word'])){
 		if(!$chi){
 			$chi='no_such_chi';
 		}
+
 		$dictresult = array('result' =>$searchresult, 'americasound' => $americasound,'americarec' => $americarec,'chi' => $chi);
 	}
 	echo json_encode($dictresult);

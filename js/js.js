@@ -482,6 +482,9 @@ function onchangemcdivgetinfo()
 					   $("#mcgro").val(phpdata.gro);
 					   $("#mcrec").val(phpdata.rec);
 					   $("#mcid").val(phpdata.id);
+					   if(!phpdata.rec){
+					   	curlwordinfo();
+					   }
 				   	}
 				}
 	});
@@ -503,26 +506,35 @@ function onchangemcdivcheckinfo()
 						maxid=r;
 						$("#mcid").val(maxid);
 						$("#mcid").attr("disabled",true);
+						$("#mcrec").val('');
+						$("#mcchi").val('');
+						curlwordinfo();
 					}
 			   //alert(r);
 			   }
 		   });
+}
+function curlwordinfo(){
 	$.ajax({
 		url: "curldict.php?word="+teng, 
 		success: function (data){
 			recdata=JSON.parse(data);
 			if(recdata.result==1){
-				if(recdata.americarec!='no_such_rec')
-					$("#mcrec").val(recdata.americarec);
-				else{
-					$("#mcrec").val('');
-					toastr.info(recdata.americarec);
+				if($("#mcrec").val()==''){
+					if(recdata.americarec!='no_such_rec')
+						$("#mcrec").val(recdata.americarec);
+					else{
+						$("#mcrec").val('');
+						toastr.info(recdata.americarec);
+					}
 				}
-				if(recdata.chi!='no_such_chi')
-					$("#mcchi").val(recdata.chi);
-				else{
-					$("#mcchi").val('');
-					toastr.info(recdata.chi);
+				if($("#mcchi").val()==''){
+					if(recdata.chi!='no_such_chi')
+						$("#mcchi").val(recdata.chi);
+					else{
+						$("#mcchi").val('');
+						toastr.info(recdata.chi);
+					}
 				}
 				
 				$("#mcgro").val(getPar('gro'));
@@ -536,8 +548,6 @@ function onchangemcdivcheckinfo()
 
 		}
 	});
-
-	
 }
 
 function subrefreshtimes()
