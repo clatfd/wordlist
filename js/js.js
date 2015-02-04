@@ -326,6 +326,7 @@ function looksound(eng)
 	asplay(sdsrc);
 }
 function mdclearfix(){
+	$(".chispan").remove('');
 	var sc=setTimeout('mdclearfixdelay()',1000);
 }
 function mdclearfixdelay(){

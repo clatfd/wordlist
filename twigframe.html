@@ -54,10 +54,10 @@ function whichButton(event)
 		//alert("p");
 		$("#printcard").click();
 	}	
-	else if(event.keyCode==88)
+	else if(event.keyCode==81)
 	{
-		//alert("x");
-		$("#xiaomiversion").click();
+		//alert("q");
+		$("button[data-sort=random]").click()
 	}	
 	else if(event.keyCode==77)
 	{
@@ -350,13 +350,12 @@ $(function(){
 $("#ipaddr").hover(
   function() {
     $(qrcode).css("display","inline-block");
+  },
+  function() {
+    $(qrcode).css("display","none");
   }
 );
 $(function(){
-	$('#qrcode').click(function() {
-	    $(qrcode).css("display","none");
-	  }
-	);
 	$('#qrcode').qrcode("http://{{ipaddress}}/H-wordlist/twig.php?list={{list}}&gro={{gro}}&idlo={{idlo}}&idup={{idup}}&rd={{rd}}");
 })
 </script>
