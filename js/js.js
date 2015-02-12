@@ -828,6 +828,26 @@ function getmodifydate()
 	$("#dateinput").append("Created date："+wdalllist.datecreated);
 }
 
+function queryhist(eng){
+	$.ajax({url: "queryhist.php?eng="+eng,
+		success: function (r){
+			   					histres=JSON.parse(r);
+								if(histres.status){
+									histlist=histres.histdata;
+									for (x in histlist) {
+										if(histlist[x].action=='up')
+											toastr.success("<p>Up</p><p>"+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
+										else if(histlist[x].action=='down')
+											toastr.warning("<p>Down</p><p>"+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
+
+									}
+								}
+								else
+									toastr.info("No history for "+eng);
+								
+							 }
+    });
+}
 //in js_addfunction.js
 //functionasplay(mp3);
 //function sop(Obj) //show object property
