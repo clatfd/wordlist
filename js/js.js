@@ -836,9 +836,9 @@ function queryhist(eng){
 									histlist=histres.histdata;
 									for (x in histlist) {
 										if(histlist[x].action=='up')
-											toastr.success("<p>Up</p><p>"+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
+											toastr.success("<p>Up</p><p>"+histlist[x].list+": "+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
 										else if(histlist[x].action=='down')
-											toastr.warning("<p>Down</p><p>"+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
+											toastr.warning("<p>Down</p><p>"+histlist[x].list+": "+histlist[x].grofrom+" to "+histlist[x].groto+" on "+histlist[x].date+"</p>");
 
 									}
 								}

@@ -3,60 +3,27 @@
 	$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	mysql_select_db($DBNAME);
 	mysql_query("SET NAMES 'utf8'");
-	$sql="Select id from ".$_GET['list']." where gro=1 and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);
-	$result=mysql_query($sql);
-	$i1=0;
-	$arr = array(); 
-	while ($rowt=mysql_fetch_array($result))
-	{
-	$i1++;
-	}
-	
-	$sql="Select id from ".$_GET['list']."  where gro=2 and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
-	$result=mysql_query($sql);
-	$i2=0;
-	$arr = array(); 
-	while ($rowt=mysql_fetch_array($result))
-	{
-	$i2++;
-	}
-	
-	
-	$sql="Select id from ".$_GET['list']."  where gro=3 and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
-	$result=mysql_query($sql);
-	$i3=0;
-	$arr = array(); 
-	while ($rowt=mysql_fetch_array($result))
-	{
-	$i3++;
-	}
-	
-	$sql="Select id from ".$_GET['list']."  where gro=4 and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
-	$result=mysql_query($sql);
-	$i4=0;
-	$arr = array(); 
-	while ($rowt=mysql_fetch_array($result))
-	{
-	$i4++;
-	}
-	
-	$sql="Select id from ".$_GET['list']."  where gro=5 and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
-	$result=mysql_query($sql);
-	$i5=0;
-	$arr = array(); 
-	while ($rowt=mysql_fetch_array($result))
-	{
-	$i5++;
-	}
-	
-	$sql="Select id from ".$_GET['list']." where id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
+	$sql="Select gro from ".$_GET['list']." where id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);
 	$result=mysql_query($sql);
 	$total=0;
+	$i1=$i2=$i3=$i4=$i5=0;
 	$arr = array(); 
 	while ($rowt=mysql_fetch_array($result))
 	{
-	$total++;
+		if($rowt['gro']==1)
+			$i1++;
+		elseif($rowt['gro']==2)
+			$i2++;
+		elseif($rowt['gro']==3)
+			$i3++;
+		elseif($rowt['gro']==4)
+			$i4++;
+		elseif($rowt['gro']==5)
+			$i5++;
+
+		$total++;
 	}
+	
 	
 
 	$result=array();

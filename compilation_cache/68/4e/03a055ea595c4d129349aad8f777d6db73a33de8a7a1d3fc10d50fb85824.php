@@ -296,28 +296,28 @@ function whichButton(event)
         // line 153
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 400) >= 0)) {
             echo "<option>";
-            echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 400), "html", null, true);
+            echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) - 400), "html", null, true);
             echo "</option>";
         }
         // line 154
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 300) >= 0)) {
             echo "<option>";
-            echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 300), "html", null, true);
+            echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) - 300), "html", null, true);
             echo "</option>";
         }
         // line 155
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 200) >= 0)) {
             echo "<option>";
-            echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 200), "html", null, true);
+            echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) - 200), "html", null, true);
             echo "</option>";
         }
         // line 156
         echo "\t\t\t\t\t";
         if ((((isset($context["idlo"]) ? $context["idlo"] : null) - 100) >= 0)) {
             echo "<option>";
-            echo twig_escape_filter($this->env, ((isset($context["idup"]) ? $context["idup"] : null) - 100), "html", null, true);
+            echo twig_escape_filter($this->env, ((isset($context["idlo"]) ? $context["idlo"] : null) - 100), "html", null, true);
             echo "</option>";
         }
         // line 157
