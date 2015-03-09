@@ -1,13 +1,14 @@
 <?php
 	$getlist=isset($_GET['list'])?$_GET['list']:'test';
-	$getgro=isset($_GET['gro'])?$_GET['gro']:'2';
+	$getgro=isset($_GET['gro'])?$_GET['gro']:'';
 	$getidlo=isset($_GET['idlo'])?$_GET['idlo']:'1';
 	$getidup=isset($_GET['idup'])?$_GET['idup']:'100';
+	$getrd=isset($_GET['rd'])?$_GET['rd']:'0';
 	setcookie("list", $getlist,time()+3600*24*365);
 	setcookie("gro", $getgro,time()+3600*24*365);
 	setcookie("idlo", $getidlo,time()+3600*24*365);
 	setcookie("idup", $getidup,time()+3600*24*365);
-$getrd=isset($_GET['rd'])?$_GET['rd']:'0';
+	setcookie("rd", $getrd,time()+3600*24*365);
 require_once 'vendor/autoload.php';
 require_once("sys_conf.inc");
 //$loader = new Twig_Loader_Filesystem('template');
@@ -45,13 +46,14 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	}	
 	$impalllist=array_merge($implist,$mfllist,$ivtlist);
 
+	$sql="Select * from ".$getlist."  where id>".($getidlo-1)." and id<".($getidup+1);
+	if(isset($getgro)&&$getgro!='')
+		$sql.=" and gro=".$getgro;
 	if(isset($_GET['rd'])&&$_GET['rd']>0){
 		$randnum=$_GET['rd'];
-		$sql="Select * from ".$getlist."  where gro=".$getgro." and id>".($getidlo-1)." and id<".($getidup+1)." order by rand() limit ".$randnum;
+		$sql.=" order by rand() limit ".$randnum;
 	}
-	else{
-		$sql="Select * from ".$getlist."  where gro=".$getgro." and id>".($getidlo-1)." and id<".($getidup+1);	
-	}
+	
 	$result=mysql_query($sql);
 	$wdlistarr = array(); 
 	while ($rowt=mysql_fetch_array($result,MYSQL_ASSOC))

@@ -267,7 +267,7 @@ function changetolist(){
 }
 
 function retrievelist(){
-	var newhref="twig.php?list="+getCookie("list")+"&gro="+getCookie("gro")+"&idlo="+getCookie("idlo")+"&idup="+getCookie("idup")+"&rd=0";
+	var newhref="twig.php?list="+getCookie("list")+"&gro="+getCookie("gro")+"&idlo="+getCookie("idlo")+"&idup="+getCookie("idup")+"&rd="+getCookie("rd");
 	document.location=newhref;
 
 	//var chhref=setTimeout(function(){history.pushState({},"",newhref)},1000);
