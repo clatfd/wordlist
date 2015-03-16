@@ -131,6 +131,8 @@ function funlastreviewwords(){
 		eng=$("#wddiv"+lrevword).attr("eng");
 		chi=$("#wddiv"+lrevword).attr("chi");
 		rec=$("#wddiv"+lrevword).attr("rec");
+		if(rec[0]=='['||rec[0]=='/')
+			rec=rec.slice(1,rec.length-1);
 	   	toastr.options.timeOut=10000;
 	   	toastr.success('<p><strong>'+eng+'</p><p>'+chi+'</p><p>/'+rec+'/</strong></p>');
 	}
