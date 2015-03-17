@@ -60,13 +60,17 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	{
 		array_push($wdlistarr, $rowt);
 	}
+
 	shuffle($wdlistarr);
 	for($i=0;$i<count($wdlistarr);$i++){
 		$wdlistarr[$i]['curnum']=$i;
 		$wdlistarr[$i]['list']=$getlist;
 		//$wdlistarr[$i]['jsondata']=json_encode($wdlistarr[$i]);
 	}
-
+	if($i>300&&(!isset($_GET['fc'])||$_GET['fc']!=1)){
+		echo $i." words exceed 300, <a href=\"".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&fc=1\">continue</a>?";
+		return;
+	}
 	//print_r($wdlistarr);
 include('getip.php');
 
