@@ -378,6 +378,9 @@ padding:0px;
 	display: none;
 	bottom: 179px;
 }
-.recspan{
+.recspan, .searchdict{
 	cursor: pointer;
+}
+.curldictexample{
+	display: none;
 }

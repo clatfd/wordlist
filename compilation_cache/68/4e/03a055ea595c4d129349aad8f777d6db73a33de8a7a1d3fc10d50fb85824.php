@@ -477,9 +477,9 @@ function whichButton(event)
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "gro"), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "rec"), "html", null, true);
-            echo "&nbsp;</span><a href=\"http://dict.cn/";
+            echo "&nbsp;</span><i class=\"glyphicon glyphicon-book searchdict\" onclick=\"searchdict('";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
-            echo "\" target=\"_blank\"><i class=\"glyphicon glyphicon-book\"></i></a>&nbsp;<i class=\"glyphicon glyphicon-play\" onclick=\"findsound('";
+            echo "')\"></i>&nbsp;<i class=\"glyphicon glyphicon-play\" onclick=\"findsound('";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), "html", null, true);
             echo "')\"></i></a>&nbsp;<i class=\"glyphicon glyphicon-";
             if (twig_in_filter($this->getAttribute((isset($context["item"]) ? $context["item"] : null), "eng"), (isset($context["impalllist"]) ? $context["impalllist"] : null))) {

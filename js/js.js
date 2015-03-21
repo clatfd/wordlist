@@ -13,6 +13,10 @@ var wdid;
 var delenum;
 var storelastdiv;
 
+toastr.options.timeOut = 10000;
+//toastr.options.progressBar = true; 
+toastr.options.closeButton = true; 
+
 if(window.localStorage)
 	if(localStorage.getItem("rev")==null)
 		localStorage.setItem("rev",0);
@@ -133,7 +137,6 @@ function funlastreviewwords(){
 		rec=$("#wddiv"+lrevword).attr("rec");
 		if(rec[0]=='['||rec[0]=='/')
 			rec=rec.slice(1,rec.length-1);
-	   	toastr.options.timeOut=10000;
 	   	toastr.success('<p><strong>'+eng+'</p><p>'+chi+'</p><p>/'+rec+'/</strong></p>');
 	}
 	else{
@@ -849,6 +852,26 @@ function queryhist(eng){
 								
 							 }
     });
+}
+
+function searchdict(word){
+	
+	$.ajax({
+		url: "curldict.php?word="+word, 
+		success: function (data){
+			curldata=JSON.parse(data);
+			if(curldata.result==1&&curldata.chi!=''){
+			
+				toastr.info("<p><strong>"+word+"</strong></p><p><a href=\"http://dict.cn/"+word+"\" target=\"_blank\">"+curldata.chi+"</a></p><p onmouseover='showexample()'>Example</p>"+curldata.example);
+			}
+			else
+				toastr.warning('<p><strong>No Such Word!</strong></p>');
+		}
+	});
+}
+
+function showexample(){
+	$(".curldictexample").css("display","inline-block");
 }
 //in js_addfunction.js
 //functionasplay(mp3);

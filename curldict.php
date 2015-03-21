@@ -52,7 +52,18 @@ if(isset($_GET['word'])){
 			$chi='no_such_chi';
 		}
 
-		$dictresult = array('result' =>$searchresult, 'americasound' => $americasound,'americarec' => $americarec,'chi' => $chi);
+		//get example
+		$starttypepo=strpos($result,'<div class="section sent">');
+		$endtypepo=strpos($result,'id="dict-chart-examples"');
+		$restrim=substr($result,$starttypepo,$endtypepo-$starttypepo);
+		$startspo=strpos($restrim,'<ol');
+		$restrim=substr($restrim,$startspo);
+		$endspo=strpos($restrim,'</ol');
+		$example=substr($restrim,0,$endspo+5);
+		$example=str_replace('slider="2"', 'class="curldictexample"', $example);
+		$example=str_replace('<em class=hot>', '', $example);
+		$example=str_replace('</em>', '', $example);
+		$dictresult = array('result' =>$searchresult, 'americasound' => $americasound,'americarec' => $americarec,'chi' => $chi,'example'=>$example);
 	}
 	echo json_encode($dictresult);
 	curl_close($curl);
