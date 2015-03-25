@@ -47,13 +47,18 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	$impalllist=array_merge($implist,$mfllist,$ivtlist);
 
 	$sql="Select * from ".$getlist."  where id>".($getidlo-1)." and id<".($getidup+1);
-	if(isset($getgro)&&$getgro!='')
-		$sql.=" and gro=".$getgro;
+	if(isset($getgro)&&$getgro!=''){
+		if(strpos($getgro,","))
+			$sql.=" and ( gro=".str_replace(',', ' or gro= ', $getgro).") ";
+		else
+			$sql.=" and gro=".$getgro;
+	}
 	if(isset($_GET['rd'])&&$_GET['rd']>0){
 		$randnum=$_GET['rd'];
 		$sql.=" order by rand() limit ".$randnum;
 	}
-	
+	//echo $sql;
+
 	$result=mysql_query($sql);
 	$wdlistarr = array(); 
 	while ($rowt=mysql_fetch_array($result,MYSQL_ASSOC))
