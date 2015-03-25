@@ -470,7 +470,8 @@ function onchangemcdivgetinfo()
 	tlist=$("#mclist").val();
 	teng=$("#mceng").val();
 	tid=$("#mcid").val();
-	tgro=getPar('gro');
+	//tgro=getPar('gro');
+	tgro=$("#wd"+tid).parent().attr("gro");
 	$.ajax({url: "getinfo.php?list="+tlist+"&eng="+teng,
 			   success: function (r){
 				   phpdata=JSON.parse(r);
@@ -543,7 +544,7 @@ function curlwordinfo(){
 					}
 				}
 				
-				$("#mcgro").val(getPar('gro'));
+				//$("#mcgro").val(getPar('gro'));
 			}
 			else{
 				toastr.info('No_such_word');
