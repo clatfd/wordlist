@@ -28,8 +28,11 @@
 initialforwdlist();
 
 function whichButton(event)
-{
-	if(event.keyCode==83)
+{	
+	if(event.ctrlKey){
+		
+	}
+	else if(event.keyCode==83)
 	{
 		//alert("s");
 		$("#showall").click();
@@ -199,7 +202,7 @@ function whichButton(event)
 				<div id="wddiv{{item.id}}" class="divgrid" border="0" data-source="{{item.jsondata}}" chi="{{item.chi}}" eng="{{item.eng}}" rec="{{item.rec}}" gro="{{item.gro}}">  
 					<div class="wdeng" id="wd{{item.id}}" align="center" valign="middle" onclick="lookwd({{item.id}},'{{item.chi}}','{{item.eng}}',{{item.curnum}})">{{item.id}}&nbsp;&nbsp;&nbsp;{{item.eng}}
 					</div>
-					<div class="recdiv" height="40" colspan="2" align="center" valign="middle"><span class="recspan"  onclick="queryhist('{{item.eng}}')">{{item.gro}}&nbsp;{{item.rec}}&nbsp;</span><i class="glyphicon glyphicon-book searchdict" onclick="searchdict('{{item.eng}}')"></i>&nbsp;<i class="glyphicon glyphicon-play" onclick="findsound('{{item.eng}}')"></i></a>&nbsp;<i class="glyphicon glyphicon-{% if item.eng in impalllist %}star{% else %}plus{% endif %}" id="implabel{{item.id}}" onclick="impspancontrol({{item.id}})"></i><span id="impspan{{item.id}}" class="impspan" style="display:none"><div class="{% if item.eng in implist %}remove{% else %}add{% endif %}imp" onclick="impadjust({{item.id}},'imp')">I</div><div class="{% if item.eng in mfllist %}remove{% else %}add{% endif %}mfl" onclick="impadjust({{item.id}},'mfl')">M</div><div class="{% if item.eng in ivtlist %}remove{% else %}add{% endif %}ivt" onclick="impadjust({{item.id}},'ivt')">V</div></span>
+					<div class="recdiv" height="40" colspan="2" align="center" valign="middle"><span class="recspan"  onclick="queryhist('{{item.eng}}')">{{item.gro}}&nbsp;{{item.rec}}&nbsp;</span><i class="glyphicon glyphicon-book searchdict" onclick="if(event.ctrlKey) window.open('http://dict.cn/{{item.eng}}'); else searchdict('{{item.eng}}')"></i>&nbsp;<i class="glyphicon glyphicon-play" onclick="findsound('{{item.eng}}')"></i></a>&nbsp;<i class="glyphicon glyphicon-{% if item.eng in impalllist %}star{% else %}plus{% endif %}" id="implabel{{item.id}}" onclick="impspancontrol({{item.id}})"></i><span id="impspan{{item.id}}" class="impspan" style="display:none"><div class="{% if item.eng in implist %}remove{% else %}add{% endif %}imp" onclick="impadjust({{item.id}},'imp')">I</div><div class="{% if item.eng in mfllist %}remove{% else %}add{% endif %}mfl" onclick="impadjust({{item.id}},'mfl')">M</div><div class="{% if item.eng in ivtlist %}remove{% else %}add{% endif %}ivt" onclick="impadjust({{item.id}},'ivt')">V</div></span>
 					</div>
 					<div id="bt{{item.id}}" height="20" class="updowndiv">
 						<span class="glyphicon glyphicon-chevron-up arrowp" onclick="postu({{item.id}},'{{list}}','{{item.eng}}','{{item.chi}}','{{item.gro}}')"></span>
@@ -280,10 +283,10 @@ function whichButton(event)
 		<a class="menu" href="twig.php?list={{list}}&gro={{gro+1}}&idlo={{idlo}}&idup={{idup}}">next_group </a>
 	</div>
 	<div class="col-md-2 col-xs-3">
-		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo-100}}&amp;idup={{idup-100}}">last_list </a>
+		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo-idup+idlo}}&amp;idup={{idlo}}">last_list </a>
   	</div>
   	<div class="col-md-2 col-xs-3">
-		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo+100}}&amp;idup={{idup+100}}">next_list </a> 
+		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idup}}&amp;idup={{idup+idup-idlo}}">next_list </a> 
 	</div>
   	<div class="col-md-4 col-xs-6">
   		<a class="menu" href="Index.html">return</a>

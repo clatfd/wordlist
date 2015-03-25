@@ -63,6 +63,7 @@ if(isset($_GET['word'])){
 		$example=str_replace('slider="2"', 'class="curldictexample"', $example);
 		$example=str_replace('<em class=hot>', '', $example);
 		$example=str_replace('</em>', '', $example);
+		$example=str_replace('	', '', $example);
 		$dictresult = array('result' =>$searchresult, 'americasound' => $americasound,'americarec' => $americarec,'chi' => $chi,'example'=>$example);
 	}
 	echo json_encode($dictresult);

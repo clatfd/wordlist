@@ -855,7 +855,6 @@ function queryhist(eng){
 }
 
 function searchdict(word){
-	
 	$.ajax({
 		url: "curldict.php?word="+word, 
 		success: function (data){
