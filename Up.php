@@ -15,7 +15,7 @@ mysql_query($sql);
 
 $iipp=$_SERVER["REMOTE_ADDR"];
 $tim=localtime();
-$dat=date("Y/m/d")." ".($tim[2]+8).":".$tim[1].":".$tim[0]; 
+$dat=date("Y/m/d")." ".($tim[2]).":".$tim[1].":".$tim[0]; 
 
 $groadd=$_GET['gro']+1;
 $sql="INSERT INTO hist (list, action, eng, chi, grofrom, groto, date, ip)VALUES ('$_GET[list]','up','$_GET[eng]','$_GET[chi]','$_GET[gro]','$groadd','$dat','$iipp')";
