@@ -11,6 +11,8 @@
 	setcookie("rd", $getrd,time()+3600*24*365);
 require_once 'vendor/autoload.php';
 require_once("sys_conf.inc");
+include('getip.php');
+
 //$loader = new Twig_Loader_Filesystem('template');
 $loader = new Twig_Loader_Filesystem('.');
 $twig = new Twig_Environment($loader, array(
@@ -21,6 +23,17 @@ $twig->addExtension(new Twig_Extension_Debug());
 $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 	mysql_select_db($DBNAME);
 	mysql_query("SET NAMES 'utf8'");
+
+	//record query
+	$iipp=$_SERVER["REMOTE_ADDR"];
+	$timstp=time();
+	//$dat=date("Y/m/d")." ".($tim[2]).":".$tim[1].":".$tim[0]; 
+	$date = new DateTime();
+	$date=$date->format('Y-m-d H:i:s');
+	$sql="Insert * from ".$getlist."  where id>".($getidlo-1)." and id<".($getidup+1);
+	$sql="INSERT INTO queryrecord (list, gro, idlo, idup, querytime, unixstamp, ip)VALUES ('$getlist','$getgro','$getidlo','$getidup','$date','$timstp','$ipaddress')";
+	$result=mysql_query($sql);
+
 	$implist = array(); 
 	$mfllist = array(); 
 	$ivtlist = array(); 
@@ -77,7 +90,6 @@ $link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
 		return;
 	}
 	//print_r($wdlistarr);
-include('getip.php');
 
 echo $twig->render('twigframe.html', array(
 	'sentence' => 'I seem OK.',

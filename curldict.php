@@ -39,8 +39,6 @@ if(isset($_GET['word'])){
 		$startspo=strpos($restrim,'<li');
 		$restrim=substr($restrim,$startspo+4);
 		$endspo=strpos($restrim,'<li style="padding-top: 25px;">');
-		$restrim=substr($restrim,0,$endspo);
-		$endspo=strpos($restrim,'</li');
 		$chi=substr($restrim,0,$endspo);
 		$chi=str_replace('<li>', '', $chi);
 		$chi=str_replace('</li>', '', $chi);

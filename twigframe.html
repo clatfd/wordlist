@@ -283,10 +283,10 @@ function whichButton(event)
 		<a class="menu" href="twig.php?list={{list}}&gro={{gro+1}}&idlo={{idlo}}&idup={{idup}}">next_group </a>
 	</div>
 	<div class="col-md-2 col-xs-3">
-		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo-idup+idlo}}&amp;idup={{idlo}}">last_list </a>
+		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo-idup+idlo-1}}&amp;idup={{idlo-1}}">last_list </a>
   	</div>
   	<div class="col-md-2 col-xs-3">
-		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idup}}&amp;idup={{idup+idup-idlo}}">next_list </a> 
+		<a class="menu" href="twig.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idup+1}}&amp;idup={{idup+idup-idlo+1}}">next_list </a> 
 	</div>
   	<div class="col-md-4 col-xs-6">
   		<a class="menu" href="Index.html">return</a>

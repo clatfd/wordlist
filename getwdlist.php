@@ -4,7 +4,14 @@ mysql_select_db($DBNAME);
 mysql_query("SET NAMES 'utf8'");
 //$list=$_GET['list'];
 //$eng=$_GET['eng'];
-$sql="Select * from ".$_GET['list']."  where gro=".$_GET['gro']." and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
+$getgro=isset($_GET['gro'])?$_GET['gro']:'';
+$sql="Select * from ".$_GET['list']."  where  id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
+if(isset($getgro)&&$getgro!=''){
+	if(strpos($getgro,","))
+		$sql.=" and ( gro=".str_replace(',', ' or gro= ', $getgro).") ";
+	else
+		$sql.=" and gro=".$getgro;
+}
 $result=mysql_query($sql);
 $arr = array(); 
 while ($rowt=mysql_fetch_array($result))
