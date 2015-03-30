@@ -13,7 +13,7 @@ class Wordlist{
 	}
 
 	function queryimp($num){
-		$sql="Select * from imp where gro=1 limit $num";
+		$sql="Select * from imp where gro=1 order by rand() limit $num";
 		$implist=array();
 		$implisttemp=mysql_query($sql);
 		while ($rowi=mysql_fetch_array($implisttemp)){	
@@ -38,7 +38,7 @@ class Wordlist{
 			$idlo=$rowi['idlo'];
 			$idup=$rowi['idup'];
 		}
-		$sql="Select * from $list where gro= $gro and id > $idlo and id < $idup limit $num";
+		$sql="Select * from $list where gro= $gro and id > $idlo and id < $idup order by rand() limit $num";
 		$getlist=array();
 		$getlisttemp=mysql_query($sql);
 		while ($rowi=mysql_fetch_array($getlisttemp)){	

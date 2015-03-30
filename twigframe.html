@@ -72,9 +72,9 @@ function whichButton(event)
 		//alert("Enter");
 		$("#formsubmit").click();
 	}
-	else if(event.keyCode==67)
+	else if(event.keyCode==70)
 	{
-		//alert("c");
+		//alert("f");
 		$("#buttonchitoeng").click();
 	}	
 	else if(event.keyCode==76)
@@ -91,6 +91,11 @@ function whichButton(event)
 	{
 		//alert("t");
 		$("#showstatis").click();
+	}
+	else if(event.keyCode==87)
+	{
+		//alert("w");
+		addweb();
 	}
 //	else{alert(event.keyCode)}
 
@@ -232,28 +237,30 @@ function whichButton(event)
 <div id="qrcode"></div>
 
 <div class="row control-foot">
-	<div class="col-xs-12 col-lg-7">
+	<div class="col-xs-12 col-lg-6">
 		<button id="undo" class="btn btn-danger" style="opacity: 0.3;" onclick="undo('{{list}}','default')" disabled="disabled">  Undo(U)  </button>
 		&nbsp;&nbsp;  
-		<button id="rev" class="btn btn-success" onclick="revall()">Review(R)</button>
+		<button id="rev" class="btn btn-success" onclick="revall()">Revw(R)</button>
 		&nbsp;&nbsp;    
-		<button id="showall" class="btn btn-success" onclick="showall({{idlo}},{{idup}})">Show_all(S)</button>
+		<button id="showall" class="btn btn-success" onclick="showall({{idlo}},{{idup}})">Shwa(S)</button>
 		&nbsp;&nbsp;    
-		<button id="buttonchitoeng" class="btn btn-success" onclick="funchitoeng()">Chi->eng(C)</button>
+		<button id="buttonchitoeng" class="btn btn-success" onclick="funchitoeng()">Chin(C)</button>
 		&nbsp;&nbsp;    
-		<a href="exam.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="gotoexam" class="btn btn-warning">Go->exam(G)</button></a>
+		<a href="exam.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="gotoexam" class="btn btn-warning">Goex(G)</button></a>
 		&nbsp;&nbsp;  
-		<a href="outputtocard.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="printcard" class="btn btn-primary">Print_cards(P)</button></a>
+		<a href="outputtocard.php?list={{list}}&amp;gro={{gro}}&amp;idlo={{idlo}}&amp;idup={{idup}}"><button id="printcard" class="btn btn-primary">Prtc(P)</button></a>
 		
 	</div>
-	<div class="col-xs-12 col-lg-5">
-		<button id="manconsole" class="btn btn-warning" onclick="manconsole('{{list}}')">Man_Console(M)</button>
+	<div class="col-xs-12 col-lg-6">
+		<button id="manconsole" class="btn btn-warning" onclick="manconsole('{{list}}')">Mncl(M)</button>
 		&nbsp;&nbsp;  
-		<button id="buttonlastrevword" class="btn btn-primary" onclick="funlastreviewwords()">Last_wd(L)</button>
+		<button id="buttonlastrevword" class="btn btn-primary" onclick="funlastreviewwords()">Last(L)</button>
 		&nbsp;&nbsp;  
-		<button id="buttonlooknextword" class="btn btn-primary" onclick="looknextword()">Next_wd(N)</button>
+		<button id="buttonlooknextword" class="btn btn-primary" onclick="looknextword()">Next(N)</button>
 		&nbsp;&nbsp;  
-		<button id="showstatis" class="btn btn-primary" onclick="showstatis()">showsts(T)</button>
+		<button id="showstatis" class="btn btn-primary" onclick="showstatis()">Stat(T)</button>
+		&nbsp;&nbsp;  
+		<button id="addweb" class="btn btn-primary" onclick="addweb()">Aweb(W)</button>
 	</div>
 </div>
 

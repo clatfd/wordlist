@@ -384,3 +384,6 @@ padding:0px;
 .curldictexample{
 	display: none;
 }
+em.hot{
+	font-weight: bolder;
+}

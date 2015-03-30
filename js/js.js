@@ -879,3 +879,23 @@ function showexample(){
 //function getPar(par)
 //shuffle = function(o){ 
 //urlfit(str)
+function addweb(){
+	wlist=$(".divgrid");
+	for (x=0;x<wlist.length;x++){
+		addwdweb(wlist.eq(x).attr("eng"),wlist.eq(x).attr("chi"),wlist.eq(x).attr("rec"));
+	}
+}
+function addwdweb(eng,chi,rec){
+	$.getJSON("http://clatfd.sinaapp.com/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
+		function(){
+			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");
+		});
+	// 	success: function (data){
+	// 		data=JSON.parse(data);
+	// 		if(data.status==1){
+	// 			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");
+	// 		}
+	// 		else
+	// 			toastr.warning('<p><strong>Network Error!</strong></p>');
+	// 	}
+}
