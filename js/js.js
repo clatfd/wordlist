@@ -283,7 +283,7 @@ function impspancontrol(id){
 	}
 	else if($("#impspan"+id).css("display")=='none'){
 		$("#impspan"+id).css("display","inline-block");
-		$("#impspan"+id).animate({width:"75px",height:"22px"},100,"linear");
+		$("#impspan"+id).animate({width:"90px",height:"22px"},100,"linear");
 	}
 }
 
@@ -884,6 +884,16 @@ function addweb(){
 	for (x=0;x<wlist.length;x++){
 		addwdweb(wlist.eq(x).attr("eng"),wlist.eq(x).attr("chi"),wlist.eq(x).attr("rec"));
 	}
+}
+function addwdwebbyid(id){
+	eng=$("#wddiv"+id).attr("eng");
+	chi=$("#wddiv"+id).attr("chi");
+	rec=$("#wddiv"+id).attr("rec");
+	$.getJSON("http://clatfd.sinaapp.com/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
+		function(){
+			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");
+			impspancontrol(id);
+		});
 }
 function addwdweb(eng,chi,rec){
 	$.getJSON("http://clatfd.sinaapp.com/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
