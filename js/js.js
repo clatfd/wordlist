@@ -194,7 +194,7 @@ function funchitoeng()
 	{
 		$("#chitoengmodespan").append("&nbsp;Chi");
 		chitoeng=1;
-		for(i=getPar('idlo');i<=getPar('idup');i++){
+		for(i=parseInt(getPar('idlo'));i<=parseInt(getPar('idup'));i++){
 			eng=$("#wd"+i);
 			if(eng.length>0){
 				$("#wd"+i).html($("#wddiv"+i).attr("chi"));
@@ -206,7 +206,7 @@ function funchitoeng()
 	{	
 		$("#chitoengmodespan").html("");
 		chitoeng=0;
-		for(i=getPar('idlo');i<=getPar('idup');i++){
+		for(i=parseInt(getPar('idlo'));i<=parseInt(getPar('idup'));i++){
 			eng=$("#wd"+i);
 			if(eng.length>0){
 				$("#wd"+i).html($("#wddiv"+i).attr("eng"));
