@@ -889,14 +889,14 @@ function addwdwebbyid(id){
 	eng=$("#wddiv"+id).attr("eng");
 	chi=$("#wddiv"+id).attr("chi");
 	rec=$("#wddiv"+id).attr("rec");
-	$.getJSON("http://clatfd.sinaapp.com/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
+	$.getJSON("http://104.131.150.53/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
 		function(){
 			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");
 			impspancontrol(id);
 		});
 }
 function addwdweb(eng,chi,rec){
-	$.getJSON("http://clatfd.sinaapp.com/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
+	$.getJSON("http://104.131.150.53/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
 		function(){
 			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");
 		});

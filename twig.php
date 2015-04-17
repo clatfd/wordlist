@@ -10,7 +10,7 @@
 	setcookie("idup", $getidup,time()+3600*24*365);
 	setcookie("rd", $getrd,time()+3600*24*365);
 require_once 'vendor/autoload.php';
-require_once("sys_conf.inc");
+require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 include('getip.php');
 
 //$loader = new Twig_Loader_Filesystem('template');
@@ -20,8 +20,8 @@ $twig = new Twig_Environment($loader, array(
 ));
 
 $twig->addExtension(new Twig_Extension_Debug());  
-$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-	mysql_select_db($DBNAME);
+$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+	mysql_select_db("word");
 	mysql_query("SET NAMES 'utf8'");
 
 	//record query
