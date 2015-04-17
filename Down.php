@@ -6,9 +6,9 @@
 </head>
 
 <body>
-<?php require_once("sys_conf.inc");
-$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-mysql_select_db($DBNAME);
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
+$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+mysql_select_db("word");
 mysql_query("SET NAMES 'utf8'");
 $sql="UPDATE ".$_GET['list']." SET gro=gro-1 WHERE id =".$_GET['id'];
 //echo $sql;

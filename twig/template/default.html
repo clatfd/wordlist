@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php require_once("sys_conf.inc");
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 ?>
 
 <head>
@@ -166,8 +166,8 @@ List:<?php echo $_GET['list'] ?>
   -->    
 	<?php
 	
-	$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-	mysql_select_db($DBNAME);
+	$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+	mysql_select_db("word");
 	mysql_query("SET NAMES 'utf8'");
 	$implist = array(); 
 	

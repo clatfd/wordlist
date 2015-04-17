@@ -1,7 +1,7 @@
 ﻿<?php
-	require_once("sys_conf.inc");
-	$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-	mysql_select_db($DBNAME);
+	require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
+	$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+	mysql_select_db("word");
 	mysql_query("SET NAMES 'utf8'");
 	$sql="Select gro from ".$_GET['list']." where id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);
 	$result=mysql_query($sql);

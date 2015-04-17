@@ -6,13 +6,13 @@
 </head>
 
 <body>
-<?php require_once("sys_conf.inc");
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 $iipp=$_SERVER["REMOTE_ADDR"];
 $tim=localtime();
 $dat=date("Y/m/d")." ".($tim[2]+8).":".$tim[1].":".$tim[0]; 
 
-$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-mysql_select_db($DBNAME);
+$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+mysql_select_db("word");
 mysql_query("SET NAMES 'utf8'");
 
 if($_GET['dire']=='up'){

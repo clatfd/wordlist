@@ -188,7 +188,7 @@ List:<?php echo \$_GET['list'] ?>
 \t<?php
 \t
 \t\$link_id=mysql_connect(\$DBHOST,\$DBUSER,\$DBPWD);
-\tmysql_select_db(\$DBNAME);
+\tmysql_select_db(\"word");
 \tmysql_query(\"SET NAMES 'utf8'\");
 \t\$implist = array(); 
 \t

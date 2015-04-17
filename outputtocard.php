@@ -7,11 +7,11 @@
 <body>
 <table border="1" cellspacing="0" cellpadding="0">
 <tr>
-<?php require_once("sys_conf.inc");
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 
 
-	$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-	mysql_select_db($DBNAME);
+	$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+	mysql_select_db("word");
 	mysql_query("SET NAMES 'utf8'");
 	$sql="Select * from ".$_GET['list']."  where gro=".$_GET['gro']." and id>".($_GET['idlo']-1)." and id<".($_GET['idup']+1);	
 	$result=mysql_query($sql);

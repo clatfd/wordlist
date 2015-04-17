@@ -1,6 +1,6 @@
-<?php require_once("sys_conf.inc");
-$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-mysql_select_db($DBNAME);
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
+$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+mysql_select_db("word");
 mysql_query("SET NAMES 'utf8'");
 $list=$_GET['list'];
 $eng=$_GET['eng'];

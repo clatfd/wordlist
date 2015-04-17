@@ -7,8 +7,8 @@ class Wordlist{
 
 	function __construct(){
 		require_once($_SERVER['DOCUMENT_ROOT']."/H-wordlist/sys_conf.inc");
-		$this->link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-		mysql_select_db($DBNAME);
+		$this->link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+		mysql_select_db("word");
 		mysql_query("SET NAMES 'utf8'");
 	}
 

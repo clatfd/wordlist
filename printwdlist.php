@@ -1,9 +1,9 @@
-<?php require_once("sys_conf.inc");
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 $filename="output/wdlist_".$_GET['list']."_".$_GET['gro']."_".$_GET['idlo']."~".$_GET['idup'].".js";
 
 
-$link_id=mysql_connect($DBHOST,$DBUSER,$DBPWD);
-mysql_select_db($DBNAME);
+$link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
+mysql_select_db("word");
 mysql_query("SET NAMES 'utf8'");
 
 $fp=fopen("$filename", "w+"); //打开文件指针，创建文件
