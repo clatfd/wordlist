@@ -9,6 +9,7 @@ undopid=-1;//last remove word in page
 lchangrowd=-1;//last change group word
 upnum=0;//recited num in this range
 chitoeng=0;
+refreshtimes=0;
 var wdid;
 var delenum;
 var storelastdiv;
@@ -115,7 +116,7 @@ function undo(list,location)
 		$.ajax({url: "Undo.php?list="+list+"&id="+lid+"&eng="+lword+"&action=undo&dire=up"});
 	//$("#undo").fadeTo("slow",0.01).css("display","none");
 	$("#undo").attr("disabled",true);
-	$("#undo").fadeTo("slow",0.3); 
+	$("#undo").fadeTo("slow",0.01); 
 	$("div.mix").eq(undopid+1).before(storelastdiv);
 	storelastdiv.removeAttr("style");
 	storelastdiv.css("display","inline-block");
@@ -563,7 +564,7 @@ function subrefreshtimes()
 	{
 		refreshtimes-=2;
 		tnum=Number($("#totnum").text());
-		$("#totnum").text(tnum+1);
+		$("#totnum").text(tnum+2);
 		refreshexamwd();
 	}
 }
@@ -573,8 +574,7 @@ function refreshexamwd()
 	$(".adddiv").remove();
 	times=parseInt($("#skiptimes").val());
 	
-	if(times)
-	{
+	if(times){
 		if(Number($("#totnum").text())-times<0)
 		{
 			$("#skiptimesbutton").attr("disabled",true);
@@ -583,72 +583,71 @@ function refreshexamwd()
 		}
 		refreshtimes=refreshtimes+times-1;
 		$("#totnum").text(Number($("#totnum").text())-times);
-		
-	}
-	if(refreshtimes<wdlist.length)
-	{
-		$("#skiptimesbutton").attr("disabled",false);
-	t=refreshtimes;
-	//alert(wdlist)
-	//for(x in wdlist)
-	//alert(wdlist[x])
-	
-	rid=wdlist[t][0];
-	//list=getPar('list');
-	list=$("#formlist").val();
-	eng=wdlist[t][1];
-	chi=wdlist[t][3];
-	rec=wdlist[t][2];
-	//gro=getPar('gro');
-	gro=$("#formgro").val();
-	if(chitoeng){
-		$("#examwd").html(chi);
 	}
 	else{
-		$("#examwd").html(eng);
+		if(refreshtimes>0){
+			tnum=Number($("#totnum").text());
+			$("#totnum").text(tnum-1);
+		}
 	}
-	$("#examtdrec").text(rec);
-	$("#examdict").attr("href","http://dict.cn/"+eng);
-	if(jQuery.inArray(eng,impwdlist[0])==-1)
-	{
-		$("#examrecunrimg").html("<img id='recimg' src='images/unr.png' />");
-	}
-	else
-	{
-		$("#examrecunrimg").html("<img id='recimg' src='images/rec.png' />");
-	}
-	examrecbuttonposition=new Object();;
-	examrecbuttonposition.x=$("#recimg").position().left+25;
-	examrecbuttonposition.y=$("#recimg").position().top+35;
+	if(refreshtimes<wdlist.length){
+		$("#skiptimesbutton").attr("disabled",false);
+		t=refreshtimes;
 
-	$("#recimg").attr("onclick","addtoimp(examrecbuttonposition,"+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+",'"+rec+"')");
-	$("#examwd").attr("onclick",'$("#examwd").html("'+chi+'<br/>'+eng+'")');
-	$("#examwd").css({"color":"#0000ff","text-decoration":"none","background-color":"yellow",'font-weight' : 'bolder'});//lookwd("+wdlist[t][0]+",'"+wdlist[t][2]+"','"+wdlist[t][1]+"')
-	$("#examwd").attr("ondblclick",'findsound("'+eng+'")');	//looksound() for local sound
-	
-	$("#examupbutton").attr("onclick","postu("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
-	$("#examdownbutton").attr("onclick","postd("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
-	$("#skipbutton").attr("onclick","refreshexamwd()");
-	$("#spansubone").attr("onclick","totalnumsubone()");
+		rid=wdlist[t][0];
+		list=$("#formlist").val();
+		eng=wdlist[t][1];
+		chi=wdlist[t][3];
+		rec=wdlist[t][2];
+		gro=$("#formgro").val();
+		if(chitoeng){
+			$("#examwd").html(chi);
+		}
+		else{
+			$("#examwd").html(eng);
+		}
+		$(".wddiv").attr("id","wddiv"+rid);
+		$(".wddiv").attr("chi",chi);
+		$(".wddiv").attr("eng",eng);
+		$(".wddiv").attr("gro",gro);
+		$(".wddiv").attr("rec",rec);
+		$("#examtdrec").text(rec);
+		$(".searchdict").attr("onclick","searchdict('"+eng+"')");
+		$(".searchvoice").attr("onclick","findsound('"+eng+"')");
+		$(".addweb").attr("onclick","addwdwebbyid('"+rid+"')");
+		$(".recspan").attr("onclick","queryhist('"+eng+"')");
 
-	
+		if(jQuery.inArray(eng,impwdlist[0])==-1)
+		{
+			$(".removeimp").removeClass("removeimp");
+		}
+		else
+		{
+			$(".addimp").addClass("removemfl");
+		}
+		
+
+		$("#examwd").attr("onclick",'$("#examwd").html("'+chi+'<br/>'+eng+'")');
+		$(".glyphicon-chevron-up").attr("onclick","postu("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
+		$(".glyphicon-chevron-down").attr("onclick","postd("+rid+",'"+list+"','"+eng+"','"+chi+"',"+gro+")");
+		$("#skipbutton").attr("onclick","refreshexamwd()");
+		$("#spansubone").attr("onclick","totalnumsubone()");
+
+		
 		
 	}
 	else
 	{
-		//$("#totnum").text(Number($("#totnum").text())-1);
 		$("#skiptimesbutton").attr("disabled",true);
 		$("#skiptimes").val("");
 		$("#examwd").text("end!");
 		$("#examtdrec").text("");
-		$("#examdict").removeAttr("href");
-		$("#recimg").removeAttr("onclick");
 		$("#examwd").removeAttr("onclick");
 		$("#skipbutton").removeAttr("onclick");
 		$("#spanskipbutton").removeAttr("onclick");
 		$("#spansubone").removeAttr("onclick");
-		$("#examupbutton").removeAttr("onclick");
-		$("#examdownbutton").removeAttr("onclick");
+		$(".glyphicon-chevron-up").removeAttr("onclick");
+		$(".glyphicon-chevron-down").removeAttr("onclick");
 		
 	}
 	refreshtimes++;
@@ -668,87 +667,51 @@ function getimpwdlist()
 
 function initialforwdlist()
 {
+	$("select[name=list]").val(localStorage.getItem('clist'));
+	$("select[name=gro]").val(localStorage.getItem('cgro'));
+	$("#formidlo").val(localStorage.getItem('cidlo'));
+	$("#formidup").val(localStorage.getItem('cidup'));
 	refreshtimes=0;
-	$.ajax({url: "getwdlist.php?list="+getPar('list')+"&idlo="+getPar('idlo')+"&idup="+getPar('idup')+"&gro="+getPar('gro'),
-		async :false,
+	$.ajax({url: "getwdlist.php?list="+localStorage.getItem('clist')+"&idlo="+localStorage.getItem('cidlo')+"&idup="+localStorage.getItem('cidup')+"&gro="+localStorage.getItem('cgro'),
 		success: function (r){
+
 			   					wdlist=JSON.parse(r);
 								//alert(wdlist);
-								
+								getimpwdlist();
+								$("#totnum").text(wdlist.length);
+								$("#totnumlength").text(wdlist.length);
+								shuffle(wdlist);
+								refreshexamwd();
 							 }
      });
-	getimpwdlist();
-	
-		   
-	$("#totnum").text(wdlist.length)   
 }
 
-function changewdlist(type)
-{
-	
-	if(localStorage.getItem("cidup")==null)
-	{
+function changewdlist(){
+
+	if(localStorage.getItem("cidup")==null){
 		localStorage.setItem("clist","imp");
 		localStorage.setItem("cgro","1");
 		localStorage.setItem("cidlo","0");
 		localStorage.setItem("cidup","100");
-		
-	/*
-		localStorage.setItem("clist","imp");
-		localStorage.setItem("cgro","1");
-		localStorage.setItem("cidlo","0");
-		localStorage.setItem("cidup","100");
-		*/
 	}
 	
-	
-	
-		clist=$("#formlist").val();
-		cgro=$("#formgro").val();
-		cidlo=$("#formidlo").val();
-		cidup=$("#formidup").val();
-		
-		localStorage.setItem("clist",clist);
-		localStorage.setItem("cgro",cgro);
-		localStorage.setItem("cidlo",cidlo);
-		localStorage.setItem("cidup",cidup);
-	
-	
-	refreshtimes=0;
-	
-	/*
-	
-	*/
-		
-	//alert(clist+","+cgro+","+cidlo+","+cidup);
-	
-
-		//alert(eval("wdalllist."+clist+"["+cgro+"]"))
-
-	wdlisttemp=eval("wdalllist."+clist+"["+(cgro-1)+"]");
-	wdlist= new Array();
-	for(x in wdlisttemp)
-	{
-		wdlist.push(wdlisttemp[x]);
-	}
-	totalnuminlist=wdlist.length;
+	clist=$("#formlist").val();
+	cgro=$("#formgro").val();
+	cidlo=$("#formidlo").val();
 	if(cidlo<1)
 		cidlo=1;
-	wdlist=wdlist.slice(cidlo-1,cidup);	
-	//alert(wdlist.length)	
-	shuffle(wdlist);
-	impwdlist=wdalllist.impwdlist;
-	if(type=="exam")
-	{	
-		refreshexamwd();
-		$("#totnumlength").html(" /"+totalnuminlist);
-	}
-	if(type=="list")
-		refreshlistwd();
+	cidup=$("#formidup").val();
+	
+	localStorage.setItem("clist",clist);
+	localStorage.setItem("cgro",cgro);
+	localStorage.setItem("cidlo",cidlo);
+	localStorage.setItem("cidup",cidup);
+	
+	refreshtimes=0;
+	initialforwdlist();
 	
 	$("#totnum").text(wdlist.length)   
 	$("#skiptimesbutton").attr("disabled",false);
-
 }
 
 function refreshlistwd()
@@ -889,6 +852,7 @@ function addwdwebbyid(id){
 	eng=$("#wddiv"+id).attr("eng");
 	chi=$("#wddiv"+id).attr("chi");
 	rec=$("#wddiv"+id).attr("rec");
+	//alert("eng="+eng+"&chi="+chi+"&rec="+rec);
 	$.getJSON("http://104.131.150.53/api/api.php?eng="+eng+"&chi="+chi+"&rec="+rec+"&callback=?",
 		function(){
 			toastr.info("<p><strong>"+eng+"</strong> has been added to web server!</p>");

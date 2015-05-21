@@ -1,9 +1,9 @@
 <?php
-	$getlist=isset($_GET['list'])?$_GET['list']:'test';
-	$getgro=isset($_GET['gro'])?$_GET['gro']:'';
-	$getidlo=isset($_GET['idlo'])?$_GET['idlo']:'1';
-	$getidup=isset($_GET['idup'])?$_GET['idup']:'100';
-	$getrd=isset($_GET['rd'])?$_GET['rd']:'0';
+	$getlist=isset($_GET['list'])&&$_GET['list']?$_GET['list']:'gre3000';
+	$getgro=isset($_GET['gro'])&&$_GET['gro']?$_GET['gro']:'1';
+	$getidlo=isset($_GET['idlo'])&&$_GET['idlo']?$_GET['idlo']:'1';
+	$getidup=isset($_GET['idup'])&&$_GET['idup']?$_GET['idup']:'1000';
+	$getrd=isset($_GET['rd'])&&$_GET['rd']?$_GET['rd']:'0';
 	setcookie("list", $getlist,time()+3600*24*365);
 	setcookie("gro", $getgro,time()+3600*24*365);
 	setcookie("idlo", $getidlo,time()+3600*24*365);
