@@ -514,6 +514,7 @@ function onchangemcdivcheckinfo()
 						maxid=r;
 						$("#mcid").val(maxid);
 						$("#mcid").attr("disabled",true);
+						$("#mcgro").val('1');
 						$("#mcrec").val('');
 						$("#mcchi").val('');
 						curlwordinfo();

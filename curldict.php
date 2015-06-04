@@ -46,6 +46,8 @@ if(isset($_GET['word'])){
 		$chi=str_replace('</span>', '', $chi);
 		$chi=str_replace('<strong>', '', $chi);
 		$chi=str_replace('</strong>', '', $chi);
+		$chi=str_replace(' ', '', $chi);
+		$chi=str_replace(array("\r\n", "\n", "\r","\t"), '', $chi);
 		if(!$chi){
 			$chi='no_such_chi';
 		}

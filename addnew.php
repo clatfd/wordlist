@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>无标题文档</title>
+<title>鏃犳爣棰樻枃妗�</title>
 </head>
 
 <body>
-<?php require_once("sys_conf.inc");
+<?php 
+require_once($_SERVER['DOCUMENT_ROOT']."/db.php");
 $link_id=mysql_connect($DB_HOST,$DB_USER,$DB_PWD);
 mysql_select_db("word");
 mysql_query("SET NAMES 'utf8'");
