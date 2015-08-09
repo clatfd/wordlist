@@ -6,7 +6,7 @@ $list=$_GET['list'];
 $eng=$_GET['eng'];
 $iipp=$_SERVER["REMOTE_ADDR"];
 $tim=localtime();
-$dat=date("Y/m/d")." ".($tim[2]+8).":".$tim[1].":".$tim[0]; 
+$dat=date("Y/m/d")." ".$tim[2].":".$tim[1].":".$tim[0]; 
 //echo "SELECT * FROM $_GET[list] WHERE eng ='$_GET[eng]'";
 $sql="SELECT * FROM $_GET[list] WHERE eng ='$_GET[eng]'";
 $result=mysql_query($sql);

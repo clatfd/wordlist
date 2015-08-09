@@ -344,6 +344,9 @@ function mdclearfixdelay(){
 		if(mixnum%3==2){
 			$("div.mix").eq(mixnum).after('<div class="clearfix visible-md"></div>');
 		}
+		if(mixnum%2==1){
+			$("div.mix").eq(mixnum).after('<div class="clearfix visible-sm"></div>');
+		}
 	}
 	
 }
@@ -672,6 +675,7 @@ function initialforwdlist()
 	$("select[name=gro]").val(localStorage.getItem('cgro'));
 	$("#formidlo").val(localStorage.getItem('cidlo'));
 	$("#formidup").val(localStorage.getItem('cidup'));
+	$("#undo").attr("onclick","undo('"+localStorage.getItem('clist')+"','exam')");
 	refreshtimes=0;
 	$.ajax({url: "getwdlist.php?list="+localStorage.getItem('clist')+"&idlo="+localStorage.getItem('cidlo')+"&idup="+localStorage.getItem('cidup')+"&gro="+localStorage.getItem('cgro'),
 		success: function (r){
